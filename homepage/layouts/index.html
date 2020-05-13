@@ -1,0 +1,25 @@
+
+{{ define "main" }}
+<main aria-role="main">
+  <header class="homepage-header jumbotron">
+    <div class="container">
+        <h1>{{.Title}}</h1>
+        {{ with .Params.subtitle }}
+        <span class="subtitle">{{.}}</span>
+        {{ end }}
+    </div>
+  </header>
+  <div class="homepage-content container">
+    <ul>
+    {{ range .Params.blocks }}
+        <li>{{ . }}</li>
+    {{ end }}
+    </ul>
+  </div>
+  <div>
+    {{ range first 10 .Site.RegularPages }}
+        {{ .Render "summary"}}
+    {{ end }}
+  </div>
+</main>
+{{ end }}
