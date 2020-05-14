@@ -1,0 +1,14 @@
+
+{{ $currentPage := . }}
+<h3 class="pl-3 my-4">{{ with .Site.GetPage (printf "/%s/_index.md" $.Type) }}{{ .Title }}{{ end }}</h3>
+<ul class="list-group list-group-flush">
+{{ range .Site.Menus.main }}
+    {{ if eq $currentPage.Type .Identifier }}
+        {{ range .Children }}
+        <li class="list-group-item{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}">
+            <a href="{{ .URL }}"{{ if $currentPage.IsMenuCurrent "main" . }} class="text-white"{{ end }}>{{ .Name }}</a>
+        </li>
+        {{ end }}
+    {{ end }}
+{{ end }}
+</ul>
