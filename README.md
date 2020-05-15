@@ -6,6 +6,7 @@
 - https://zwbetz.com/make-a-hugo-blog-from-scratch/
 - https://github.com/spech66/hugo-best-practices
 - https://www.forsure.dev/-/2019/09/03/add-search-functionality-to-your-hugo-static-site/
+- https://timpittman.co/posts/how-to-setup-a-hugo-blog-with-netlify-cms/
 
 - https://www.mapolabor.org/
 - https://docs.google.com/document/d/1LuQgBZcU-SZJGGiHAENHVwLJ5w7jwUc02IMLzats6uw/edit#

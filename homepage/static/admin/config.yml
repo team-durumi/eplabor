@@ -1,0 +1,45 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+
+publish_mode: editorial_workflow
+media_folder: "static/images/uploads" 
+public_folder: "/images/uploads" 
+
+collections:
+  - name: "notices"
+    label: "공지사항"
+    folder: "content/allim/notices"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "작성일", name: "date", widget: "datetime"}
+      - {label: "본문", name: "body", widget: "markdown"}
+  - name: "news"
+    label: "센터소식"
+    folder: "content/allim/news"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "작성일", name: "date", widget: "datetime"}
+      - {label: "본문", name: "body", widget: "markdown"}
+  - name: "downloads"
+    label: "자료실"
+    folder: "content/allim/downloads"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "작성일", name: "date", widget: "datetime"}
+      - {label: "본문", name: "body", widget: "markdown"}
+  - name: "publications"
+    label: "발간자료"
+    folder: "content/allim/publications"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "작성일", name: "date", widget: "datetime"}
+      - {label: "본문", name: "body", widget: "markdown"}
