@@ -1,17 +1,23 @@
-
 {{ define "main" }}
-<main>
-    <h2>{{.Title}}</h2>
-    {{ .Content }}
-        <ul class="contents">
-        {{ range .Paginator.Pages }}
-            <li>{{.Title}}
-                <div>
-                  {{ .Summary }}
-                </div>
-            </li>
-        {{ end }}
-        </ul>
-    {{ template "_internal/pagination.html" . }}
+<main class="container">
+    {{ partial "breadcrumb.html" . }}
+    <div class="row">
+        <div class="col-md-9">
+            <h1 class="border-bottom py-3 mb-3">{{ .Title }}</h1>
+            {{ .Content }}
+            <ul class="list-group list-group-flush">
+                {{ range .Paginator.Pages }}
+                <li class="list-group-item">
+                    <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
+                    <a href="{{.Permalink}}">{{.Title}}</a>
+                </li>
+                {{ end }}
+            </ul>
+            {{ template "_internal/pagination.html" . }}
+        </div>
+        <div class="col-md-3">
+            {{ partial "section_menu.html" . }}
+        </div>
+    </div>
 </main>
 {{ end }}

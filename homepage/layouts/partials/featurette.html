@@ -1,14 +1,14 @@
-
+{{ $feat := . }}
 <hr class="featurette-divider">
 
 <div class="container">
     <div class="row featurette">
         <div class="col-md-7">
-        <h2 class="display-4 mt-5">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            {{ with $feat.title }}<h2 class="display-4 mt-5">{{ . }}</h2>{{ end }}
+            {{ with $feat.description }}<p class="lead">{{ . }}</p>{{ end }}
         </div>
         <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 400x400"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="42%" y="50%" fill="#aaa" dy=".3em">400x400</text></svg>
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400" height="400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 400x400"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="42%" y="50%" fill="#aaa" dy=".3em">400x400</text></svg>
         </div>
     </div>
 </div>

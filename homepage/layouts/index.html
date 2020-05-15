@@ -12,9 +12,27 @@
 
   {{ partial "carousel.html" . }}
 
-  {{ partial "block-three-cols.html" . }}
+  {{ partial "block-three-cols.html" .Params.center_info }}
 
-  {{ partial "featurette.html" . }}
+  {{ partial "featurette.html" .Params.center_info }}
+
+  <div class="container recent-blocks my-5">
+    <div class="row">
+      <div class="col-lg-6">
+        {{ partial "recent_block.html" .Params.recents.notice }}
+      </div>
+      <div class="col-lg-6">
+        {{ partial "recent_block.html" .Params.recents.news }}
+      </div>
+    </div>
+  </div>
+
+  {{ partial "featurette.html" .Params.consulting_labaor }}
+  {{ partial "featurette.html" .Params.consulting_law }}
+
+  {{ partial "featurette.html" .Params.workshops }}
+  {{ partial "featurette.html" .Params.references }}
+  {{ partial "featurette.html" .Params.partners }}
 
   <div class="homepage-content container">
     <h3>초기 화면 블록 개요</h3>

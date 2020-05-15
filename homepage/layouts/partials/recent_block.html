@@ -1,0 +1,15 @@
+<div class="block--recent{{ with .type }} {{ (printf "block--recent--%s" .) }}{{ end }}">
+    {{ $icon := .icon }}
+    {{ with .title }}<h3 class="border-bottom py-3 mb-3"><span
+            class="icon mr-2">{{ with $icon }}{{ readFile (printf "/static/icons/%s.svg" .) | safeHTML }}</span>{{ end }}{{ . }}
+    </h3>{{ end }}
+
+    <ul class="list-group list-group-flush">
+    {{- range $post := ( where site.RegularPages.ByDate.Reverse "Type" "allim" | first 5 ) }}
+        <li class="list-group-item">
+            <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
+            <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
+        </li>
+    {{ end }}
+    </ul>
+</div>
