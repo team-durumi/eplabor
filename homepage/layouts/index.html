@@ -1,25 +1,32 @@
-
 {{ define "main" }}
 <main aria-role="main">
-  <header class="homepage-header jumbotron" style="height: 300px; overflow: hidden; background: #ccc url('/images/logo.svg'); background-size: cover;">
+  <header class="homepage-header jumbotron"
+    style="height: 300px; overflow: hidden; background: #ccc url('/images/logo.svg'); background-size: cover;">
     <div class="container">
-        <h1>{{.Title}}</h1>
-        {{ with .Params.subtitle }}
-        <span class="subtitle">{{.}}</span>
-        {{ end }}
+      <h1>{{.Title}}</h1>
+      {{ with .Params.subtitle }}
+      <span class="subtitle">{{.}}</span>
+      {{ end }}
     </div>
   </header>
+
+  {{ partial "carousel.html" . }}
+
+  {{ partial "block-three-cols.html" . }}
+
+  {{ partial "featurette.html" . }}
+
   <div class="homepage-content container">
+    <h3>초기 화면 블록 개요</h3>
     <ul>
-    {{ range .Params.blocks }}
-        <li>{{ . }}</li>
-    {{ end }}
+      <li>슬라이드</li>
+      {{ range .Params.blocks }}
+      <li>{{ . }}</li>
+      {{ end }}
     </ul>
+
+
   </div>
-  <div>
-    {{ range first 10 .Site.RegularPages }}
-        {{ .Render "summary"}}
-    {{ end }}
-  </div>
+
 </main>
 {{ end }}
