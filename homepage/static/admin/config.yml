@@ -3,13 +3,13 @@ backend:
   branch: master # Branch to update (optional; defaults to master)
 
 publish_mode: editorial_workflow
-media_folder: "static/images/uploads" 
+media_folder: "homepage/static/images/uploads" 
 public_folder: "/images/uploads" 
 
 collections:
   - name: "notices"
     label: "공지사항"
-    folder: "content/allim/notices"
+    folder: "homepage/content/allim/notices"
     create: true
     slug: "{{slug}}"
     fields:
@@ -18,7 +18,7 @@ collections:
       - {label: "본문", name: "body", widget: "markdown"}
   - name: "news"
     label: "센터소식"
-    folder: "content/allim/news"
+    folder: "homepage/content/allim/news"
     create: true
     slug: "{{slug}}"
     fields:
@@ -27,7 +27,7 @@ collections:
       - {label: "본문", name: "body", widget: "markdown"}
   - name: "downloads"
     label: "자료실"
-    folder: "content/allim/downloads"
+    folder: "homepage/content/allim/downloads"
     create: true
     slug: "{{slug}}"
     fields:
@@ -36,7 +36,7 @@ collections:
       - {label: "본문", name: "body", widget: "markdown"}
   - name: "publications"
     label: "발간자료"
-    folder: "content/allim/publications"
+    folder: "homepage/content/allim/publications"
     create: true
     slug: "{{slug}}"
     fields:
