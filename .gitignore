@@ -1,6 +1,7 @@
 .vagrant
 # Hugo default output directory
-/public
+/homepage/public
+/homepage/resources
 
 ## OS Files
 # Windows

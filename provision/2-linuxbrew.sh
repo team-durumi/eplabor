@@ -5,4 +5,4 @@ test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew
 echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 brew install gcc hugo
 
-echo 'alias hs="hugo server --bind 0.0.0.0"' >> ~/.profile
+echo 'alias hs="hugo serve --bind 0.0.0.0 --buildDrafts"' >> ~/.profile
