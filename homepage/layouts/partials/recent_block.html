@@ -1,8 +1,11 @@
-<div class="block--recent{{ with .type }} {{ (printf "block--recent--%s" .) }}{{ end }}">
+<div class="block--recent bg-white p-4{{ with .type }} {{ (printf "block--recent--%s" .) }}{{ end }}">
     {{ $icon := .icon }}
-    {{ with .title }}<h3 class="border-bottom py-3 mb-3"><span
-            class="icon mr-2">{{ with $icon }}{{ readFile (printf "/static/icons/%s.svg" .) | safeHTML }}</span>{{ end }}{{ . }}
-    </h3>{{ end }}
+    {{ with .title }}
+        <h3 class="py-3">
+            <span class="icon d-none mr-2">{{ with $icon }}{{ readFile (printf "/static/icons/%s.svg" .) | safeHTML }}</span>{{ end }}
+            {{ . }}
+        </h3>
+    {{ end }}
 
     <ul class="list-group list-group-flush">
     {{- range $post := ( where site.RegularPages.ByDate.Reverse "Type" "allim" | first 5 ) }}

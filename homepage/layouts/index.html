@@ -16,13 +16,15 @@
 
   {{ partial "featurette.html" .Params.center_info }}
 
-  <div class="container recent-blocks my-5">
-    <div class="row">
-      <div class="col-lg-6">
-        {{ partial "recent_block.html" .Params.recents.notice }}
-      </div>
-      <div class="col-lg-6">
-        {{ partial "recent_block.html" .Params.recents.news }}
+  <div class="recent-blocks py-3 my-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          {{ partial "recent_block.html" .Params.recents.notice }}
+        </div>
+        <div class="col-lg-6">
+          {{ partial "recent_block.html" .Params.recents.news }}
+        </div>
       </div>
     </div>
   </div>

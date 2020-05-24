@@ -1,0 +1,117 @@
+<form id="consulting_request" method="POST" action="//admin.eplabor.org/eplabor_admin/items/enquiry">
+    <fieldset class="border p-3 my-3">
+        <legend class="px-3" style="width: auto;">연락처</legend>
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                <label for="name" class="sr-only">성명</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="성명: 홍길동">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                <label for="email" class="sr-only">이메일</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="이메일주소: honggildong@gmail.com">
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="phone" class="sr-only">휴대전화번호</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="휴대전화번호: 010-000-0000">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="border p-3 my-3">
+        <legend class="px-3" style="width: auto;">상담 요청 정보</legend>
+        <div class="form-group">
+            <label for="categories">상담유형</label>
+            <select id="categories" name="categories" class="form-control w-25">
+                {{ range $index, $category := $.Page.Params.categories }}
+                <option value="{{ $category }}" {{ if eq $index 0 }} selected{{ end }}>{{ $category }}</option>
+                {{ end }}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="context">상담 및 문제 내용</label>
+            <textarea class="form-control" id="context" name="context" rows="6"></textarea>
+        </div>
+    </fieldset>
+    <fieldset class="border p-3 my-3">
+        <legend class="px-3" style="width: auto;">노동 환경</legend>
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                <label for="company_name" class="sr-only">사업장명</label>
+                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="사업장명">
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="company_owner" class="sr-only">대표자명</label>
+                <input type="text" class="form-control" id="company_owner" name="company_owner" placeholder="대표자명">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                <label for="company_contacts" class="sr-only">연락처</label>
+                <input type="text" class="form-control" id="company_contacts" name="company_contacts" placeholder="연락처">
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="company_region" class="sr-only">소재지</label>
+                <input type="text" class="form-control" id="company_region" name="company_region" placeholder="소재지(은평구, 기타, 무응답)">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-lg-4">
+                <label for="company_size" class="sr-only">근로자수</label>
+                <select id="company_size" name="company_size" class="form-control w-75">
+                    <option selected>근로자수</option>
+                    {{ range $index, $size := $.Page.Params.sizes }}
+                    <option value="{{ $size }}">{{ $size }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <div class="form-group col-lg-4">
+                <label for="company_sectors" class="sr-only">업종</label>
+                <select id="company_sectors" name="company_sectors" class="form-control w-75">
+                    <option selected>업종</option>
+                    {{ range $index, $category := $.Page.Params.sectors }}
+                    <option value="{{ $category }}">{{ $category }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <div class="form-group col-lg-4">
+                <label for="company_years" class="sr-only">운영기간</label>
+                <input type="text" class="form-control" id="company_years" name="company_years" placeholder="운영기간: 4년">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="contract" class="col-sm-3 col-form-label">근로계약서 작성여부</label>
+            <div class="col-sm-9">
+                <div class="form-check form-check-inline">
+                    {{ range $index, $contract := $.Page.Params.contracts }}
+                    <input class="form-check-input" type="radio" name="contract" id="contract{{$index}}" value="{{$contract}}">
+                    <label class="form-check-label ml-1 mr-3 my-1" for="contract{{$index}}">{{$contract}}</label>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="rule" class="col-sm-3 col-form-label">4대보험 가입여부</label>
+            <div class="col-sm-9">
+                <div class="form-check form-check-inline">
+                    {{ range $index, $insurance := $.Page.Params.insurances }}
+                    <input class="form-check-input" type="radio" name="social_insurance" id="insurance{{$index}}" value="{{$insurance}}">
+                    <label class="form-check-label ml-1 mr-3 my-1" for="insurance{{$index}}">{{$insurance}}</label>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="rule" class="col-sm-3 col-form-label">취업규칙 작성여부</label>
+            <div class="col-sm-9">
+                <div class="form-check form-check-inline">
+                    {{ range $index, $rule := $.Page.Params.rules }}
+                    <input class="form-check-input" type="radio" name="employment_rules" id="rule{{$index}}" value="{{$rule}}">
+                    <label class="form-check-label ml-1 mr-3 my-1" for="rule{{$index}}">{{$rule}}</label>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">신청하기</button>
+</form>
