@@ -15,4 +15,16 @@
         </li>
     {{ end }}
     </ul>
+
+    <ul class="list-group list-group-flush">
+        {{- range $post := site.RegularPages.ByDate.Reverse }}
+            <li class="list-group-item">
+                <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
+                <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
+                <pre>
+                    {{ $post }}
+                </pre>
+            </li>
+        {{ end }}
+    </ul>
 </div>

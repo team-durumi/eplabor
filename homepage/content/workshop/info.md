@@ -8,4 +8,3 @@ menu:
     parent: 'workshop'
     weight: 1
 ---
-
