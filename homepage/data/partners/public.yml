@@ -1,0 +1,36 @@
+title: 공공기관
+orgs:
+  - title: 서울특별시
+    url: https://www.seoul.go.kr
+  - title: 은평구
+    url: http://www.ep.go.kr
+  - title: 고용노동부
+    url: http://www.moel.go.kr
+  - title: 근로복지공단
+    url: http://www.kcomwel.or.kr
+  - title: 서울근로자건강센터
+    url: https://suwhc.or.kr
+  - title: 서울고용센터
+    url: http://www.work.go.kr/seoul
+  - title: 서울지방고용노동청
+    url: http://www.moel.go.kr/seoul
+  - title: 서울지방노동위원회
+    url: http://www.nlrc.go.kr/nlrc/seoul/main/index_home.go
+  - title: 고용산재보험토털서비스
+    url: http://total.kcomwel.or.kr/main.do
+  - title: 희망드림근로복지넷
+    url: http://www.workdream.net/
+  - title: 산업재해보상심의위원회
+    url: http://www.iaciac.go.kr/
+  - title: 한국산업인력공단
+    url: http://www.hrdkorea.or.kr/
+  - title: 한국장애인고용공단
+    url: https://www.kead.or.kr/
+  - title: 국가인권위원회
+    url: https://www.humanrights.go.kr/
+  - title: 국민권익위원회
+    url: http://www.acrc.go.kr/
+  - title: 진실·화해를위한과거사정리위원회
+    url: http://www.pasthistory.go.kr/
+  - title: 서울노동권익센터
+    url: https://www.labors.or.kr/
