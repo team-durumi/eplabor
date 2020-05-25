@@ -1,0 +1,17 @@
+{{ define "main" }}
+<main class="container">
+    {{ partial "breadcrumb.html" . }}
+    <h1 class="border-bottom py-3 mb-3">{{ .Title }}</h1>
+    {{ partial "workshops/status-nav.html" . }}
+    {{ .Content }}
+    <ul class="list-group list-group-flush">
+        {{ range .Paginator.Pages }}
+        <li class="list-group-item">
+            <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
+            <a href="{{.Permalink}}">{{.Title}}</a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ template "_internal/pagination.html" . }}
+</main>
+{{ end }}

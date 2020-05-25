@@ -1,0 +1,11 @@
+<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link{{ if eq "/workshops/" .Page.RelPermalink }} active{{ end }}" href="/workshops/">전체</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{{ if eq "/workshops/open/" .Page.RelPermalink }} active{{ end }}" href="/workshops/open">진행중</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{{ if eq "/workshops/closed/" .Page.RelPermalink }} active{{ end }}" href="/workshops/closed">마감</a>
+    </li>
+</ul>

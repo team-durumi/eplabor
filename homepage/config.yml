@@ -3,11 +3,6 @@ languageCode: ko-kr
 defaultContentLanguage: ko
 hasCJKLanguage: true
 
-disableKinds:
-  - taxonomy
-  - taxonomyTerm
-  - RSS
-  - xml
-
-params:
-  homeText: You just made a Hugo blog from scratch.
+taxonomies:
+  category: categories
+  tag: tags
