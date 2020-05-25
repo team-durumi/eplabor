@@ -1,7 +1,27 @@
 <footer class="bg-light py-4 mt-5">
-    <div class="container-fluid">
+    <div class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>© 2020 {{ .Site.Title }}. · <a href="#">개인정보처리방침</a> · <a href="#">이용약관</a></p>
+        <h5>{{ .Site.Title }}<small class="ml-3">{{ .Site.Data.eplabor.tagLine }}</small></h5>
+        <dl class="row no-gutters mt-4">
+            <dt class="col-sm-1">주소</dt>
+            <dd class="col-sm-11">{{ .Site.Data.eplabor.주소 }}</dd>
+            <dt class="col-sm-1">대표전화</dt>
+            <dd class="col-sm-11">{{ .Site.Data.eplabor.대표전화 }}</dd>
+            <dt class="col-sm-1">팩스</dt>
+            <dd class="col-sm-11">{{ .Site.Data.eplabor.팩스 }}</dd>
+            <dt class="col-sm-1">이메일</dt>
+            <dd class="col-sm-11">{{ .Site.Data.eplabor.이메일 }}</dd>
+            <dt class="col-sm-1">대표자</dt>
+            <dd class="col-sm-11">{{ .Site.Data.eplabor.대표자 }}</dd>
+        </dl>
+        <ul class="list-unstyled">
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+        </ul>
+        <ul class="list-unstyled">
+            <li><a href="#">네이버블로그</a></li>
+            <li><a href="#">페이스북</a></li>
+        </ul>
     </div>
 </footer>
 
