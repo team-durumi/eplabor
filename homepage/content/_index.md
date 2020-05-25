@@ -39,7 +39,7 @@ recents:
   notice:
     icon: mic
     title: 공지사항
-    type: notices
+    type: notice
   news:
     icon: chat
     title: 센터소식

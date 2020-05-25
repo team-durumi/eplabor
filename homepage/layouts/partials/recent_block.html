@@ -1,4 +1,4 @@
-<div class="block--recent bg-white p-4{{ with .type }} {{ (printf "block--recent--%s" .) }}{{ end }}">
+<div class="block--recent{{ with .type }} {{ (printf "block--recent--%s" .) }}{{ end }} bg-white p-4">
     {{ $icon := .icon }}
     {{ with .title }}
         <h3 class="py-3">
@@ -8,7 +8,7 @@
     {{ end }}
 
     <ul class="list-group list-group-flush">
-    {{- range $post := ( where site.RegularPages.ByDate.Reverse "Type" "allim" | first 5 ) }}
+    {{- range $post := ( where site.RegularPages.ByDate.Reverse "Type" .type | first 5 ) }}
         <li class="list-group-item">
             <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
             <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
@@ -16,15 +16,4 @@
     {{ end }}
     </ul>
 
-    <ul class="list-group list-group-flush">
-        {{- range $post := site.RegularPages.ByDate.Reverse }}
-            <li class="list-group-item">
-                <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
-                <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
-                <pre>
-                    {{ $post }}
-                </pre>
-            </li>
-        {{ end }}
-    </ul>
 </div>
