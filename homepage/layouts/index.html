@@ -28,6 +28,10 @@
       </div>
     </div>
   </div>
+  {{ $test := dict "photo_url" "/images/uploads/peng034.png" "photo_direction" "left" "message_direction" "right" "message_url" "/allim/notices/1" }}
+  {{ partial "showoff/photo-half-message.html" $test }}
+
+  {{ partial "showoff/four-panes.html" . }}
 
   {{ partial "featurette.html" .Params.consulting_labaor }}
   {{ partial "featurette.html" .Params.consulting_law }}
