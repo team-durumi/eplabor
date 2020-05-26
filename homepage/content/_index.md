@@ -1,6 +1,6 @@
 ---
 title: 은평구 노동자종합지원센터
-subtitle: '초기 화면'
+tagLine: 노동과 사람을 존중하는 우리 지역의 든든한 이웃
 blocks:
   - 센터정보
   - 공지사항
@@ -12,29 +12,32 @@ blocks:
 slides:
   - title: '슬라이드 #1'
     description: '슬라이드 #1 설명'
-    bg: '배경이미지'
+    bg: https://images.unsplash.com/photo-1495725274072-fd5d0b961a9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1068&q=80
     btn_text:
     btn_url:
   - title: '슬라이드 #2'
     description: '슬라이드 #2 설명'
-    bg: '배경이미지'
+    bg: https://images.unsplash.com/photo-1529045138962-5f59528258fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2031&q=80
     btn_text:
     btn_url:
   - title: '슬라이드 #3'
     description: '슬라이드 #3 설명'
-    bg: '배경이미지'
+    bg: https://images.unsplash.com/photo-1562492901-e7021f6af8c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80
     btn_text:
     btn_url:
 center_info:
-  title: 센터정보
-  description: 가까이에 편하게 이야기할 수 있습니다.
+  title: 은평구 노동자종합지원센터
+  description: 노동과 사람을 존중하는 우리 지역의 든든한 이웃
   columns:
-    - title: 전화상담
+    - title: 노동상담
       icon: mic
-    - title: 온라인상담
+      url: /consulting/info/
+    - title: 교육신청
       icon: chat
-    - title: 방문상담
+      url: workshops/
+    - title: 알아두면 도움되는 제도
       icon: heart
+      url: /consulting/references/
 recents:
   notice:
     icon: mic

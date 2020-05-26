@@ -1,22 +1,10 @@
 {{ define "main" }}
 <main aria-role="main">
-  <header class="homepage-header jumbotron"
-    style="height: 300px; overflow: hidden; background: #ccc url('/images/logo.svg'); background-size: cover;">
-    <div class="container">
-      <h1>{{.Title}}</h1>
-      {{ with .Params.subtitle }}
-      <span class="subtitle">{{.}}</span>
-      {{ end }}
-    </div>
-  </header>
 
   {{ partial "carousel.html" . }}
-
   {{ partial "block-three-cols.html" .Params.center_info }}
 
-  {{ partial "featurette.html" .Params.center_info }}
-
-  <div class="recent-blocks py-3 my-5 bg-light">
+  <div class="recent-blocks py-5 my-5 bg-light">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -28,29 +16,11 @@
       </div>
     </div>
   </div>
-  {{ $test := dict "photo_url" "/images/uploads/peng034.png" "photo_direction" "left" "message_direction" "right" "message_url" "/allim/notices/1" }}
-  {{ partial "showoff/photo-half-message.html" $test }}
 
   {{ partial "showoff/four-panes.html" . }}
 
-  {{ partial "featurette.html" .Params.consulting_labaor }}
-  {{ partial "featurette.html" .Params.consulting_law }}
-
-  {{ partial "featurette.html" .Params.workshops }}
-  {{ partial "featurette.html" .Params.references }}
-  {{ partial "featurette.html" .Params.partners }}
-
-  <div class="homepage-content container">
-    <h3>초기 화면 블록 개요</h3>
-    <ul>
-      <li>슬라이드</li>
-      {{ range .Params.blocks }}
-      <li>{{ . }}</li>
-      {{ end }}
-    </ul>
-
-
-  </div>
+  {{ $test := dict "photo_url" "/images/uploads/peng034.png" "photo_direction" "left" "message_direction" "right" "message_url" "/allim/notices/1" }}
+  {{ partial "showoff/photo-half-message.html" $test }}
 
 </main>
 {{ end }}
