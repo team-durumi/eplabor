@@ -1,0 +1,24 @@
+1:
+  term: contract
+  label: 근로계약
+2:
+  term: restday
+  label: 근로시간/휴일/휴가
+3:
+  term: wages
+  label: 체불임금
+4:
+  term: layoff
+  label: 해고
+5:
+  term: sexual
+  label: 폭행/성희롱
+6:
+  term: unemployment
+  label: 실업급여/4대보험
+7:
+  term: accidents
+  label: 산업재해
+8:
+  term: form
+  label: 참고서

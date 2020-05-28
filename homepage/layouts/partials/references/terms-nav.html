@@ -1,0 +1,12 @@
+{{ $terms := sort .Site.Data.faq_terms }}
+{{ $path := .RelPermalink }}
+<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a class="nav-link{{ if eq "/consulting/references/" $path }} active{{ end }}" href="/consulting/references/">모두</a>
+    </li>
+    {{ range $info := $terms }}
+    <li class="nav-item">
+        <a class="nav-link{{ if eq ( printf "/consulting/references/%s/" $info.term ) $path }} active{{ end }}" href="/consulting/references/{{ $info.term }}">{{ $info.label }}</a>
+    </li>
+    {{ end }}
+</ul>

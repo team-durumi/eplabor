@@ -1,0 +1,16 @@
+{{ define "main" }}
+<main class="container">
+    {{ partial "breadcrumb.html" . }}
+    <h1 class="border-bottom py-3 mb-3">{{ .Title }}</h1>
+    {{ partial "references/terms-nav.html" . }}
+    {{ .Content }}
+    {{ $faqs := index .Site.Data.faqs .Params.term }}
+    <ul class="list-group list-group-flush">
+        {{ range $faqs }}
+        <li class="list-group-item">
+            <a href="#">{{ .category }} - {{ .title }}</a> {{ .body | markdownify }}
+        </li>
+        {{ end }}
+    </ul>
+</main>
+{{ end }}
