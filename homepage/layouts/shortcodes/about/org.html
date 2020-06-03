@@ -1,0 +1,61 @@
+<div class="tf-tree my-3">
+    <ul>
+        <li class="left-sibling"><span class="tf-nc">자문회의</span></li>
+        <li>
+            <span class="tf-nc">센터장</span>
+            <ul>
+                <li><span class="tf-nc">기획협력팀</span></li>
+                <li><span class="tf-nc">노동인권팀</span></li>
+                <li><span class="tf-nc">노동복지팀</span></li>
+            </ul>
+        </li>
+        <li class="right-sibling"><span class="tf-nc">운영위원회</span></li>
+    </ul>
+</div>
+
+<link href="//unpkg.com/treeflex/dist/css/treeflex.css" rel="stylesheet">
+<style>
+.tf-tree .tf-nc, .tf-tree .tf-node-content {
+    padding: 1rem 2rem;
+    max-width: 100%;
+}
+.tf-tree .left-sibling { margin-right: -170px; }
+.tf-tree .right-sibling { margin-left: -180px; }
+
+.tf-tree .tf-nc:after, .tf-tree .tf-nc:before, .tf-tree .tf-node-content:after, .tf-tree .tf-node-content:before {
+    height: 3rem;
+}
+.tf-tree li ul {
+    margin-top: 4rem;
+}
+.tf-tree li .tf-nc {
+    margin-top: 2rem;
+}
+.tf-tree .tf-nc:before, .tf-tree .tf-node-content:before {
+    top: -3.03125rem;
+}
+
+.tf-tree .left-sibling:before {
+    left: calc(50% + 3.7em);
+    max-width: calc(50% + .0625em);
+    border-top: .0625em dashed #000;
+    content: "";
+    display: block;
+    height: .0625em;
+    position: absolute;
+    top: 3.8em;
+    width: 40%;
+}
+.tf-tree .right-sibling:before {
+    left: calc(50% - 7.3em);
+    max-width: calc(50% + .0625em);
+    border-top: .0625em dashed #000;
+    content: "";
+    display: block;
+    height: .0625em;
+    position: absolute;
+    top: 3.8em;
+    width: 30%;
+}
+
+</style>
