@@ -2,7 +2,7 @@
     {{ $icon := .icon }}
     {{ with .title }}
         <h3 class="py-3">
-            <span class="icon d-none mr-2">{{ with $icon }}{{ readFile (printf "/static/icons/%s.svg" .) | safeHTML }}</span>{{ end }}
+            {{ with $icon }}<span class="icon mr-2">{{ readFile (printf "/static/icons/%s.svg" .) | safeHTML }}</span>{{ end }}
             {{ . }}
         </h3>
     {{ end }}
