@@ -1,0 +1,24 @@
+{{ $kakao := "https://map.kakao.com/?urlX=481563&urlY=1148955&urlLevel=3&itemId=1948212335&q=%EC%9D%80%ED%8F%89%EA%B5%AC%20%EB%85%B8%EB%8F%99%EC%9E%90%EC%A2%85%ED%95%A9%EC%A7%80%EC%9B%90%EC%84%BC%ED%84%B0&srcid=1948212335&map_type=TYPE_MAP" }}
+{{ $naver := "https://map.naver.com/v5/search/%EC%9D%80%ED%8F%89%EA%B5%AC%20%EB%85%B8%EB%8F%99%EC%9E%90%EC%A2%85%ED%95%A9%EC%A7%80%EC%9B%90%EC%84%BC%ED%84%B0/place/1057254823?c=14127809.3591350,4528106.8633711,15,0,0,0,dh" }}
+
+<a target="_blank" href="{{ $kakao }}"><img src="/images/location.png" alt="{{ .Site.Title }}"/></a>
+
+<ul class="list-inline float-right my-3">
+    <li class="list-inline-item">
+        <a target="_blank" href="{{ $kakao }}"><img src="/icons/kakaomap.png" class="border rounded" style="width: 32px;" alt="카카오맵"></a>
+    </li>
+    <li class="list-inline-item">
+        <a target="_blank" href="{{ $naver }}"><img src="/icons/navermap.png" class="border rounded" style="width: 32px;" alt="네이버맵"></a>
+    </li>
+</ul>
+
+<dl class="row mt-5">
+    <dt class="col-sm-2">주소</dt>
+    <dd class="col-sm-10">(03312) 서울시 은평구 통일로 1045. 1층</dd>
+    <dt class="col-sm-2">지하철</dt>
+    <dd class="col-sm-10">구파발역 3번 출구 은평성모병원 방향. 약 300m, 도보 4분 거리</dd>
+    <dt class="col-sm-2">버스</dt>
+    <dd class="col-sm-10">초록 790 / 파랑 571, 741, 761, 773, 774 / 빨강 9710, 9710-1, 9703, 9709</dd>
+</dl>
+
+<p>주차공간이 협소하니, 가급적 대중교통을 이용해 방문해주시길 바랍니다.</p>

@@ -1,6 +1,14 @@
 @import "bs4-config";
 @import "../node_modules/bootstrap/scss/bootstrap";
-
 dd {
     margin-bottom: .2rem;
+}
+
+.body {
+    h3 {
+        margin-top: 3rem;
+    }
+    img {
+        max-width: 100%;
+    }
 }
