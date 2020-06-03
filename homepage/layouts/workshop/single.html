@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="container">
-    <h1>{{ .Title }}</h1>
+    <h1 class="border-bottom pb-3 my-3">{{ .Title }}</h1>
     {{ .Date.Format "2006-01-02" }}
     {{ $workshop := .Page.Params.workshop }}
     <img src="{{ $workshop.이미지 }}" class="d-block my-3 img-fluid" />
@@ -12,7 +12,11 @@
         {{ end }}
     {{ end }}
     </dl>
-    {{ .Content }}
-    {{ partial "workshops/form-apply.html" . }}
+    <div class="body w-75">
+        {{ .Content }}
+    </div>
+    <div class="form w-75 mt-5">
+        {{ partial "workshops/form-apply.html" . }}
+    </div>
 </div>
 {{ end }}
