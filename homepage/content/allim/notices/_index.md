@@ -1,6 +1,6 @@
 ---
 title: 공지사항
-date: 2020-05-13T09:02:14.000Z
+date: 2020-04-13T09:02:14.000Z
 draft: true
 menu:
   main:
