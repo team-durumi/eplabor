@@ -17,6 +17,8 @@ menu:
 
 ▶ 자세한 신청 방법 알려주는 글 보러가기 **[클릭](http://mediahub.seoul.go.kr/archives/1276255)**
 
+![](/uploads/corona.png)
+
 ▶ 서울시 재난 긴급생활비 신청하기 **[클릭](https://univ.jinhakapply.com/Univ924401.aspx)**
 
 ▶ Q&A로 알아보는 '서울시 재난 긴급생활비' 지원 바로가기  **[클릭](http://mediahub.seoul.go.kr/archives/1274958)**
