@@ -1,11 +1,11 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-    {{ range $index, $slide := .Params.slides }}
+    {{ range $index, $slide := . }}
         <li data-target="#carouselExampleIndicators" data-slide-to="{{ $index }}"{{ if eq $index 0 }} class="active"{{ end }}></li>
     {{ end }}
     </ol>
     <div class="carousel-inner">
-        {{ range $index, $slide := .Params.slides }}
+        {{ range $index, $slide := . }}
         <div class="carousel-item{{ if eq $index 0 }} active{{end}}" style="height: 480px; background-image: url('{{ $slide.bg }}'); background-size: cover;">
             <div class="container">
                 <div class="carousel-caption text-right">

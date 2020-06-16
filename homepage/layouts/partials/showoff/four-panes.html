@@ -1,38 +1,16 @@
 
 <div class="four-panes container">
     <ul class="row clearfix list-unstyled">
+    {{ range . }}
         <li class="col-md-3">
-            <a href="/">
+            {{ with .url }}<a href="{{ . }}">{{ end }}
                 <span class="txt_box">
-                    <span class="txt_01">유산기부 후원자를 위한</span>
-                    <span class="txt_02">헤리티지 클럽</span>
+                    <span class="txt_01">{{ .text1 }}</span>
+                    <span class="txt_02">{{ .text2 }}</span>
                 </span>
-            </a>
+            {{ with .url }}</a>{{ end }}
         </li>
-        <li class="col-md-3">
-            <a href="/">
-                <span class="txt_box">
-                    <span class="txt_01">후원을 넘어 가치를 실현하는</span>
-                    <span class="txt_02">필란트로피클럽</span>
-                </span>
-            </a>
-        </li>
-        <li class="col-md-3">
-            <a href="/">
-                <span class="txt_box">
-                    <span class="txt_01">더불어 사는 세상을 위해</span>
-                    <span class="txt_02">홍보대사</span>
-                </span>
-            </a>
-        </li>
-        <li class="col-md-3">
-            <a href="/">
-                <span class="txt_box">
-                    <span class="txt_01">기아대책과</span>
-                    <span class="txt_02">함께하는 교회</span>
-                </span>
-            </a>
-        </li>
+    {{ end }}
     </ul>
 </div>
 
@@ -47,18 +25,12 @@
     top: -20px;
     box-shadow: 20px 20px 15px rgba(0,0,0,.12);
 }
-.four-panes ul li:nth-child(1) a {
-    background: url(https://www.kfhi.or.kr/asset/images/main/renewal/sec_06_img_01.jpg) 0 0 no-repeat;
+
+{{ range $index, $row := . }}
+.four-panes ul li:nth-child({{ add $index 1 }}) a {
+    background: url({{ $row.bg }}) 0 0 no-repeat;
 }
-.four-panes ul li:nth-child(2) a {
-    background: url(https://www.kfhi.or.kr/asset/images/main/renewal/sec_06_img_02.jpg) 0 0 no-repeat;
-}
-.four-panes ul li:nth-child(3) a {
-    background: url(https://www.kfhi.or.kr/asset/images/main/renewal/sec_06_img_03.jpg) 0 0 no-repeat;
-}
-.four-panes ul li:nth-child(4) a {
-    background: url(https://www.kfhi.or.kr/asset/images/main/renewal/sec_06_img_04.jpg) 0 0 no-repeat;
-}
+{{ end }}
 
 .four-panes ul li a {
     display: block;

@@ -1,26 +1,30 @@
 {{ define "main" }}
+{{ $front := .Site.Data.front }}
 <main aria-role="main">
+  {{ partial "carousel.html" $front.slides }}
 
-  {{ partial "carousel.html" . }}
-  {{ partial "block-three-cols.html" .Params.center_info }}
+  {{ $basic := dict "title" .Site.Title "description" .Site.Data.eplabor.tagLine }}
+  {{ $cols := dict "cols" $front.center_info }}
+  {{ $three := merge $basic $cols }}
+  {{ partial "block-three-cols.html" $three }}
 
   <div class="recent-blocks py-5 my-5 bg-light">
     <div class="container">
       <div class="row">
+        {{ range first 2 $front.recents }}
         <div class="col-lg-6">
-          {{ partial "recent_block.html" .Params.recents.notice }}
+          {{ partial "recent_block.html" . }}
         </div>
-        <div class="col-lg-6">
-          {{ partial "recent_block.html" .Params.recents.news }}
-        </div>
+        {{ end }}
       </div>
     </div>
   </div>
 
-  {{ partial "showoff/four-panes.html" . }}
+  {{ $four := first 4 $front.four_panes }}
+  {{ partial "showoff/four-panes.html" $four }}
 
-  {{ $test := dict "photo_url" "/uploads/peng034.png" "photo_direction" "left" "message_direction" "right" "message_url" "/allim/notices/1" }}
-  {{ partial "showoff/photo-half-message.html" $test }}
+  {{ $halfhalfs := first 5 .Site.Data.front.halfhalfs }}
+  {{ partial "showoff/photo-half-message.html" $halfhalfs }}
 
 </main>
 {{ end }}

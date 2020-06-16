@@ -1,11 +1,65 @@
 backend:
-  name: git-gateway
-  branch: master
+  #name: git-gateway
+  #branch: master
+  name: test-repo
 
 media_folder: "homepage/static/uploads" 
 public_folder: "/uploads" 
 
 collections:
+  - name: "settings"
+    label: "설정"
+    files:
+      - name: "basic"
+        label: "기본 정보"
+        file: "data/eplaor.yml"
+        fields:
+          - {label: "태그라인", name: "tagline", widget: "string"}
+          - {label: "푸터", name: "footer", widget: "markdown"}
+      - name: "front"
+        label: "홈페이지"
+        file: "data/front.yml"
+        fields:
+          - label: "슬라이드"
+            name: "slides"
+            widget: "list"
+            fields:
+              - {label: "슬라이드 제목", name: "title", widget: "string"}
+              - {label: "슬라이드 설명글", name: "description", widget: "string"}
+              - {label: "슬라이드 배경이미지", name: "bg", widget: "image"}
+              - {label: "슬라이드 버튼 텍스트", name: "btn_text", widget: "string"}
+              - {label: "슬라이드 버튼 링크", name: "btn_url", widget: "string"}
+          - label: "센터 정보 블록"
+            name: "center_info"
+            widget: "list"
+            fields:
+              - {label: "제목", name: "title", widget: "string"}
+              - {label: "아이콘", name: "icon", widget: "string"}
+              - {label: "링크", name: "url", widget: "string"}
+          - label: "최신 글"
+            name: "recents"
+            widget: "list"
+            fields:
+              - {label: "아이콘", name: "icon", widget: "string"}
+              - {label: "제목", name: "title", widget: "string"}
+              - {label: "게시판 유형", name: "type", widget: "string"}
+          - label: "홍보용 4개 패널"
+            name: "four_panes"
+            widget: "list"
+            fields:
+              - {label: "제목1", name: "text1", widget: "string"}
+              - {label: "제목2", name: "text2", widget: "string"}
+              - {label: "배경 이미지", name: "bg", widget: "image"}
+              - {label: "링크", name: "url", widget: "string"}
+          - label: "사진 절반 글 절반"
+            name: "halfhalfs"
+            widget: "list"
+            fields:
+              - {label: "사진", name: "photo", widget: "image"}
+              - {label: "사진 위치", name: "photo_left", widget: "boolean", hint: "선택하면 왼쪽, 아니면 오른쪽"}
+              - {label: "링크", name: "message_url", widget: "string"}
+              - {label: "제목", name: "message_title", widget: "text"}
+              - {label: "설명", name: "message_description", widget: "text"}
   - name: "notices"
     label: "공지사항"
     folder: "homepage/content/allim/notices"

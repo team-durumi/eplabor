@@ -1,13 +1,12 @@
-{{ $feat := . }}
+{{ $cols := .cols }}
 <div class="marketing container my-5">
-  <!-- Three columns of text below the carousel -->
   <div class="intro text-center">
-    {{ with $feat.title }}<h2 class="text-primary mt-5">{{ . }}</h2>{{ end }}
-    {{ with $feat.description }}<p class="lead">{{ . }}</p>{{ end }}
+    {{ with .title }}<h2 class="text-primary mt-5">{{ . }}</h2>{{ end }}
+    {{ with .description }}<p class="lead">{{ . }}</p>{{ end }}
   </div>
   <style>.marketing .bi { font-size: 4rem; color: #fff; position:absolute; margin-left: 38px; margin-top: 38px; }</style>
   <div class="row mt-5">
-    {{ range $feat.columns }}
+    {{ range $cols }}
     <div class="col-lg-4 text-center">
       <a href="{{ .url }}">
         {{ readFile ( printf "/static/icons/%s.svg" .icon ) | safeHTML }}
