@@ -12,13 +12,13 @@ collections:
     files:
       - name: "basic"
         label: "기본 정보"
-        file: "data/eplaor.yml"
+        file: "homepage/data/eplaor.yml"
         fields:
           - {label: "태그라인", name: "tagline", widget: "string"}
           - {label: "푸터", name: "footer", widget: "markdown"}
       - name: "front"
         label: "홈페이지"
-        file: "data/front.yml"
+        file: "homepage/data/front.yml"
         fields:
           - label: "슬라이드"
             name: "slides"
