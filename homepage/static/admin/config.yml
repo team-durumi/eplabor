@@ -57,7 +57,7 @@ collections:
             name: "halfhalfs"
             widget: "list"
             fields:
-              - {label: "사진", name: "photo", widget: "image"}
+              - {label: "사진", name: "photo_url", widget: "image"}
               - {label: "사진 위치", name: "photo_left", widget: "boolean", hint: "선택하면 왼쪽, 아니면 오른쪽"}
               - {label: "링크", name: "message_url", widget: "string"}
               - {label: "제목", name: "message_title", widget: "text"}
