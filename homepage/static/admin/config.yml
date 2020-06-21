@@ -142,6 +142,6 @@ collections:
     create: true
     extension: "yml"
     fields:
-      - {label: "분류", name: "category", widget: "string"}
       - {label: "제목", name: "title", widget: "string"}
+      - {label: "분류", name: "category", widget: "string"}
       - {label: "본문", name: "body", widget: "markdown"}
