@@ -7,8 +7,8 @@ media_folder: "homepage/static/uploads"
 public_folder: "/uploads" 
 
 collections:
-  - name: "settings"
-    label: "설정"
+  - label: "설정"
+    name: "settings"
     files:
       - name: "basic"
         label: "기본 정보"
@@ -36,7 +36,8 @@ collections:
               - {label: "제목", name: "title", widget: "string"}
               - {label: "아이콘", name: "icon", widget: "string"}
               - {label: "링크", name: "url", widget: "string"}
-          - label: "최신 글"
+          - label: "최신 글 3개"
+            description: "3개 넘어도 3개만 출력합니다."
             name: "recents"
             widget: "list"
             fields:
@@ -45,6 +46,7 @@ collections:
               - {label: "게시판 유형", name: "type", widget: "string"}
           - label: "홍보용 4개 패널"
             name: "four_panes"
+            description: "4개 넘어도 4개만 출력합니다."
             widget: "list"
             fields:
               - {label: "제목1", name: "text1", widget: "string"}
@@ -60,39 +62,81 @@ collections:
               - {label: "링크", name: "message_url", widget: "string"}
               - {label: "제목", name: "message_title", widget: "text"}
               - {label: "설명", name: "message_description", widget: "text"}
-  - name: "notices"
-    label: "공지사항"
+  - label: "센터소개"
+    name: "about"
+    folder: "homepage/content/about/"
+    extension: "md"
+    fields:
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "작성일", name: "date", widget: "datetime"}
+      - {label: "본문", name: "body", widget: "markdown"}
+  - label: "공지사항"
+    name: "notices"
     folder: "homepage/content/allim/notices"
     create: true
     slug: "{{slug}}"
+    extension: "md"
     fields:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
       - {label: "본문", name: "body", widget: "markdown"}
-  - name: "news"
-    label: "센터소식"
+  - label: "센터소식"
+    name: "news"
     folder: "homepage/content/allim/news"
     create: true
     slug: "{{slug}}"
+    extension: "md"
     fields:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
       - {label: "본문", name: "body", widget: "markdown"}
-  - name: "downloads"
-    label: "자료실"
+  - label: "자료실"
+    name: "downloads"
     folder: "homepage/content/allim/downloads"
     create: true
     slug: "{{slug}}"
+    extension: "md"
     fields:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
       - {label: "본문", name: "body", widget: "markdown"}
-  - name: "publications"
-    label: "발간자료"
+  - label: "발간자료"
+    name: "publications"
     folder: "homepage/content/allim/publications"
     create: true
     slug: "{{slug}}"
+    extension: "md"
     fields:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
+      - {label: "본문", name: "body", widget: "markdown"}
+  - label: "교육신청"
+    name: "workshops"
+    folder: "homepage/content/workshops"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "작성일", name: "date", widget: "datetime"}
+      - {label: "본문", name: "body", widget: "markdown"}
+  - label: "노동상담"
+    name: "consulting"
+    files:
+      - label: "이용안내"
+        name: "consulting-info"
+        file: "homepage/content/consulting/info.md"
+        fields:
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "작성일", name: "date", widget: "datetime"}
+          - {label: "본문", name: "body", widget: "markdown"}
+  - label: "주요사례"
+    name: "consulting-references"
+    folder: "homepage/data/faqs/"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    fields:
+      - {label: "분류", name: "category", widget: "string"}
+      - {label: "제목", name: "title", widget: "string"}
       - {label: "본문", name: "body", widget: "markdown"}
