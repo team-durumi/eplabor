@@ -139,9 +139,61 @@ collections:
   - label: "주요사례"
     name: "consulting-references"
     folder: "homepage/data/faqs/"
-    create: true
     extension: "yml"
     fields:
-      - {label: "제목", name: "title", widget: "string"}
-      - {label: "분류", name: "category", widget: "string"}
-      - {label: "본문", name: "body", widget: "markdown"}
+      - label: "근로계약"
+        name: "contract"
+        file: "homepage/data/faqs/contract.yml"
+        fields:
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
+      - label: "근로시간/휴일/휴가"
+        name: "restday"
+        file: "homepage/data/faqs/restday.yml"
+        fields:
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
+      - label: "체불임금"
+        name: "wages"
+        file: "homepage/data/faqs/wages.yml"
+        fields:
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
+      - label: "해고"
+        name: "layoff"
+        file: "homepage/data/faqs/layoff.yml"
+        fields:
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
+      - label: "폭행/성희롱"
+        name: "sexual"
+        file: "homepage/data/faqs/sexual.yml"
+        fields:
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
+      - label: "실업급여/4대보험"
+        name: "unemployment"
+        file: "homepage/data/faqs/unemployment.yml"
+        fields:
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
+      - label: "산업재해"
+        name: "accidents"
+        file: "homepage/data/faqs/accidents.yml"
+        fields:
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
+      - label: "참고서식"
+        name: "form"
+        file: "homepage/data/faqs/form.yml"
+        fields:
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
