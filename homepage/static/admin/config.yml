@@ -135,7 +135,6 @@ collections:
     folder: "homepage/data/faqs/"
     create: true
     slug: "{{slug}}"
-    extension: "md"
     fields:
       - {label: "분류", name: "category", widget: "string"}
       - {label: "제목", name: "title", widget: "string"}
