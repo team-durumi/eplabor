@@ -12,9 +12,15 @@ collections:
     files:
       - name: "basic"
         label: "기본 정보"
-        file: "homepage/data/eplaor.yml"
+        file: "homepage/data/eplabor.yml"
         fields:
+          - {label: "법인명", name: "title", widget: "string"}
           - {label: "태그라인", name: "tagline", widget: "string"}
+          - {label: "전화번호", name: "tel", widget: "string"}
+          - {label: "팩스", name: "fax", widget: "string"}
+          - {label: "이메일", name: "email", widget: "string"}
+          - {label: "대표자", name: "representative", widget: "string"}
+          - {label: "주소", name: "location", widget: "string"}
           - {label: "푸터", name: "footer", widget: "markdown"}
       - name: "front"
         label: "홈페이지"
@@ -134,7 +140,7 @@ collections:
     name: "consulting-references"
     folder: "homepage/data/faqs/"
     create: true
-    slug: "{{slug}}"
+    extension: "yml"
     fields:
       - {label: "분류", name: "category", widget: "string"}
       - {label: "제목", name: "title", widget: "string"}
