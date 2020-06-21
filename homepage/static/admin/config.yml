@@ -138,8 +138,6 @@ collections:
           - {label: "본문", name: "body", widget: "markdown"}
   - label: "주요사례"
     name: "consulting-references"
-    folder: "homepage/data/faqs/"
-    extension: "yml"
     fields:
       - label: "근로계약"
         name: "contract"
