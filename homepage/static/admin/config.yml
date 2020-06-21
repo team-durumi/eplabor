@@ -126,18 +126,6 @@ collections:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
       - {label: "본문", name: "body", widget: "markdown"}
-      - label: "정보"
-        name: "workshop"
-        widget: "object"
-        collapsed: false
-        fields: 
-          - {label: "이미지", name: "이미지", widget: "image"}
-          - {label: "대상", name: "대상", widget: "string"}
-          - {label: "강사", name: "강사", widget: "string"}
-          - {label: "일시", name: "일시", widget: "string"}
-          - {label: "장소", name: "장소", widget: "string"}
-          - {label: "신청기간", name: "신청기간", widget: "string"}
-          - {label: "문의", name: "문의", widget: "string"}
   - label: "노동상담"
     name: "consulting"
     files:
@@ -150,84 +138,14 @@ collections:
           - {label: "본문", name: "body", widget: "markdown"}
   - label: "주요사례"
     name: "consulting-references"
-    files:
-      - label: "근로계약"
-        name: "contract"
-        file: "homepage/data/faqs/contract.yml"
+    folder: "homepage/data/faqs/"
+    create: true
+    extension: "yml"
+    fields:
+      - label: "주요사례 모음"
+        name: "consulting-references-list"
+        widget: "list"
         fields:
-          - label: "주요사례"
-            name: "consulting-references-details"
-            fields:
-              - {label: "분류", name: "category", widget: "string"}
-              - {label: "제목", name: "title", widget: "string"}
-              - {label: "본문", name: "body", widget: "markdown"}
-      - label: "근로시간/휴일/휴가"
-        name: "restday"
-        file: "homepage/data/faqs/restday.yml"
-        fields:
-          - label: "주요사례"
-            name: "consulting-references-details"
-            fields:
-              - {label: "분류", name: "category", widget: "string"}
-              - {label: "제목", name: "title", widget: "string"}
-              - {label: "본문", name: "body", widget: "markdown"}
-      - label: "체불임금"
-        name: "wages"
-        file: "homepage/data/faqs/wages.yml"
-        fields:
-          - label: "주요사례"
-            name: "consulting-references-details"
-            fields:
-              - {label: "분류", name: "category", widget: "string"}
-              - {label: "제목", name: "title", widget: "string"}
-              - {label: "본문", name: "body", widget: "markdown"}
-      - label: "해고"
-        name: "layoff"
-        file: "homepage/data/faqs/layoff.yml"
-        fields:
-          - label: "주요사례"
-            name: "consulting-references-details"
-            fields:
-              - {label: "분류", name: "category", widget: "string"}
-              - {label: "제목", name: "title", widget: "string"}
-              - {label: "본문", name: "body", widget: "markdown"}
-      - label: "폭행/성희롱"
-        name: "sexual"
-        file: "homepage/data/faqs/sexual.yml"
-        fields:
-          - label: "주요사례"
-            name: "consulting-references-details"
-            fields:
-              - {label: "분류", name: "category", widget: "string"}
-              - {label: "제목", name: "title", widget: "string"}
-              - {label: "본문", name: "body", widget: "markdown"}
-      - label: "실업급여/4대보험"
-        name: "unemployment"
-        file: "homepage/data/faqs/unemployment.yml"
-        fields:
-          - label: "주요사례"
-            name: "consulting-references-details"
-            fields:
-              - {label: "분류", name: "category", widget: "string"}
-              - {label: "제목", name: "title", widget: "string"}
-              - {label: "본문", name: "body", widget: "markdown"}
-      - label: "산업재해"
-        name: "accidents"
-        file: "homepage/data/faqs/accidents.yml"
-        fields:
-          - label: "주요사례"
-            name: "consulting-references-details"
-            fields:
-              - {label: "분류", name: "category", widget: "string"}
-              - {label: "제목", name: "title", widget: "string"}
-              - {label: "본문", name: "body", widget: "markdown"}
-      - label: "참고서식"
-        name: "form"
-        file: "homepage/data/faqs/form.yml"
-        fields:
-          - label: "주요사례"
-            name: "consulting-references-details"
-            fields:
-              - {label: "분류", name: "category", widget: "string"}
-              - {label: "제목", name: "title", widget: "string"}
-              - {label: "본문", name: "body", widget: "markdown"}
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "분류", name: "category", widget: "string"}
+          - {label: "본문", name: "body", widget: "markdown"}
