@@ -126,6 +126,18 @@ collections:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
       - {label: "본문", name: "body", widget: "markdown"}
+      - label: "정보"
+        name: "workshop"
+        widget: "object"
+        collapsed: false
+        fields: 
+          - {label: "이미지", name: "이미지", widget: "image"}
+          - {label: "대상", name: "대상", widget: "string"}
+          - {label: "강사", name: "강사", widget: "string"}
+          - {label: "일시", name: "일시", widget: "string"}
+          - {label: "장소", name: "장소", widget: "string"}
+          - {label: "신청기간", name: "신청기간", widget: "string"}
+          - {label: "문의", name: "문의", widget: "string"}
   - label: "노동상담"
     name: "consulting"
     files:
