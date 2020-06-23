@@ -26,5 +26,11 @@
   {{ $halfhalfs := first 5 .Site.Data.front.halfhalfs }}
   {{ partial "showoff/photo-half-message.html" $halfhalfs }}
 
+  {{ $district := .Site.Data.partners.district }}
+  {{ $public := .Site.Data.partners.public }}
+  {{ $seoul := .Site.Data.partners.seoul }}
+  {{ $partners := dict "district" $district "public" $public "seoul" $seoul }}
+  {{ partial "partners.html" $partners }}
+
 </main>
 {{ end }}
