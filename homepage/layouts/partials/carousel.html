@@ -6,7 +6,7 @@
     </ol>
     <div class="carousel-inner">
         {{ range $index, $slide := . }}
-        <div class="carousel-item{{ if eq $index 0 }} active{{end}}" style="height: 480px; background-image: url('{{ $slide.bg }}'); background-size: cover;">
+        <div class="carousel-item{{ if eq $index 0 }} active{{end}}" style="height: 520px; background-image: url('{{ $slide.bg }}'); background-size: cover;">
             <div class="container">
                 <div class="carousel-caption text-right">
                     {{ with $slide.title }}<h1>{{ . }}</h1>{{ end }}
