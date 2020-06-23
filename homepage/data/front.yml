@@ -1,12 +1,12 @@
 slides:
   - title: 무료노동상담
     description: 임금체불, 부당해고, 폭언과 폭력 등 다양한 일터 문제에 대한 상담을 무료로 진행합니다.
-    bg: https://images.unsplash.com/photo-1495725274072-fd5d0b961a9f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1068&q=80
+    bg: /uploads/mapo1.png
     btn_text: 무료노동상담
     btn_url: http://eplabor.org/consulting/info/
   - title: 코로나19 선제검사 신청
     description: 서울시민 누구나!! 코로나19 선제검사를 신청해 보세요!
-    bg: /uploads/20200622.png
+    bg: /uploads/mapo2.jpg
     btn_text: 코로나19 선제검사 신청
     btn_url: https://www.seoul.go.kr/coronaV/coronaStatus.do?menu_code=20
   - title: 무급휴직 고용유지지원금 지원

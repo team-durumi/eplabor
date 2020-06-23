@@ -24,3 +24,11 @@
 {{ $global := resources.Get "misc.js" }}
 {{ $js := slice $plugins $global | resources.Concat "js/bundle.js" }}
 <script src="{{ $js.Permalink }}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+<script>
+  WebFont.load({
+    google: {
+      families: ['Nanum Gothic', 'Roboto']
+    }
+  });
+</script>

@@ -20,12 +20,6 @@
     </div>
   </div>
 
-  {{ $four := first 4 $front.four_panes }}
-  {{ partial "showoff/four-panes.html" $four }}
-
-  {{ $halfhalfs := first 5 .Site.Data.front.halfhalfs }}
-  {{ partial "showoff/photo-half-message.html" $halfhalfs }}
-
   {{ $district := .Site.Data.partners.district }}
   {{ $public := .Site.Data.partners.public }}
   {{ $seoul := .Site.Data.partners.seoul }}

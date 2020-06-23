@@ -17,7 +17,7 @@
                 <li class="nav-item dropdown mx-3{{ if $currentPage.HasMenuCurrent "main" . }} active{{ end }}">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ .Pre }}
-                        <span>{{ .Name }}</span>
+                        <strong>{{ .Name }}</strong>
                     </a>
                     <div class="dropdown-menu">
                     {{ range .Children }}
@@ -27,9 +27,9 @@
                 </li>
                 {{ else }}
                 <li class="nav-item">
-                    <a class="mx-2" style="line-height: 2.4" href="{{ .URL }}">
+                    <a class="mx-2" style="line-height: 3" href="{{ .URL }}">
                         {{ .Pre }}
-                        <span>{{ .Name }}</span>
+                        <strong>{{ .Name }}</strong>
                     </a>
                 </li>
                 {{ end }}
