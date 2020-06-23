@@ -1,7 +1,7 @@
 let $ = document.querySelector.bind(document);
 nunjucks.configure('/templates', { autoescape: false });
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', function() {
     header = $('#header');
     window.onscroll = () => {
         if (window.pageYOffset > header.offsetHeight) {
@@ -17,7 +17,5 @@ window.addEventListener('DOMContentLoaded', () => {
         'title': "nunjuck test",
         'body': "이상하군 왜 되는거지?"
     });
-    console.log(test);
-    // $('ul.list-group').append(jQuery(test)[0]);
 
 });
