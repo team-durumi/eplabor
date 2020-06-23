@@ -1,37 +1,39 @@
 <nav id="header" class="navbar navbar-expand-lg navbar-light bg-light p-3 px-md-4 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto navbar-brand">
-        <a href="/">
-            <img src="/images/logo.jpg" alt="{{ .Site.Title }}" height="80px" />
-        </a>
-    </h5>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
+        <h5 class="my-0 mr-md-auto navbar-brand">
+            <a href="/">
+                <img src="/images/logo.jpg" alt="{{ .Site.Title }}" height="80px" />
+            </a>
+        </h5>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarMain">
-        <ul class="navbar-nav my-2 ml-md-auto my-md-0 mr-md-3">
-        {{ $currentPage := . }}
-        {{ range .Site.Menus.main }}
-            {{ if .HasChildren }}
-            <li class="nav-item dropdown mx-3{{ if $currentPage.HasMenuCurrent "main" . }} active{{ end }}">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ .Pre }}
-                    <span>{{ .Name }}</span>
-                </a>
-                <div class="dropdown-menu">
-                {{ range .Children }}
-                    <a class="dropdown-item{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav my-2 ml-md-auto my-md-0 mr-md-3">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+                {{ if .HasChildren }}
+                <li class="nav-item dropdown mx-3{{ if $currentPage.HasMenuCurrent "main" . }} active{{ end }}">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ .Pre }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                    <div class="dropdown-menu">
+                    {{ range .Children }}
+                        <a class="dropdown-item{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}" href="{{ .URL }}">{{ .Name }}</a>
+                    {{ end }}
+                    </div>
+                </li>
+                {{ else }}
+                <li class="nav-item">
+                    <a class="mx-2" style="line-height: 2.4" href="{{ .URL }}">
+                        {{ .Pre }}
+                        <span>{{ .Name }}</span>
+                    </a>
+                </li>
                 {{ end }}
-                </div>
-            </li>
-            {{ else }}
-            <li class="nav-item">
-                <a class="mx-2" style="line-height: 2.4" href="{{ .URL }}">
-                    {{ .Pre }}
-                    <span>{{ .Name }}</span>
-                </a>
-            </li>
             {{ end }}
-        {{ end }}
-    </nav>
+        </nav>
+    </div>
 </nav>

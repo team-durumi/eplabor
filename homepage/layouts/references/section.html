@@ -1,7 +1,6 @@
 {{ define "main" }}
-<main class="container">
-    {{ partial "breadcrumb.html" . }}
-    <h1 class="border-bottom py-3 mb-3">{{ .Title }}</h1>
+{{ partial "breadcrumb.html" . }}
+<main class="container pt-5">
     {{ partial "references/terms-nav.html" . }} {{ .Content }} {{ $faqs := .Site.Data.faqs }}
     <ul class="list-group list-group-flush mt-3 border-top">
         {{ range $category, $items := $faqs }} {{ range $index, $item := $items }}

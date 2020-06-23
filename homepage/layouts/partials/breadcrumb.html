@@ -1,7 +1,10 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb bg-white px-0 border-bottom">
-        {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
-    </ol>
+<nav aria-label="breadcrumb" class="bg-highlight">
+    <div class="container">
+        <ol class="float-right breadcrumb pt-4 px-0 bg-transparent">
+            {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+        </ol>
+        <h1 class="text-white py-3">{{ .Title }}</h1>
+    </div>
 </nav>
 {{ define "breadcrumbnav" }}
     {{ if .p1.Parent }}
@@ -9,7 +12,7 @@
     {{ else if not .p1.IsHome }}
         {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
     {{ end }}
-    <li class="breadcrumb-item{{ if eq .p1 .p2 }} active{{ end }}">
-    <a href="{{ .p1.Permalink }}">{{ .p1.Title }}</a>
+    <li class="breadcrumb-item {{ if eq .p1 .p2 }} active{{ end }}">
+        <a class="text-white" href="{{ .p1.Permalink }}">{{ .p1.Title }}</a>
     </li>
 {{ end }}
