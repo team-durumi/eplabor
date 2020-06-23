@@ -130,7 +130,7 @@ collections:
         name: "workshop"
         widget: "object"
         fields:
-          - {label: "이미지", name: "이미지", widget: "string"}
+          - {label: "이미지", name: "이미지", widget: "image"}
           - {label: "대상", name: "대상", widget: "string"}
           - {label: "강사", name: "강사", widget: "string"}
           - {label: "일시", name: "일시", widget: "string"}
