@@ -1,19 +1,19 @@
 slides:
   - title: " "
     description: " "
-    bg: /uploads/mapo1.png
+    bg: /uploads/3.jpg
     btn_text: 무료노동상담
     btn_url: http://eplabor.org/consulting/info/
-  - title: 코로나19 선제검사 신청
-    description: 서울시민 누구나!! 코로나19 선제검사를 신청해 보세요!
-    bg: /uploads/mapo2.jpg
-    btn_text: 코로나19 선제검사 신청
-    btn_url: https://www.seoul.go.kr/coronaV/coronaStatus.do?menu_code=20
-  - title: 무급휴직 고용유지지원금 지원
-    description: 서울지역 50인 미만 사업체 근로자(고용보험 가입자)중 무급휴직 시행 근로자
-    bg: /uploads/20200622a.png
+  - title: " "
+    description: " "
+    bg: /uploads/main_slide2.jpg
+    btn_text: " "
+    btn_url: http://eplabor.org/workshops/%EC%8B%9C%EB%AF%BC%EB%85%B8%EB%8F%99%EB%B2%95%EB%A5%A0%ED%95%99%EA%B5%90/
+  - title: " "
+    description: " "
+    bg: /uploads/main_slide3.jpg
     btn_text: 무급휴직 고용유지지원금 지원
-    btn_url: http://eplabor.org/
+    btn_url: https://blog.naver.com/eplabors/221913565491
 center_info:
   - title: 노동상담
     icon: mic
