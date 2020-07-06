@@ -1,22 +1,54 @@
 {{ define "main" }}
+{{ partial "breadcrumb.html" . }}
 <div class="container">
-    <h1 class="border-bottom pb-3 my-3">{{ .Title }}</h1>
-    {{ .Date.Format "2006-01-02" }}
-    {{ $workshop := .Page.Params.workshop }}
-    <img src="{{ $workshop.이미지 }}" class="d-block my-3 img-fluid" />
-    <dl class="row no-gutters mt-4">
-    {{ range $key, $data := $workshop }}
-        {{ if ne $key "이미지" }}
-        <dt class="col-sm-1">{{ $key }}</dt>
-        <dd class="col-sm-11">{{ $data }}</dd>
-        {{ end }}
-    {{ end }}
-    </dl>
-    <div class="body w-75">
-        {{ .Content }}
+    <div class="row">
+        <div class="col-md-9">
+            <h1 class="border-bottom pb-3 my-3">{{ .Title }}</h1>
+            <date class="d-block mb-5">{{ .Date.Local.Format "2006-01-02" }}</date>
+            {{ $workshop := .Page.Params.workshop }}
+            <div class="row">
+                <div class="col-md-4 py-3 border-top">
+                    <strong>일시</strong>
+                    <p>{{ $workshop.일시 }}</p>
+                </div>
+                <div class="col-md-4 py-3 border-top">
+                    <strong>장소</strong>
+                    <p>{{ $workshop.장소 }}</p>
+                </div>
+                <div class="col-md-4 py-3 border-top">
+                    <strong>대상</strong>
+                    <p>{{ $workshop.대상 }}</p>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-4 py-3 border-top">
+                    <strong>문의</strong>
+                    <p>{{ $workshop.문의 }}</p>
+                </div>
+                <div class="col-md-4 py-3 border-top">
+                    <strong>신청기간</strong>
+                    <p>{{ $workshop.신청기간 }}</p>
+                </div>
+                <div class="col-md-4 py-3 border-top">
+                    <strong>상태</strong>
+                    <p>{{ if $workshop.상태 }}<a class="btn btn-primary text-white" href="#apply-workshop">신청 하기</a>{{ else }}신청 마감{{ end }}</p>
+                </div>
+            </div>
+
+            <div class="body">
+                {{ .Content }}
+                <div class="form mt-5">
+                    {{ partial "workshops/form-apply.html" . }}
+                </div>
+                <footer class="mt-5 pt-3 border-top">
+                    <a href="/workshops" class="float-right btn btn-primary text-white">목록으로</a>
+                </footer>
+            </div>
+        </div>
+        <div class="col-md-3">
+            {{ partial "section_menu.html" . }}
+        </div>
     </div>
-    <div class="form w-75 mt-5">
-        {{ partial "workshops/form-apply.html" . }}
-    </div>
+    
 </div>
 {{ end }}

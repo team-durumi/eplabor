@@ -1,9 +1,8 @@
-
 {{ $currentPage := . }}
-{{ $indexPage := .Site.GetPage (printf "/%s/_index.md" $.Section) }}
+{{ $indexPage := .Site.GetPage (printf "/%s/_index.md" $.Section)  }}
 
 <h3 class="pl-3">{{ with $indexPage }}{{ .Title }}{{ end }}</h3>
-<ul class="list-group list-group-flush border-top">
+<ul class="list-group list-group-flush">
 {{ range .Site.Menus.main }}
     {{ if eq $currentPage.Section .Identifier }}
         {{ range .Children }}
