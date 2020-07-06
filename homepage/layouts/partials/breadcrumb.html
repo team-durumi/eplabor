@@ -1,9 +1,12 @@
+{{ $types := .Site.Data.board_types }}
 <nav aria-label="breadcrumb" class="bg-highlight">
     <div class="container">
         <ol class="float-right breadcrumb pt-4 px-0 bg-transparent">
             {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
         </ol>
-        <h1 class="text-white py-3">{{ .Title }}</h1>
+        <h1 class="text-white py-3">
+            {{ with index $types .Type }}{{ . }}{{ else }}{{.Title}}{{ end }}
+        </h1>
     </div>
 </nav>
 {{ define "breadcrumbnav" }}

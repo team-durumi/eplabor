@@ -14,10 +14,19 @@ dd {
     }
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
-    color: white;
-    content: "•";
+.breadcrumb {
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: white;
+        content: "•";
+    }
+    .breadcrumb-item:first-child,
+    .breadcrumb-item:last-child,
+    .breadcrumb-item:first-child+.breadcrumb-item::before {
+        display: none;
+    }
+    
 }
+
 
 ul {
     padding-left: 1.4rem;
@@ -37,5 +46,19 @@ ul {
     img {
         margin: 1rem 0;
         border: 1px solid #ccc; 
+    }
+}
+
+.navbar--main {
+    .nav-item{
+        &.active > a {
+            color: $primary;
+        }
+        &.leaf {
+            line-height: 3;
+            a {
+                color: rgba(0,0,0,.5);
+            }
+        }
     }
 }

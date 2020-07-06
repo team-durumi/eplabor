@@ -4,7 +4,9 @@
     <div class="row">
         <div class="col-md-9">
             <h1 class="border-bottom py-3 mb-3">{{ .Title }}</h1>
+            {{ if ne "about" .Type }}
             <date class="d-block mb-5">{{ .Date.Local.Format "2006-01-02" }}</date>
+            {{ end }}
             <div class="body">
                 {{ .Content }}
             </div>
