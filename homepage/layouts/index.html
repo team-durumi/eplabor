@@ -3,6 +3,8 @@
 <main aria-role="main">
   {{ partial "carousel.html" $front.slides }}
 
+  {{ .Content }}
+
   {{ $basic := dict "title" .Site.Title "description" .Site.Data.eplabor.tagLine }}
   {{ $cols := dict "cols" $front.center_info }}
   {{ $three := merge $basic $cols }}
