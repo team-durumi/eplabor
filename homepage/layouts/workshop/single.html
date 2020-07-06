@@ -25,21 +25,25 @@
                     <strong>문의</strong>
                     <p>{{ $workshop.문의 }}</p>
                 </div>
+                {{ if .Params.status }}
                 <div class="col-md-4 py-3 border-top">
                     <strong>신청기간</strong>
                     <p>{{ $workshop.신청기간 }}</p>
                 </div>
+                {{ end }}
                 <div class="col-md-4 py-3 border-top">
                     <strong>상태</strong>
-                    <p>{{ if $workshop.상태 }}<a class="btn btn-primary text-white" href="#apply-workshop">신청 하기</a>{{ else }}신청 마감{{ end }}</p>
+                    <p>{{ if .Params.status }}<a class="btn btn-primary text-white" href="#apply-workshop">진행 중</a>{{ else }}신청 마감{{ end }}</p>
                 </div>
             </div>
 
             <div class="body">
                 {{ .Content }}
+                {{ if .Params.status }}
                 <div class="form mt-5">
                     {{ partial "workshops/form-apply.html" . }}
                 </div>
+                {{ end }}
                 <footer class="mt-5 pt-3 border-top">
                     <a href="/workshops" class="float-right btn btn-primary text-white">목록으로</a>
                 </footer>

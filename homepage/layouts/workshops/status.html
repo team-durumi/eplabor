@@ -1,14 +1,33 @@
 {{ define "main" }}
 {{ partial "breadcrumb.html" . }}
-<main class="container pt-5">
+<main class="container pt-5 workshops">
     {{ partial "workshops/status-nav.html" . }}
     {{ .Content }}
-    {{ $paginator := .Paginate (where .Site.RegularPages "Params.status" .Params.status) 10 }}
-    <ul class="list-group list-group-flush">
-        {{ range .Paginator.Pages }}
-        <li class="list-group-item">
-            <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
-            <a href="{{.Permalink}}">{{.Title}}</a>
+    {{ $paginator := .Paginate (where (where .Site.RegularPages "Type" "workshop") "Params.status" .Params.status) 10 }}
+    <ul class="row list-unstyled">
+        {{ range .Paginator.Pages }}{{ $workshop := .Params.workshop }}
+        <li class="col-md-6 my-3">
+            <div class="workshop card p-3 bg-light {{ if .Params.status }} open{{ else }} closed{{ end }}">
+                <h3 class="pb-3"><a href="{{.Permalink}}">{{.Title}}</a></h3>
+                <ul class="list-inline float-right my-2">
+                    {{ if .Params.status }}<li class="list-inline-item"><time>{{ $workshop.신청기간 }}</time></li>{{ end }}
+                    <li class="list-inline-item">{{ if .Params.status }}<a class="btn btn-sm btn-primary text-white" href="{{ .Permalink }}#apply-workshop">진행 중</a>{{ else }}<span class="btn btn-sm btn-dark text-white">마감</span>{{ end }}</li>
+                </ul>
+                <div class="row">
+                    <div class="col-md-4 py-3 border-top">
+                        <strong>일시</strong>
+                        <p>{{ $workshop.일시 }}</p>
+                    </div>
+                    <div class="col-md-4 py-3 border-top">
+                        <strong>장소</strong>
+                        <p>{{ $workshop.장소 }}</p>
+                    </div>
+                    <div class="col-md-4 py-3 border-top">
+                        <strong>대상</strong>
+                        <p>{{ $workshop.대상 }}</p>
+                    </div>
+                </div>
+            </div>
         </li>
         {{ end }}
     </ul>

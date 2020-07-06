@@ -62,3 +62,11 @@ ul {
         }
     }
 }
+
+.workshops {
+    .workshop {
+        &.closed h3 a {
+            color: $text-muted !important;
+        }
+    }
+}
