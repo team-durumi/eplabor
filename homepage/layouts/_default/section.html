@@ -7,7 +7,7 @@
             <ul class="list-group list-group-flush">
                 {{ range .Paginator.Pages }}
                 <li class="list-group-item px-0">
-                    <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
+                    <time class="float-right">{{ .Date.Local.Format "2006-01-02" }}</time>
                     <a href="{{.Permalink}}">{{.Title}}</a>
                 </li>
                 {{ end }}
