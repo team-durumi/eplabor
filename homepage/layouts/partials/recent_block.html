@@ -8,9 +8,10 @@
     {{ end }}
 
     <ul class="list-group list-group-flush">
-    {{- range $post := ( where site.RegularPages.ByDate.Reverse "Type" .type | first 5 ) }}
+    {{- range $post := ( where site.RegularPages.ByDate.Reverse "Type" .type ) }}
         <li class="list-group-item">
-            <time class="float-right">{{ .Date.Format "2006-01-01" }}</time>
+            {{ .Type }}
+            <time class="float-right">{{ .Date.Local.Format "2006-01-02" }}</time>
             <a href="{{ $post.Permalink }}">{{ $post.Title }}</a>
         </li>
     {{ end }}

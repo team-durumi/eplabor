@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-md-9">
             <h1 class="border-bottom py-3 mb-3">{{ .Title }}</h1>
+            <date class="d-block mb-5">{{ .Date.Local.Format "2006-01-02" }}</date>
             <div class="body">
                 <div class="alert alert-info" role="alert">
                 {{ with .Params.files }}
