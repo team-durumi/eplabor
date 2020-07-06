@@ -10,17 +10,17 @@ orgs:
     url: http://www.kcomwel.or.kr
   - title: 서울근로자건강센터
     url: https://suwhc.or.kr
-  - title: 서울고용센터
+  - title: 서울고용복지플러스센터
     url: http://www.work.go.kr/seoul
   - title: 서울지방고용노동청
     url: http://www.moel.go.kr/seoul
   - title: 서울지방노동위원회
-    url: http://www.nlrc.go.kr/nlrc/seoul/main/index_home.go
+    url: http://www.nlrc.go.kr/
   - title: 고용산재보험토털서비스
     url: http://total.kcomwel.or.kr/main.do
   - title: 희망드림근로복지넷
     url: http://www.workdream.net/
-  - title: 산업재해보상심의위원회
+  - title: 산업재해보상보험재심사위원회
     url: http://www.iaciac.go.kr/
   - title: 한국산업인력공단
     url: http://www.hrdkorea.or.kr/
@@ -30,7 +30,7 @@ orgs:
     url: https://www.humanrights.go.kr/
   - title: 국민권익위원회
     url: http://www.acrc.go.kr/
-  - title: 진실·화해를위한과거사정리위원회
+  - title: 과거사관련업무지원단
     url: http://www.pasthistory.go.kr/
   - title: 서울노동권익센터
     url: https://www.labors.or.kr/

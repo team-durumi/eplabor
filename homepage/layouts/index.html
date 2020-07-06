@@ -26,7 +26,8 @@
   {{ $public := .Site.Data.partners.public }}
   {{ $seoul := .Site.Data.partners.seoul }}
   {{ $partners := dict "district" $district "public" $public "seoul" $seoul }}
-  {{ partial "partners.html" $partners }}
+
+  {{ partial "footer-partners.html" $partners }}
 
 </main>
 {{ end }}

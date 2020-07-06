@@ -1,0 +1,76 @@
+<div id="footer">
+    <div class="foo_tp">
+        <div class="container">
+            <ul id="partners" class="position-relative list-unstyled">
+                <li><a href="#">{{ .public.title }}</a>
+                    <ul class="list-unstyled">
+                        {{ range .public.orgs }}
+                        <li><a href="{{ .url }}" target="_blank" title="새창열림">{{ .title }}</a></li>
+                        {{ end }}
+                    </ul>
+                </li>
+                <li><a href="#">{{ .seoul.title }}</a>
+                    <ul class="list-unstyled">
+                        {{ range .seoul.orgs }}
+                        <li><a href="{{ .url }}" target="_blank" title="새창열림">{{ .title }}</a></li>
+                        {{ end }}
+                    </ul>
+                </li>
+                <li><a href="#">{{ .district.title }}</a>
+                    <ul class="list-unstyled">
+                        {{ range .seoul.orgs }}
+                        <li><a href="{{ .url }}" target="_blank" title="새창열림">{{ .title }}</a></li>
+                        {{ end }}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+.foo_tp {
+    background: #525252;
+}
+
+#partners:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#partners > li {
+    float: left;
+    width: 360px;
+    line-height: 21px;
+}
+
+#partners  > li > a {
+    display: block;
+    padding: 16px 20px;
+    font-size: 15px;
+    color: #fff;
+    border-right: 1px solid #818181;
+    background: url(http://www.ep.go.kr/CmsWeb/resource/image/ep2018/n_main/os_mnbg.gif) 96% center no-repeat;
+}
+
+#partners > li > ul {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    padding: 8px 0;
+    overflow: hidden;
+    background: #525252;
+    border: 1px solid #818181;
+    padding: 1rem 0 1rem 1rem;
+}
+#partners > li > ul > li { width: 25%; float: left; }
+#partners > li > ul > li > a { color: white; text-decoration: none; }
+#partners > li > ul > li > a:hover{text-decoration: underline;}
+#partners > li:first-child > a{border-left: 1px solid #818181;}
+#partners > li:first-child > ul{left: 0;}
+
+</style>

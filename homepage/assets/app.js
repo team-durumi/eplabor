@@ -1,3 +1,4 @@
+jQuery.noConflict();
 let $ = document.querySelector.bind(document);
 nunjucks.configure('/templates', { autoescape: false });
 
@@ -19,3 +20,4 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
