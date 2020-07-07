@@ -1,0 +1,20 @@
+<div class="block--recent--workshops p-4 mb-5">
+    <h3 class="py-3 text-center mb-4">
+        <span class="icon mr-2">{{ readFile ("/static/icons/door-open.svg") | safeHTML }}</span>
+        교육 프로그램
+    </h3>
+    <div class="card-deck">
+        {{ range ( where site.RegularPages.ByDate.Reverse "Type" "workshop" ) }}
+        <div class="card workshop{{ if .Params.status }} open{{ else }} closed{{ end }}">
+            <a href="{{ .Permalink }}">
+                <img src="{{ .Params.workshop.이미지 }}" class="card-img-top" alt="{{ .Title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ .Title }}</h5>
+                    <p class="card-text">{{ .Summary }}</p>
+                </div>
+            </a>
+        </div>
+        {{ end }}
+    </div>
+
+</div>

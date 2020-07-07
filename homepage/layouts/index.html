@@ -22,6 +22,11 @@
     </div>
   </div>
 
+  <div class="recent-blocks-workshops container">
+    {{ partial "recent_workshops.html" $three }}
+  </div>
+  
+
   {{ $district := .Site.Data.partners.district }}
   {{ $public := .Site.Data.partners.public }}
   {{ $seoul := .Site.Data.partners.seoul }}
