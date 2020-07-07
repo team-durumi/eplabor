@@ -6,18 +6,10 @@
     </ol>
     <div class="carousel-inner">
         {{ range $index, $slide := . }}
-        <div class="carousel-item{{ if eq $index 0 }} active{{end}}" style="height: 520px; background-image: url('{{ $slide.bg }}'); background-size: cover;">
-            <div class="container">
-                <div class="carousel-caption text-right">
-                    {{ with $slide.title }}<h1>{{ . }}</h1>{{ end }}
-                    {{ with $slide.description }}
-                    <p>{{ . }}</p>
-                    {{ end }}
-                    {{ with $slide.btn_text }}
-                    <p><a class="btn btn-lg btn-primary" href="{{ with $slide.btn_url }}{{ . }}{{ end }}" role="button">{{ . }}</a></p>
-                    {{ end }}
-                </div>
-            </div>
+        <div class="carousel-item text-center{{ if eq $index 0 }} active{{end}}">
+            <a href="{{ with $slide.btn_url }}{{ . }}{{ end }}">
+                <img src="{{ $slide.bg }}" class="img-fluid w-100" alt="{{ $slide.title }}">
+            </a>
         </div>
         {{ end }}
     </div>
