@@ -18,7 +18,7 @@
                 </li>
                 <li><a href="#">{{ .district.title }}</a>
                     <ul class="list-unstyled">
-                        {{ range .seoul.orgs }}
+                        {{ range .district.orgs }}
                         <li><a href="{{ .url }}" target="_blank" title="새창열림">{{ .title }}</a></li>
                         {{ end }}
                     </ul>
