@@ -134,7 +134,7 @@ collections:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
       - {label: "본문", name: "body", widget: "markdown"}
-      - {label: "상태", name: "상태", widget: "boolean", hint: "ON 신청 중, OFF 신청 마감"}
+      - {label: "상태", name: "status", widget: "boolean", hint: "ON 신청 중, OFF 신청 마감"}
       - label: "교육 정보"
         name: "workshop"
         widget: "object"

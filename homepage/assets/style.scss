@@ -72,9 +72,6 @@ ul {
 }
 
 .card.workshop {
-    &.open a {
-        color: $green !important;
-    }
     &.closed a {
         color: $text-muted !important;
     }
