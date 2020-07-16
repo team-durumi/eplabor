@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
         httpRequest.onreadystatechange = alertContents;
         httpRequest.open('POST', 'http://admin.eplabor.org/eplabor_admin/items/enquiry');
-        httpRequest.send(new FormData( document.forms['consulting-request'] ));
+        httpRequest.send(new FormData( document.forms[0] ));
     });
   
     function alertContents() {
