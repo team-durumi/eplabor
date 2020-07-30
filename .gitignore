@@ -15,3 +15,17 @@ $RECYCLE.BIN/
 
 node_modules
 .vscode
+*.log
+
+# directus
+directus/.github
+directus/bin
+directus/config/*
+!directus/config/_example.php
+directus/migrations
+directus/public/admin
+directus/public/extensions/core
+directus/src
+directus/vendor
+directus/*.md
+directus/composer.json

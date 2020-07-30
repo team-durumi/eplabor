@@ -96,3 +96,18 @@ blocks:
   - 알아두면 도움되는 제도(연차계산기, 퇴직금 자동계산)
   - 노동 관련 기관
 ---
+
+## SERVER
+
+```
+Distributor ID:	Ubuntu
+Description:	Ubuntu 18.04.4 LTS
+Release:	18.04
+Codename:	bionic
+
+Server version: Apache/2.4.29 (Ubuntu)
+PHP 7.2.24-0ubuntu0.18.04.6 (cli) (built: May 26 2020 13:09:11) ( NTS )
+mysql  Ver 15.1 Distrib 10.2.32-MariaDB
+
+/dev/xvdb        22G   45M   21G   1% /data
+```
