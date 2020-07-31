@@ -1,4 +1,4 @@
-CREATE TABLE `eplabor_consultings` (
+CREATE OR REPLACE TABLE `eplabor_consultings` (
   `id` int(15) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '상담 아이디',
   `status` varchar(20) NOT NULL DEFAULT 'published' COMMENT '상태 (draft, published, deleted)',
   `owner` int(10) unsigned DEFAULT NULL COMMENT '작성자',
@@ -12,6 +12,9 @@ CREATE TABLE `eplabor_consultings` (
   `consultee_email` varchar(345) NOT NULL COMMENT '상담요청자 이메일 (id@domain.com)',
   `consultee_phone` varchar(14) NOT NULL COMMENT '상담요청자 휴대폰 혹은 전화번호 (0100-0000-0000)',
   `consultee_password` varchar(60) NOT NULL COMMENT '상담요청자 비밀번호 해시 (수정/삭제 시 필요)',
+  `labor_company_name` varchar(100) NOT NULL COMMENT '사업장명 (최대 길이 30자)',
+  `labor_company_owner` varchar(100) NOT NULL COMMENT '사업장대표 (최대 길이 30자)',
+  `labor_company_contact` varchar(100) NOT NULL COMMENT '사업장연락처 (최대 길이 30자)',
   `labor_employment_type` varchar(15) NOT NULL COMMENT '고용형태 정규직/무기계약직/임시일용직/기간제/단시간 근로/특수고용/기타)',
   `labor_employment_subject` varchar(15) NOT NULL COMMENT '사용주체 (직접고용/파견/용역/기타)',
   `labor_number_of_workers` varchar(15) NOT NULL COMMENT '근로자수 (5인 미만/5~10인/10~30인/30~100인/100인 이상)',

@@ -55,6 +55,9 @@ consultee_password
 
 // 노동 환경 labor
 
+사업장명
+대표자명
+연락처
 고용형태 (정규직/무기계약직/임시일용직/기간제/단시간 근로/특수고용/기타)
 사용주체 (직접고용/파견/용역/기타)
 근로자수 (5인 미만/5~10인/10~30인/30~100인/100인 이상)
@@ -69,6 +72,9 @@ consultee_password
 취업규칙 작성여부
 4대보험 가입여부
 
+labor_company_name
+labor_company_owner
+labor_company_contact
 labor_employment_type
 labor_employment_subject
 labor_number_of_workers

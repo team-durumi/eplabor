@@ -23,6 +23,9 @@ Table eplabor_consultings {
   consultee_password varchar(60) [ not null, note: '상담요청자 비밀번호 (수정/삭제 시 필요)' ]
 
   // 노동 환경
+  labor_company_name varchar(100) [ note: '사업장명 (최대 길이 30자)' ]
+  labor_company_owner varchar(100) [ note: '사업장대표 (최대 길이 30자)' ]
+  labor_company_contact varchar(100) [ note: '사업장연락처 (최대 길이 30자)' ]
   labor_employment_type varchar(15) [ not null, note: '고용형태 (정규직/무기계약직/임시일용직/기간제/단시간 근로/특수고용/기타)' ]
   labor_employment_subject varchar(15) [ not null, note: '사용주체 (직접고용/파견/용역/기타)' ]
   labor_number_of_workers varchar(15) [ not null, note: '근로자수 (5인 미만/5~10인/10~30인/30~100인/100인 이상)' ]
