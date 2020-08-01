@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+<div class="container pt-5 {{ .Type }}">
+    <div class="row">
+        <div class="col-md-9">
+            <h1 class="border-bottom py-3 mb-3">{{ .Title }}<small class="text-muted">#{{ .Page.Params.consulting_id }}</small></h1>
+            <div class="d-block mb-5">
+                <date>{{ .Date.Local.Format "2006-01-02" }}</date>
+                <span class="consultee-name">{{ .Page.Params.consultee_name }}</span>
+            </div>
+            <div class="body">
+                {{ .Content }}
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            {{ partial "section_menu.html" . }}
+        </div>
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,26 @@
+{{ define "main" }}
+{{ partial "breadcrumb.html" . }}
+<main class="container pt-5">
+    <div class="card bg-info p-3 text-white">
+        문의하신 상담 내용중 개인정보를 제외한 사항은 사례 공유를 위해 공개되고 있습니다.<br>
+        비공개 상담을 원하시면 전화상담을 이용하시기 바랍니다.<br>
+        상담전화: {{ .Site.Data.eplabor.tel }}
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <ul class="list-group list-group-flush">
+                {{ range .Paginator.Pages }}
+                <li class="list-group-item px-0">
+                    <time class="float-right">{{ .Date.Local.Format "2006-01-02" }}</time>
+                    <a href="{{.Permalink}}">{{.Title}}</a>
+                </li>
+                {{ end }}
+            </ul>
+            {{ template "_internal/pagination.html" . }}
+        </div>
+        <div class="col-md-3">
+            {{ partial "section_menu.html" . }}
+        </div>
+    </div>
+</main>
+{{ end }}
