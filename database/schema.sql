@@ -29,6 +29,7 @@ CREATE OR REPLACE TABLE `eplabor_consultings` (
   `labor_rules` varchar(15) COMMENT '취업규칙 작성여부',
   `labor_insurances` varchar(15) COMMENT '4대보험 가입여부',
   `consulting_category` varchar(30) NOT NULL COMMENT '상담 유형 (임금체불/징계·해고 등/퇴직금/실업급여/근로시간,휴일,휴가/근로계약/최저임금/산업재해/성희 롱, 폭언, 폭행/노조/기타)',
+  `consulting_title` varchar(255) NOT NULL COMMENT '상담 제목',
   `consulting_inquiry` text NOT NULL COMMENT '상담 문의',
   `consulting_answer` text COMMENT '상담 답변'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

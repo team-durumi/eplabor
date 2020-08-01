@@ -92,10 +92,12 @@ labor_insurances
 // 상담 consulting
 
 상담 유형 (임금체불/징계·해고 등/퇴직금/실업급여/근로시간,휴일,휴가/근로계약/최저임금/산업재해/성희롱,폭언,폭행/노조/기타)
+상담 제목
 상담 문의
 상담 답변
 
 consulting_category
+consulting_title
 consulting_inquiry
 consulting_answer
 ```
