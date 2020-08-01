@@ -7,6 +7,7 @@ function download_latest_directus() {
     | xargs -n 1 curl -sL \
     | tar zxf - \
     && mv directus-* directus
+    && rm directus/.gitignore
 }
 
 download_latest_directus()

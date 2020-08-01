@@ -1,0 +1,44 @@
+{
+	"folders": [
+		{
+			"name": "database",
+			"path": "database"
+		},
+		{
+			"name": "directus-logs",
+			"path": "directus/logs"
+		},
+		{
+			"name": "directus-hooks",
+			"path": "directus/public/extensions/custom/hooks"
+		},
+		{
+			"name": "directus-endpoints",
+			"path": "directus/public/extensions/custom/endpoints"
+		},
+		{
+			"name": "hugo-content",
+			"path": "homepage/content"
+		},
+		{
+			"name": "hugo-layout",
+			"path": "homepage/layouts"
+		},
+		{
+			"name": "hugo-assets",
+			"path": "homepage/assets"
+		},
+		{
+			"name": "project-root",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			".vagrant": true,
+			".vscode": true,
+			"node_modules": true,
+			"resources": true
+		},
+	}
+}

@@ -25,6 +25,7 @@ directus/config/*
 directus/migrations
 directus/public/admin
 directus/public/extensions/core
+!directus/public/extensions/custom/hooks
 directus/src
 directus/vendor
 directus/*.md
