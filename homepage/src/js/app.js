@@ -2,6 +2,9 @@ jQuery.noConflict();
 let $ = document.querySelector.bind(document);
 nunjucks.configure('/templates', { autoescape: false });
 
+import "../scss/style.scss"
+import "./misc.js"
+
 window.addEventListener('DOMContentLoaded', function() {
     header = $('#header');
     window.onscroll = () => {

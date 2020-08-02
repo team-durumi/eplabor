@@ -1,5 +1,6 @@
-@import "bs4-config";
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "custom";
+@import "~bootstrap";
+
 dd {
     margin-bottom: .2rem;
 }

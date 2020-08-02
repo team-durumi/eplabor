@@ -5,6 +5,10 @@
 			"path": "database"
 		},
 		{
+			"name": "directus",
+			"path": "directus"
+		},
+		{
 			"name": "directus-logs",
 			"path": "directus/logs"
 		},
@@ -17,16 +21,16 @@
 			"path": "directus/public/extensions/custom/endpoints"
 		},
 		{
+			"name": "hugo",
+			"path": "homepage"
+		},
+		{
 			"name": "hugo-content",
 			"path": "homepage/content"
 		},
 		{
 			"name": "hugo-layout",
 			"path": "homepage/layouts"
-		},
-		{
-			"name": "hugo-assets",
-			"path": "homepage/assets"
 		},
 		{
 			"name": "project-root",
