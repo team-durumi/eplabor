@@ -111,3 +111,13 @@ mysql  Ver 15.1 Distrib 10.2.32-MariaDB
 
 /dev/xvdb        22G   45M   21G   1% /data
 ```
+
+## rclone
+
+```
+mkdir -p /vagrant/data
+rclone config
+rclone mount --daemon team-durumi-drive:/eplabor /vagrant/data
+# 언마운트 에러 시 아래
+sudo umount -l /vagrant/data
+```
