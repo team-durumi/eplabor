@@ -1,9 +1,9 @@
-jQuery.noConflict();
-let $ = document.querySelector.bind(document);
-nunjucks.configure('/templates', { autoescape: false });
 
-import "../scss/style.scss"
 import "./misc.js"
+import "../scss/style.scss"
+
+let $ = document.querySelector.bind(document);
+let $$ = document.querySelectorAll.bind(document);
 
 window.addEventListener('DOMContentLoaded', function() {
     header = $('#header');
@@ -16,11 +16,6 @@ window.addEventListener('DOMContentLoaded', function() {
             $('#header img').setAttribute('height', '80px');
         }
     }
-
-    test = nunjucks.render('_row.njk', {
-        'title': "nunjuck test",
-        'body': "이상하군 왜 되는거지?"
-    });
 
     var forms = document.getElementsByClassName('needs-validation');
     var validation = Array.prototype.filter.call(forms, function(form) {
