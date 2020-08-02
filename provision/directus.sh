@@ -7,9 +7,10 @@ function download_latest_directus() {
     | cut -d '"' -f 4 \
     | xargs -n 1 curl -sL \
     | tar zxf - 
-    mv directus-* directus
+    mv directus-* /vagrant/directus
     rm /vagrant/directus/.gitignore
     git checkout -- ./
+    cp /vagrant/provision/directus-config-eplabor.php /vagrant/directus/config/eplabor.php
 }
 
 download_latest_directus
