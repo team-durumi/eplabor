@@ -1,6 +1,22 @@
-$theme-colors: (
-  'highlight':#6ebf5d,
-  'primary': #6ebf5d
-);
+/*!
+ * Customized based on Bootstrap v5.0.0-alpha1 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
 
+$primary: #6ebf5d;
+$link-decoration: none;
 $font-family-base: "Nanum Gothic";
+
+// 테마 색상 추가 시
+// https://github.com/twbs/bootstrap/issues/23908#issuecomment-336862134
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// $theme-colors: map-merge($theme-colors, (
+//   highlight: $primary
+// ));
+
+@import "~bootstrap/scss/bootstrap";
+
+// @debug $theme-colors;

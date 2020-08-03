@@ -1,5 +1,4 @@
 @import "custom";
-@import "~bootstrap";
 
 dd {
     margin-bottom: .2rem;
@@ -25,9 +24,7 @@ dd {
     .breadcrumb-item:first-child+.breadcrumb-item::before {
         display: none;
     }
-    
 }
-
 
 ul {
     padding-left: 1.4rem;

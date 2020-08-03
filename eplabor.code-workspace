@@ -33,6 +33,10 @@
 			"path": "homepage/layouts"
 		},
 		{
+			"name": "hugo-src",
+			"path": "homepage/src"
+		},
+		{
 			"name": "project-root",
 			"path": "."
 		}
