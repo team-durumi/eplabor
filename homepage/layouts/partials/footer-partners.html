@@ -75,27 +75,29 @@
 
 </style>
 
-<script src="//unpkg.com/browse/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="//unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
 <script>
-$(document).ready(function($) {
-    $("#partners > li > a").click(function(e){
+window.addEventListener('DOMContentLoaded', function() {
+    jQuery.noConflict()
+    console.log(jQuery.fn.jquery);
+    jQuery("#partners > li > a").click(function(e){
         e.preventDefault();
-		if ($(this).hasClass('on')){
-			$("#partners > li > a").removeClass('on');
-			$(this).next('ul').slideUp(200);
+		if (jQuery(this).hasClass('on')){
+			jQuery("#partners > li > a").removeClass('on');
+			jQuery(this).next('ul').slideUp(200);
 		}else{
-			$("#partners > li > a").removeClass('on');
-			$("#partners > li > ul").hide();
-			$(this).addClass('on');
-			$(this).next('ul').slideDown(200);
+			jQuery("#partners > li > a").removeClass('on');
+			jQuery("#partners > li > ul").hide();
+			jQuery(this).addClass('on');
+			jQuery(this).next('ul').slideDown(200);
 		}
 	});
-	$("#partners a").focusout(function(e){
+	jQuery("#partners a").focusout(function(e){
         e.preventDefault();
 		setTimeout(function(){
-			if($('#partners a:focus').length < 1){
-				$("#partners > li > a").removeClass('on');
-				$("#partners > li > ul").slideUp(200);
+			if(jQuery('#partners a:focus').length < 1){
+				jQuery("#partners > li > a").removeClass('on');
+				jQuery("#partners > li > ul").slideUp(200);
 			}
 		},100); 
 	});
