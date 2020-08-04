@@ -12,7 +12,7 @@ function download_latest_directus() {
 
 download_latest_directus
 
-rm /vagrant/directus/.gitignorea
+rm /vagrant/directus/.gitignore
 git stash && git checkout -- ./
 cp /vagrant/provision/directus-config-eplabor.php /vagrant/directus/config/eplabor.php
 chmod -R 777 /vagrant/directus/logs
