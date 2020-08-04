@@ -5,8 +5,9 @@ const devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
     entry: [path.resolve('src', 'js', 'app.js')],
     output: {
-        path: path.resolve('static', 'assets'),
-        filename: 'bundle.js',
+        filename: '[name].bundle.min.js',
+        chunkFilename: '[name].bundle.min.js',
+        path: path.resolve('static', 'assets')
     },
     module: {
         rules: [
@@ -24,8 +25,8 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name].[hash].css',
-            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+            filename: devMode ? '[name].css' : '[name].[hash].min.css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].min.css',
         }),
     ],
     devServer: {

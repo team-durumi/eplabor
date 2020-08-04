@@ -1,7 +1,7 @@
+// let nunjucks = require('nunjucks');
 
-
-nunjucks.configure('/templates', { autoescape: false });
-test = nunjucks.render('_row.njk', {
-	'title': "nunjuck test",
-	'body': "이상하군 왜 되는거지?"
-});
+// nunjucks.configure('/templates', { autoescape: false });
+// test = nunjucks.render('_row.njk', {
+// 	'title': "nunjuck test",
+// 	'body': "이상하군 왜 되는거지?"
+// })

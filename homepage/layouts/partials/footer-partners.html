@@ -78,8 +78,7 @@
 <script src="//unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
-    jQuery.noConflict()
-    console.log(jQuery.fn.jquery);
+    jQuery.noConflict();
     jQuery("#partners > li > a").click(function(e){
         e.preventDefault();
 		if (jQuery(this).hasClass('on')){
