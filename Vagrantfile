@@ -16,9 +16,10 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", path: "provision/bootstrap.sh"
-  # config.vm.provision "shell", path: "provision/apm.sh"
-  # config.vm.provision "shell", path: "provision/nvm.sh", privileged: false
-  # config.vm.provision "shell", path: "provision/directus.sh", privileged: false
+  config.vm.provision "shell", path: "provision/apm.sh"
+  config.vm.provision "shell", path: "provision/nvm.sh", privileged: false
+  config.vm.provision "shell", path: "provision/directus.sh", privileged: false
+  config.vm.provision "shell", path: "provision/check.sh", privileged: false
 
   # config.notify_forwarder.enable = false
   # config.trigger.after :up do |t|
