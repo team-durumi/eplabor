@@ -19,6 +19,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "provision/apm.sh"
   config.vm.provision "shell", path: "provision/nvm.sh", privileged: false
 
+  config.notify_forwarder.enable = false
   # config.trigger.after :up do |t|
   #   t.info = "vagrant fsnotify"
   #   t.run = {inline: "vagrant fsnotify"}
