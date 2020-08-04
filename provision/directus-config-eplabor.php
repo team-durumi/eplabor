@@ -155,7 +155,7 @@ return [
 
     'tableBlacklist' => [],         // What tables to globally ignore within Directus
 
-    'env' => 'production',          // production, development, or staging
+    'env' => 'development',          // production, development, or staging
                                     // Production silences stack traces and error details in API output
 
     'logger' => [

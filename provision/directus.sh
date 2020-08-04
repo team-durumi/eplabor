@@ -8,9 +8,11 @@ function download_latest_directus() {
     | xargs -n 1 curl -sL \
     | tar zxf - 
     mv directus-* /vagrant/directus
-    rm /vagrant/directus/.gitignore
-    git checkout -- ./
-    cp /vagrant/provision/directus-config-eplabor.php /vagrant/directus/config/eplabor.php
 }
 
 download_latest_directus
+
+rm /vagrant/directus/.gitignorea
+git stash && git checkout -- ./
+cp /vagrant/provision/directus-config-eplabor.php /vagrant/directus/config/eplabor.php
+chmod -R 777 /vagrant/directus/logs
