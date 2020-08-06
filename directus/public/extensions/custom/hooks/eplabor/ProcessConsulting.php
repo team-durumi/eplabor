@@ -63,20 +63,26 @@ class ProcessConsulting implements HookInterface {
     private function create($data = null) {
         $markdown_string = $this->slack_payload['text'] = $this->buildMarkdown($data);
         // 디스크에 마크다운 파일로 저장
-        file_put_contents('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md', $markdown_string);
+        $result = file_put_contents('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md', $markdown_string);
+        if($result === FALSE) {
+            $error = error_get_last();
+            $this->logger->debug(print_r($error, true)); 
+        } elseif(is_int($result) && $result > 0) {
+            $this->logger->debug('Written to /vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
+        }
         // $this->logger->debug('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
     }
 
     private function update($data = null) {
-        // $this->logger->debug('update()--------');
-        // $this->logger->debug(print_r($data, true));
+        $this->logger->debug('update()--------');
+        $this->logger->debug(print_r($data, true));
+        // 삭제
         if(!empty($data['status']) && $data['status'] == 'deleted') {
             $output = shell_exec('rm -f /vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
-            // $this->logger->debug($output . ' deleted?');
+            $this->logger->debug($output . ' deleted?');
         } else {
-            // $this->create($data);
-            // $this->logger->debug(print_r($this->tableGateway, true));
             $item = $this->tableGateway->getOneData($data['id']);
+            $this->logger->debug(print_r($item, true));
             $this->create($item);
         }
     }
@@ -88,7 +94,7 @@ class ProcessConsulting implements HookInterface {
         $l10nDate = new \DateTime($data['created_on'], new \DateTimeZone('UTC'));
         $l10nDate->setTimeZone(new \DateTimeZone('Asia/Seoul'));
         $data['created_on'] = $l10nDate->format('Y-m-d H:i:s');
-        $data['status'] = !empty($data['consulting_anwser']) ? 'answered' : 'waiting';
+        $data['status'] = !empty($data['consulting_answer']) ? 'answered' : 'waiting';
 
         return $this->view->fetch('markdown.twig', $data);
     }
