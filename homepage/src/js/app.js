@@ -38,10 +38,11 @@ window.addEventListener('DOMContentLoaded', function () {
     authModalSubmit.addEventListener('click', function (event) {
         var data = {
             "string": document.getElementById('passwd').value,
-            "hash": document.getElementById('consultee-password').value
+            "id": document.getElementById('consulting-id').value, 
+            "type": document.getElementById('action').value, 
         };
         var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
-        postData('http://localhost:8080/eplabor/utils/hash/match', data)
+        postData('http://localhost:8080/eplabor/custom/auth', data)
             .then(function (res) {
                 // console.log(res)
                 if (res.hasOwnProperty('data') && res.data.valid) {

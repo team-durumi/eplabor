@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "provision/directus.sh", privileged: false
   config.vm.provision "shell", path: "provision/check.sh", privileged: false
 
-  # config.notify_forwarder.enable = false
+  config.notify_forwarder.enable = false
   # config.trigger.after :up do |t|
   #   t.info = "vagrant fsnotify"
   #   t.run = {inline: "vagrant fsnotify"}

@@ -30,3 +30,4 @@ directus/src
 directus/vendor
 directus/*.md
 directus/composer.json
+.env

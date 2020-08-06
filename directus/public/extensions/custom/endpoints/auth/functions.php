@@ -10,6 +10,22 @@ use Directus\Services\UtilsService;
 // 	"string": "1234"
 // }
 
+if (!function_exists('eplaborInitBot')) {
+    function eplaborInitBot() {
+        $base_uri = 'http://localhost';
+        $client = new GuzzleHttp\Client(['base_uri' => $base_uri]);
+        $identity = [
+            'form_params' => [
+                'email' => getenv('BOT_EMAIL'),
+                'password' => getenv('BOT_PASSWORD'),
+                'mode' => 'cookie'
+            ]
+        ];
+        $res = $client->post('/eplabor/auth/authenticate', $identity);
+        return $res->getBody();
+    }
+}
+
 if (!function_exists('eplaborHandleAuth')) {
     // 
     /**
@@ -19,13 +35,18 @@ if (!function_exists('eplaborHandleAuth')) {
         $container = \Directus\Application\Application::getInstance()->getContainer();
         $logger = $container->get('logger');
         $params = $request->getParsedBody();
+        // $logger->debug(print_r($params, true));
+
+        // init bot!
+        $bot = eplaborInitBot();
+        // $logger->debug(print_r($bot, true));
 
         // get tableGateway
         $tableGateway = TableGatewayFactory::create('eplabor_consultings', [
             'connection' => $container->get('database'),
             'acl' => false
         ]);
-        $consulting = $tableGateway->getOneData($params['consulting_id']);
+        $consulting = $tableGateway->getOneData($params['id']);
 
         // auth
         $utilService = new UtilsService($container);
@@ -40,17 +61,18 @@ if (!function_exists('eplaborHandleAuth')) {
                 break;
             case 'delete':
                 $logger->debug('eplaborHandleAuth -- delete');
-                // get zendTableGateway
-                $zendTableGateway = new \Zend\Db\TableGateway\TableGateway('eplabor_consultings', $container->get('database'));
-                $result = $zendTableGateway->update(['status' => 'published'], ['id' => $params['consulting_id']]);
-                $logger->debug($result);
+                
                 $updates = [
-                    'status' => 'published',
-                    'id' => $params['consulting_id'],
-                    'modified_on' => gmdate("Y-m-d H:i:s", time()+date("Z")),
-                    'modified_by' => 0
+                    'form_params' => [
+                        'status' => 'deleted'
+                    ]
                 ];
-                $tableGateway->runHook('item.update.eplabor_consultings', ['data' => $updates]);
+                //  PATCH /:project/items/:collection/:id
+                $base_uri = 'http://localhost';
+                $client = new GuzzleHttp\Client(['base_uri' => $base_uri]);
+                $res = $client->patch('/eplabor/items/eplabor_consultings/' . $params['id'], $updates );
+                // $logger->debug(print_r($res->getBody(), true));
+                return $res->getBody();
                 break;
         }
 
