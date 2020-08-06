@@ -39,6 +39,7 @@ deploy.*
 ##  Endpoints
 !/public/extensions/custom/endpoints/_directory/
 !/public/extensions/custom/endpoints/_example.php
+!/public/extensions/custom/endpoints/auth
 
 ##  Hashers
 !/public/extensions/custom/hashers/_CustomHasher.php
