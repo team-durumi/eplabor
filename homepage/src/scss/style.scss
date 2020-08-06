@@ -74,3 +74,8 @@ ul {
         color: $text-muted !important;
     }
 }
+
+.required .form-label:after {
+    content: "*";
+    color:red;
+}

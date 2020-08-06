@@ -6,12 +6,19 @@
         비공개 상담을 원하시면 전화상담을 이용하시기 바랍니다.<br>
         상담전화: {{ .Site.Data.eplabor.tel }}
     </div>
-    <div class="row">
+    <a href="/consulting/request" class="mt-3 btn btn-primary text-white">작성하기</a>
+    <div class="row mt-3">
         <div class="col-md-9">
             <ul class="list-group list-group-flush">
+                <li class="list-group-item px-0 border-top">
+                    <span class="created_at float-right mr-4">작성일시</span>
+                    <span class="name float-right mr-5">작성자</span>
+                    <span class="title">제목</span>
+                </li>
                 {{ range .Paginator.Pages }}
                 <li class="list-group-item px-0">
                     <time class="float-right">{{ .Date.Local.Format "2006-01-02" }}</time>
+                    <span class="name float-right mr-5">{{ .Params.consultee_name }}</span>
                     <a href="{{.Permalink}}">{{.Title}}</a>
                 </li>
                 {{ end }}

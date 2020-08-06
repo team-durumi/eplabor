@@ -3,15 +3,24 @@
 <div class="container pt-5 {{ .Type }}">
     <div class="row">
         <div class="col-md-9">
-            <h1 class="border-bottom py-3 mb-3">{{ .Title }}<small class="text-muted">#{{ .Page.Params.consulting_id }}</small></h1>
+            <h1 class="border-bottom py-3 mb-3">{{ .Title }}<small
+                    class="text-muted">#{{ .Page.Params.consulting_id }}</small></h1>
             <div class="d-block mb-5">
                 <date>{{ .Date.Local.Format "2006-01-02" }}</date>
                 <span class="consultee-name">{{ .Page.Params.consultee_name }}</span>
             </div>
             <div class="body">
                 {{ .Content }}
-
             </div>
+            {{ if eq .Page.Params.status "waiting" }}
+            <div class="owner my-5 border-top pt-4">
+                <a href="#" class="btn btn-info text-white mr-3" data-toggle="modal" data-target="#authModal"
+                    data-type="update">수정</a>
+                <a href="#" class="btn btn-danger text-white" data-toggle="modal" data-target="#authModal"
+                    data-type="delete">삭제</a>
+            </div>
+            {{ partial "auth-modal.html" . }}
+            {{ end }}
         </div>
         <div class="col-md-3">
             {{ partial "section_menu.html" . }}
