@@ -45,19 +45,33 @@ Table eplabor_consultings {
   consulting_title varchar(255) [ not null, note: '상담 제목' ]
   consulting_inquiry text [ not null, note: '상담 문의' ]
   consulting_answer text [ note: '상담 답변' ]
+
+  Note: '은평구노동자종합지원센터 상담 요청자 인적 정보 및 노동 환경, 문의 답변 정보'
 }
 
 
-// Table "eplabor_workshop_participants" {
-//   "id" int(15) [pk, not null, increment]
-//   "status" varchar(20) [ not null, default: "draft" ]
-//   "sort" int(10) [default: NULL]
-//   "owner" int(10) [default: NULL]
-//   "created_on" datetime [default: NULL]
-//   "modified_by" int(10) [default: NULL]
-//   "modified_on" datetime [default: NULL]
-//   "participant_name" varchar(200) [note: '교육 참여자 성명']
-//   "participant_email" varchar(200) [note: '교육 참여자 이메일']
-//   "participant_password" varchar(200) [note: '교육 참여자 비밀번호']
-//   "workshop_name" varchar(200) [note: ' class-id: 교육프로그램 id(연결된 교육프로그램)']
-// }
+Table "eplabor_workshop_participants" {
+  // directus 기본 제공 필드 6개
+  id "int(15) unsigned" [ pk, increment, note: '상담 아이디' ]
+  status varchar(20) [ NOT NULL, DEFAULT: 'public', note: '상태 (draft, published, deleted)' ]
+  owner "int(10) unsigned" [ NOT NULL, note: '작성자' ]
+  created_on datetime [ NOT NULL, note: '작성시간' ]
+  modified_by "int(10) unsigned" [ note: '수정자' ]
+  modified_on datetime [ note: '수정시간' ]
+
+  // 교육 참여자 인적 정보
+  participant_name varchar(100) [ not null, note: '교육 참여자 성명 (최대 길이 30자)' ]
+  participant_gender varchar(6) [ not null, note: '교육 참여자 성별 (남성, 여성)' ]
+  participant_age varchar(15) [ not null, note: '교육 참여자 연령대 (10대부터 각각 70대 이상)' ]
+  participant_residence varchar(15) [ note: '교육 참여자 거주지 (은평구, 은평구 외, 서울 외)' ]
+  participant_email varchar(255) [ not null, note: '교육 참여자 이메일 (id@domain.com)' ]
+  participant_phone varchar(14) [ not null, note: '교육 참여자 휴대폰 혹은 전화번호 (0100-0000-0000)' ]
+  participant_password varchar(60) [ not null, note: '교육 참여자 비밀번호 (수정/삭제 시 필요)' ]
+  participant_comment text [ note: '교육 참여자 하고 싶은 말' ]
+  participant_privacy_agreement "tinyint(1) unsigned" [ not null, note: '개인정보수집 및 이용 동의']
+  participant_portrait_agreement "tinyint(1) unsigned" [ not null, note: '초상권 활용 동의']
+
+  workshop_name varchar(255) [note: '참여 교육 프로그램']
+
+  Note: '은평구노동자종합지원센터 교육 참여자 인적 정보'
+}

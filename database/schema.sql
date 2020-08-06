@@ -1,3 +1,6 @@
+-- TABLE: eplabor_consultings
+-- 은평구노동자종합지원센터 상담 요청자 인적 정보 및 노동 환경, 문의 답변 정보
+
 CREATE OR REPLACE TABLE `eplabor_consultings` (
   `id` int(15) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '상담 아이디',
   `status` varchar(20) NOT NULL DEFAULT 'published' COMMENT '상태 (draft, published, deleted)',
@@ -33,3 +36,33 @@ CREATE OR REPLACE TABLE `eplabor_consultings` (
   `consulting_inquiry` text NOT NULL COMMENT '상담 문의',
   `consulting_answer` text COMMENT '상담 답변'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `eplabor_consultings` COMMENT = "은평구노동자종합지원센터 상담 요청자 인적 정보 및 노동 환경, 문의 답변 정보";
+ALTER TABLE `eplabor_consultings` AUTO_INCREMENT = 1;
+
+
+-- TABLE: eplabor_workshop_participants
+-- 은평구노동자종합지원센터 교육 참여자 인적 정보
+
+CREATE OR REPLACE TABLE `eplabor_workshop_participants` (
+  `id` int(15) unsigned PRIMARY KEY AUTO_INCREMENT COMMENT '교육 참여자 아이디',
+  `status` varchar(20) NOT NULL DEFAULT "public" COMMENT '상태 (draft, published, deleted)',
+  `owner` int(10) unsigned NOT NULL COMMENT '작성자',
+  `created_on` datetime NOT NULL COMMENT '작성시간',
+  `modified_by` int(10) unsigned COMMENT '수정자',
+  `modified_on` datetime COMMENT '수정시간',
+  `participant_name` varchar(100) NOT NULL COMMENT '교육 참여자 성명 (최대 길이 30자)',
+  `participant_gender` varchar(6) NOT NULL COMMENT '교육 참여자 성별 (남성, 여성)',
+  `participant_age` varchar(15) NOT NULL COMMENT '교육 참여자 연령대 (10대부터 각각 70대 이상)',
+  `participant_residence` varchar(15) COMMENT '교육 참여자 거주지 (은평구, 은평구 외, 서울 외)',
+  `participant_email` varchar(255) NOT NULL COMMENT '교육 참여자 이메일 (id@domain.com)',
+  `participant_phone` varchar(14) NOT NULL COMMENT '교육 참여자 휴대폰 혹은 전화번호 (0100-0000-0000)',
+  `participant_password` varchar(60) NOT NULL COMMENT '교육 참여자 비밀번호 (수정/삭제 시 필요)',
+  `participant_comment` text COMMENT '교육 참여자 하고 싶은 말'
+  `participant_privacy_agreement` tinyint(1) unsigned COMMENT '개인정보수집 및 이용 동의'
+  `participant_portrait_agreement` tinyint(1) unsigned COMMENT '초상권 활용 동의' 
+  `workshop_name` varchar(255) COMMENT '참여 교육 프로그램'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `eplabor_workshop_participants` COMMENT = "은평구노동자종합지원센터 교육 참여자 인적 정보";
+ALTER TABLE `eplabor_workshop_participants` AUTO_INCREMENT = 1;
