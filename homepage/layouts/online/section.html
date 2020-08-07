@@ -19,7 +19,13 @@
                 <li class="list-group-item px-0">
                     <time class="float-right">{{ .Date.Local.Format "2006-01-02" }}</time>
                     <span class="name float-right mr-5">{{ .Params.consultee_name }}</span>
-                    <a href="{{.Permalink}}">{{.Title}}</a>
+                    <div class="title">
+                        <span class="text-muted">#{{ .Params.consulting_id }}</span>
+                        <span class="badge p-2 bg-{{ if eq .Params.consulting_status "waiting" }}secondary{{ else }}info{{ end }} mx-2">#
+                            {{ if eq .Params.consulting_status "waiting" }}답변대기{{ else }}답변완료{{ end }}
+                        </span>
+                        <a href="{{.Permalink}}">{{.Title}}</a>
+                    </div>
                 </li>
                 {{ end }}
             </ul>
