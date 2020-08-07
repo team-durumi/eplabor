@@ -1,0 +1,286 @@
+<div class="modal fade" id="updateConsultingFormModal" tabindex="-1" aria-labelledby="updateConsultingFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateConsultingFormModal">{{ .context.Title }} 상담 수정하기</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="consulting_request" class="needs-validation" novalidate>
+                    <fieldset id="consultee" class="border p-3 my-3">
+                        <legend class="border-bottom pb-3 mb-3">상담신청자 정보</legend>
+                        <div class="row mb-3">
+                            <div class="col-lg-6 required">
+                                <label for="consultee_name" class="form-label">성명</label>
+                                <input type="text" class="form-control" id="consultee_name" name="consultee_name" placeholder="성명: 홍길동" required>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="consultee_password" class="form-label">비밀번호</label>
+                                <input type="password" class="form-control" id="consultee_password" name="consultee_password" placeholder="비밀번호 (수정, 삭제 시 필요, 4 글자 이상)">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6 required">
+                                <label for="consultee_email" class="form-label">이메일</label>
+                                <input type="email" class="form-control" id="consultee_email" name="consultee_email" placeholder="이메일주소 honggildong@gmail.com" required>
+                            </div>
+                            <div class="col-lg-6 required">
+                                <label for="consultee_phone" class="form-label">전화번호</label>
+                                <input type="text" class="form-control" id="consultee_phone" name="consultee_phone" placeholder="연락받을 수 있는 전화번호 010-000-0000/02-000-0000" required>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="row mb-3 mt-3 required">
+                            <label for="consultee_gender" class="col-md-2 form-label">성별</label>
+                            <div class="col-md-10">
+                                {{ range $index, $gender := .fields.consultee_gender }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="consultee_gender" id="consultee_gender{{$index}}" value="{{$gender}}"{{ if (eq $index 0) }} required{{ end }}>
+                                    <label class="form-check-label" for="consultee_gender{{$index}}">{{$gender}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                        <div class="row mb-3 required">
+                            <label for="consultee_age" class="col-md-2 form-label">연령대</label>
+                            <div class="col-md-10">
+                                {{ range $index, $age := .fields.consultee_age }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="consultee_age" id="consultee_age{{$index}}" value="{{$age}}"{{ if (eq $index 0) }} required{{ end }}>
+                                    <label class="form-check-label" for="consultee_age{{$index}}">{{$age}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="consultee_residence" class="col-md-2 form-label">거주지</label>
+                            <div class="col-md-10">
+                                {{ range $index, $residence := .fields.consultee_residence }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="consultee_residence" id="consultee_residence{{$index}}" value="{{$residence}}">
+                                    <label class="form-check-label" for="consultee_residence{{$index}}">{{$residence}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset id="labor" class="border p-3 my-3">
+                        <legend class="border-bottom pb-3 mb-3">노동 환경</legend>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="labor_company_name" class="form-label">사업장명</label>
+                                <input type="text" class="form-control" id="labor_company_name" name="labor_company_name" placeholder="사업장명">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="labor_company_owner" class="form-label">대표자명</label>
+                                <input type="text" class="form-control" id="labor_company_owner" name="labor_company_owner" placeholder="대표자명">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-6">
+                                <label for="labor_company_contact" class="form-label">연락처</label>
+                                <input type="text" class="form-control" id="labor_company_contact" name="labor_company_contact" placeholder="연락처">
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="labor_location" class="form-label">소재지</label>
+                                <select id="labor_location" name="labor_location" class="form-control w-100">
+                                    <option selected>사업장소재지</option>
+                                    {{ range $index, $location := .fields.labor_location }}
+                                    <option value="{{ $location }}">{{ $location }}</option>
+                                    {{ end }}
+                                </select>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="row my-3 required">
+                            <label for="labor_employment_type" class="col-md-2 form-label">고용형태</label>
+                            <div class="col-md-10">
+                                {{ range $index, $employment_type := .fields.labor_employment_type }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_employment_type" id="labor_employment_type{{$index}}" value="{{$employment_type}}"{{ if (eq $index 0) }} required{{ end }}>
+                                    <label class="form-check-label" for="labor_employment_type{{$index}}">{{$employment_type}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 required">
+                            <label for="labor_employment_subject" class="col-md-2 form-label">사용주체</label>
+                            <div class="col-md-10">
+                                {{ range $index, $employment_subject := .fields.labor_employment_subject }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input mt-2" type="radio" name="labor_employment_subject" id="labor_employment_subject{{$index}}" value="{{$employment_subject}}"{{ if (eq $index 0) }} required{{ end }}>
+                                    <label class="form-check-label ml-1 mr-4 my-1" for="labor_employment_subject{{$index}}">{{$employment_subject}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 required">
+                            <label for="labor_number_of_workers" class="col-md-2 form-label">근로자수</label>
+                            <div class="col-md-10">
+                                {{ range $index, $number_of_workers := .fields.labor_number_of_workers }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input mt-2" type="radio" name="labor_number_of_workers" id="labor_number_of_workers{{$index}}" value="{{$number_of_workers}}"{{ if (eq $index 0) }} required{{ end }}>
+                                    <label class="form-check-label ml-1 mr-4 my-1" for="labor_number_of_workers{{$index}}">{{$number_of_workers}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 required">
+                            <label for="labor_sector" class="col-md-2 form-label">업종</label>
+                            <div class="col-md-10">
+                                {{ range $index, $sector := .fields.labor_sector }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input mt-2" type="radio" name="labor_sector" id="labor_sector{{$index}}" value="{{$sector}}"{{ if (eq $index 0) }} required{{ end }}>
+                                    <label class="form-check-label ml-1 mr-4 my-1" for="labor_sector{{$index}}">{{$sector}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="labor_occupation" class="col-md-2 form-label">직종</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="labor_occupation" name="labor_occupation" placeholder="직종">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="labor_longevity" class="col-md-2 form-label">근속기간</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="labor_longevity" name="labor_longevity" placeholder="근속기간 (년 개월) 3년 11개월">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="labor_working_days_per_week" class="col-md-2 form-label">근로일</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="labor_working_days_per_week" name="labor_working_days_per_week" placeholder="근로일 (주 일) 숫자만 입력하세요" value="0">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="labor_working_hours_per_week" class="col-md-2 form-label">근로시간</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="labor_working_hours_per_week" name="labor_working_hours_per_week" placeholder="근로시간 (주 시간) 숫자만 입력하세요" value="0">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="labor_average_monthly_wage" class="col-md-2 form-label">월 평균임금</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="labor_average_monthly_wage" name="labor_average_monthly_wage" placeholder="월 평균임금 ( 만원) 숫자만 입력하세요" value="0">
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <div class="row mb-3">
+                            <label for="labor_contracts" class="col-md-2 form-label">근로계약서<br>작성여부</label>
+                            <div class="col-md-10">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts0" value="작성">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts0">작성</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts1" value="미작성">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts1">미작성</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts2" value="일부작성">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts2">일부작성</label>
+                                </div>
+                                <br />
+                                <div class="form-check form-check-inline pl-0">
+                                    <p>상호 날인 후 각 1부씩 나눠 갖으셨습니까?</p>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts3" value="교부">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts3">교부</label>
+                                </duv>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts4" value="미교부">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts4">미교부</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="labor_rules" class="col-md-2 form-label">취업규칙<br>작성여부</label>
+                            <div class="col-md-10">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_rules" id="labor_rules0" value="작성">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules0">작성</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_rules" id="labor_rules1" value="미작성">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules1">미작성</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_rules" id="labor_rules2" value="일부작성">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules2">일부작성</label>
+                                </div>
+                                <br />
+                                <div class="form-check form-check-inline pl-0">
+                                    <p>취업규칙이 사업장에 게시되어 있습니까?</p>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_rules" id="labor_rules3" value="게시">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules3">게시</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_rules" id="labor_rules4" value="미게시">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules4">미게시</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="rule" class="col-md-2 form-label">4대보험<br>가입여부</label>
+                            <div class="col-md-10">
+                                {{ range $index, $insurance := .fields.labor_insurances }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="labor_insurances" id="labor_insurances{{$index}}" value="{{$insurance}}">
+                                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_insurances{{$index}}">{{$insurance}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset id="consulting" class="border p-3 my-3">
+                        <legend class="border-bottom pb-3 mb-3">상담 요청 정보</legend>
+                        <div class="row mb-3 required">
+                            <label for="consulting_category" class="col-md-2 form-label">상담유형</label>
+                            <div class="col-md-10">
+                                {{ range $index, $category := .fields.consulting_category }}
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input mt-2" type="radio" name="consulting_category" id="consulting_category{{$index}}" value="{{$category}}"{{ if (eq $index 0) }} required{{ end }}>
+                                    <label class="form-check-label ml-1 mr-4 my-1" for="consulting_category{{$index}}">{{$category}}</label>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                        <div class="mb-3 required">
+                            <label for="consulting_title" class="form-label">제목</label>
+                            <input type="text" class="form-control" id="consulting_title" name="consulting_title" placeholder="제목을 입력하세요" required>
+                        </div>
+                        <div class="mb-3 required">
+                            <label for="consulting_inquiry" class="form-label">상담 및 문제 내용</label>
+                            <textarea class="form-control" id="consulting_inquiry" name="consulting_inquiry" rows="10" required></textarea>
+                        </div>
+                    </fieldset>
+                    
+                    <button type="button" id="update-consulting-submit" class="btn btn-primary text-white">신청하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

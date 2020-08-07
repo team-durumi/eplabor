@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    var authModal = document.getElementById('authModal')
+    var authModal = $('#authModal')
     var authModalInstance = new bootstrap.Modal(authModal)
     authModal.addEventListener('show.bs.modal', function (event) {
         var button = event.relatedTarget
@@ -31,25 +31,36 @@ window.addEventListener('DOMContentLoaded', function () {
         modalAction.value = type
     })
     authModal.addEventListener('hide.bs.modal', function (event) {
-        document.getElementById("auth-modal-form").reset();
+        $("#auth-modal-form").reset();
     })
 
-    var authModalSubmit = document.getElementById('auth-modal-submit')
+    var updateConsultingFormModal = $('#updateConsultingFormModal')
+    var updateConsultingFormModalInstance = new bootstrap.Modal(updateConsultingFormModal)
+
+    updateConsultingFormModal.addEventListener('shown.bs.modal', function (event) {
+        document.querySelector('body').classList.add('modal-open');
+    })
+
+    var authModalSubmit = $('#auth-modal-submit')
     authModalSubmit.addEventListener('click', function (event) {
         var data = {
-            "string": document.getElementById('passwd').value,
-            "id": document.getElementById('consulting-id').value, 
-            "type": document.getElementById('action').value, 
+            "string": $('#passwd').value,
+            "id": $('#consulting-id').value, 
+            "type": $('#action').value, 
         };
         var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
+        $('#spinner-screen').style.display = 'block';
         postData('http://localhost:8080/eplabor/custom/auth', data)
             .then(function (res) {
                 // console.log(res)
+                $('#spinner-screen').style.display = 'none';
                 if (res.hasOwnProperty('data') && res.data.valid) {
-                    alert('일치합니다.')
+                    // alert('이제 수정할 수 있습니다.')
                     authModalInstance.hide()
+                    updateConsultingFormModalInstance.show()
+                    fillForm(updateConsultingFormModal.querySelector('form'), res.data)
                 } else {
-                    alert('일치하지 않습니다.')
+                    alert('비밀번호가 일치하지 않습니다.')
                 }
                 if (res.hasOwnProperty('error') && res.error.message) alert(errorMessage);
             })
@@ -77,22 +88,28 @@ window.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json()); // parses JSON response into native JavaScript objects 
     }
 
-    // console.log('test!!!!');
-    // fetch('http://localhost:8080/eplabor/custom/onlines')
-    //     .then(function (response) {
-    //         return response.json()
-    //     }).then(function (json) {
-    //         console.log('parsed json', json)
-    //     }).catch(function (ex) {
-    //         console.log('parsing failed', ex)
-    //     })
+    function fillForm(form, data) {
+        if(!form) throw Error('폼이 없습니다.')
+        Object.keys(data).forEach(function(key) {
+            var elm = form.querySelector('[name=' + key + ']')
+            if(elm && data[key]) {
+                if(elm.getAttribute('type') == 'text'
+                    || elm.getAttribute('type') == 'email'
+                    || elm.tagName == 'TEXTAREA') {
+                    elm.value = data[key]
+                }
+                if(elm.getAttribute('type') == 'radio') {
+                    var item = form.querySelector('[name=' + key + '][value="' + data[key] + '"]')
+                    item.checked = true
+                }
+            }
+        })
+    }
 
     var forms = $$('.needs-validation');
     if(forms) {
         var validation = Array.prototype.filter.call(forms, function (form) {
             var button = form.querySelector('button[type=button]');
-            // console.log(button);
-            // return false;
             button.addEventListener('click', function (event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault()
