@@ -35,24 +35,31 @@ if (!function_exists('eplaborHandleAuth')) {
         $container = \Directus\Application\Application::getInstance()->getContainer();
         $logger = $container->get('logger');
         $params = $request->getParsedBody();
-        // $logger->debug(print_r($params, true));
+        $logger->debug('eplaborHandleAuth');
+        $logger->debug(print_r($params, true));
 
         // init bot!
         $bot = eplaborInitBot();
-        // $logger->debug(print_r($bot, true));
+        $logger->debug(print_r($bot, true));
 
         // get tableGateway
         $tableGateway = TableGatewayFactory::create('eplabor_consultings', [
             'connection' => $container->get('database'),
             'acl' => false
         ]);
+        $logger->debug($params['id']);
         $consulting = $tableGateway->getOneData($params['id']);
 
         // auth
         $utilService = new UtilsService($container);
         $auth = $utilService->verifyHashString($params['string'],  $consulting['consultee_password'], $hasher = 'core', []);
         $isValid = $auth['data']['valid'];
-        if(!$isValid) return $auth;
+        if(!$isValid) {
+            return $auth;
+        } else {
+            $consulting['valid'] = true;
+            unset($consulting['consultee_password']);
+        }
 
         switch ($params['type']) {
             case 'update':
