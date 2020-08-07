@@ -29,4 +29,14 @@ echo 'memory_limit=-1' >> /etc/php/7.2/fpm/php.ini
 echo 'memory_limit=-1' >> /etc/php/7.2/cli/php.ini
 echo 'date.timezone=Asia/Seoul' >> /etc/php/7.2/fpm/php.ini
 echo 'date.timezone=Asia/Seoul' >> /etc/php/7.2/cli/php.ini
+echo 'php_admin_value[error_log] = /home/vagrant/fpm-php.www.log' >> /etc/php/7.2/fpm/pool.d/www.conf
+
+FILE=/vagrant/provision/.env
+if [ -f "$FILE" ]; then
+    echo "[php] $FILE exists and adding to /etc/php/7.2/fpm/pool.d/www-conf config"
+    cat $FILE >> /etc/php/7.2/fpm/pool.d/www.conf
+else 
+    echo "[php] $FILE does not exist. you must add environment variables"
+fi
+
 a2dissite 000-default && a2ensite directus && service apache2 reload
