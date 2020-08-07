@@ -94,7 +94,7 @@ class ProcessConsulting implements HookInterface {
         $l10nDate = new \DateTime($data['created_on'], new \DateTimeZone('UTC'));
         $l10nDate->setTimeZone(new \DateTimeZone('Asia/Seoul'));
         $data['created_on'] = $l10nDate->format('Y-m-d H:i:s');
-        $data['status'] = !empty($data['consulting_answer']) ? 'answered' : 'waiting';
+        $data['consulting_status'] = !empty($data['consulting_answer']) ? 'answered' : 'waiting';
 
         return $this->view->fetch('markdown.twig', $data);
     }
