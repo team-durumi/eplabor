@@ -1,13 +1,18 @@
 
 import * as bootstrap from 'bootstrap';
-import "./misc.js"
 import "../scss/style.scss"
-window.bootstrap = bootstrap
 
-window.addEventListener('DOMContentLoaded', function () {
-    if(window.jQuery) jQuery.noConflict()
-    let $ = document.querySelector.bind(document);
-    let $$ = document.querySelectorAll.bind(document);
+window.bootstrap = bootstrap
+if(window.jQuery) jQuery.noConflict()
+let $ = document.querySelector.bind(document)
+let $$ = document.querySelectorAll.bind(document)
+
+// common.js
+// index.js
+// consulting.js
+// workshop.js
+
+window.addEventListener('DOMContentLoaded', () => {
     let header = $('#header');
     window.onscroll = () => {
         if (window.pageYOffset > header.offsetHeight) {
@@ -45,8 +50,8 @@ window.addEventListener('DOMContentLoaded', function () {
     authModalSubmit.addEventListener('click', function (event) {
         var data = {
             "string": $('#passwd').value,
-            "id": $('#consulting-id').value, 
-            "type": $('#action').value, 
+            "id": $('#consulting-id').value,
+            "type": $('#action').value,
         };
         var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
         $('#spinner-screen').style.display = 'block';
@@ -85,7 +90,7 @@ window.addEventListener('DOMContentLoaded', function () {
             referrer: 'no-referrer', // no-referrer, *client
             body: JSON.stringify(data), // body data type must match "Content-Type" header
         })
-        .then(response => response.json()); // parses JSON response into native JavaScript objects 
+        .then(response => response.json()); // parses JSON response into native JavaScript objects
     }
 
     function fillForm(form, data) {
