@@ -9,6 +9,9 @@
             </div>
             <div class="modal-body">
                 <form id="consulting_request" class="needs-validation" novalidate>
+                    <input type="hidden" name="collection" value="eplabor_consultings">
+                    <input type="hidden" name="action_type" value="update">
+                    <input type="hidden" name="id" value="{{ .Page.Params.item_id }}">
                     <fieldset id="consultee" class="border p-3 my-3">
                         <legend class="border-bottom pb-3 mb-3">상담신청자 정보</legend>
                         <div class="row mb-3">
