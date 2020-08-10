@@ -1,90 +1,71 @@
 <?php
 
 use Directus\Application\Http\Request;
-use \Directus\Database\TableGatewayFactory;
-use Directus\Services\UtilsService;
 
-// {
-// 	"type": "update",
-// 	"consulting_id": 1,
-// 	"string": "1234"
-// }
+require_once __DIR__ . '../../../EplaborBot.php';
 
-if (!function_exists('eplaborInitBot')) {
-    function eplaborInitBot() {
-        $base_uri = 'http://localhost';
-        $client = new GuzzleHttp\Client(['base_uri' => $base_uri]);
-        $identity = [
-            'form_params' => [
-                'email' => getenv('BOT_EMAIL'),
-                'password' => getenv('BOT_PASSWORD'),
-                'mode' => 'cookie'
-            ]
-        ];
-        $res = $client->post('/eplabor/auth/authenticate', $identity);
-        return $res->getBody();
+if (!function_exists('eplaborInitAPI')) {
+    // initilize api
+    function eplaborInitAPI(Request $request)
+    {
+        $container = \Directus\Application\Application::getInstance()->getContainer();
+        $logger = $container->get('logger');
+        $bot = new EplaborBot();
+        $params = $request->getParsedBody();
+        // $logger->debug(print_r($params, true));
     }
 }
 
 if (!function_exists('eplaborHandleAuth')) {
-    // 
-    /**
-     * @return array
-     */
-    function eplaborHandleAuth(Request $request) {
-        $container = \Directus\Application\Application::getInstance()->getContainer();
-        $logger = $container->get('logger');
-        $params = $request->getParsedBody();
-        $logger->debug('eplaborHandleAuth');
-        $logger->debug(print_r($params, true));
-
-        // init bot!
-        $bot = eplaborInitBot();
-        $logger->debug(print_r($bot, true));
-
-        // get tableGateway
-        $tableGateway = TableGatewayFactory::create('eplabor_consultings', [
-            'connection' => $container->get('database'),
-            'acl' => false
-        ]);
-        $logger->debug($params['id']);
-        $consulting = $tableGateway->getOneData($params['id']);
-
+    // 인증 요청 처리
+    function eplaborHandleAuth(Request $request)
+    {
+        eplaborInitAPI($request);
         // auth
-        $utilService = new UtilsService($container);
-        $auth = $utilService->verifyHashString($params['string'],  $consulting['consultee_password'], $hasher = 'core', []);
-        $isValid = $auth['data']['valid'];
-        if(!$isValid) {
-            return $auth;
-        } else {
-            $consulting['valid'] = true;
-            unset($consulting['consultee_password']);
+        $authenticated = $bot->check($params);
+        if ($authenticated === false) {
+            return $authenticated;
         }
-
         switch ($params['type']) {
-            case 'update':
-                $logger->debug('eplaborHandleAuth -- update');
-                return $consulting;
+            case 'update': // return item
+                return $bot->get($params['collection'], $params['item_id']);
                 break;
             case 'delete':
-                $logger->debug('eplaborHandleAuth -- delete');
-                
-                $updates = [
-                    'form_params' => [
-                        'status' => 'deleted'
-                    ]
-                ];
-                //  PATCH /:project/items/:collection/:id
-                $base_uri = 'http://localhost';
-                $client = new GuzzleHttp\Client(['base_uri' => $base_uri]);
-                $res = $client->patch('/eplabor/items/eplabor_consultings/' . $params['id'], $updates );
-                // $logger->debug(print_r($res->getBody(), true));
-                return $res->getBody();
+                return $bot->delete($params['collection'], $params['item_id']);
                 break;
         }
-
     }
 
 }
 
-?>
+if (!function_exists('eplaborProcessItem')) {
+    // 아이템 처리
+    function eplaborProcessItem(Request $request)
+    {
+        // initilize api
+        eplaborInitAPI($request);
+
+        // 모델 외 파라미터 정리 후 제거
+        if (!emtpy($params['collection'])) {
+            $collection = $params['collection'];
+            unset($params['collection']);
+        }
+        if (!emtpy($params['action_type'])) {
+            $action_type = $params['action_type'];
+            unset($params['action_type']);
+        }
+
+        switch ($params['action_type']) {
+            case 'create': // return item
+                return $bot->get($params['collection'], $params['item_id']);
+                break;
+            case 'update': // return item
+                return $bot->update($params['collection'], $params['item_id'], $params);
+                break;
+            case 'delete':
+                return $bot->delete($params['collection'], $params['item_id']);
+                break;
+        }
+        return $results;
+    }
+}
