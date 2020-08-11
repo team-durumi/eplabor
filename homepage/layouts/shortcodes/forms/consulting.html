@@ -4,7 +4,7 @@
     상담전화: {{ .Site.Data.eplabor.tel }}
 </div>
 
-<form id="consulting_request" class="needs-validation" novalidate>
+<form id="createConsultingForm" class="needs-validation" novalidate>
     <fieldset id="consultee" class="border p-3 my-3">
         <input type="hidden" name="collection" value="eplabor_consultings">
         <input type="hidden" name="action_type" value="create">
@@ -276,5 +276,5 @@
         </div>
     </fieldset>
     
-    <button type="button" id="consulting-request-submit" class="btn btn-primary text-white">신청하기</button>
+    <button type="button" id="createConsultingFormButton" class="btn btn-primary text-white">신청하기</button>
 </form>

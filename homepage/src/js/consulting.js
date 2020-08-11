@@ -1,53 +1,56 @@
 import $ from "cash-dom"
-import DirectusService from "./modules/DirectusService"
 import { Modal } from "bootstrap"
 
 $(() => {
-    // 컨설팅 상세 화면 -- 인증 모달창 처리
+    // 상담 상세 화면 -- 인증 모달창 표시 시 데이터 전달
     let authModal = document.querySelector('#authModal')
-    let authModalInstance = new Modal(authModal)
-    authModal.addEventListener('show.bs.modal', (event) => {
-        let button = event.relatedTarget
-        let type = button.getAttribute('data-type')
-        let typeString = (type == 'update') ? '수정' : '삭제'
-        let modalTitle = authModal.querySelector('.modal-title')
-        let modalAction = authModal.querySelector('#action')
-        modalTitle.textContent = '상담 ' + typeString + ' - 비밀번호 확인'
-        modalAction.value = type
-        // console.log(type, typeString, modalTitle)
-    })
-    authModal.addEventListener('hide.bs.modal', (event) => {
-        authModal.querySelector('form').reset()
-    })
+    if (authModal) {
+        authModal.addEventListener('show.bs.modal', (event) => {
+            let button = event.relatedTarget
+            let type = button.getAttribute('data-type')
+            let typeString = (type == 'update') ? '수정' : '삭제'
+            let modalTitle = authModal.querySelector('.modal-title')
+            let modalAction = authModal.querySelector('#action')
+            modalTitle.textContent = '상담 ' + typeString + ' - 비밀번호 확인'
+            modalAction.value = type
+            // console.log(type, typeString, modalTitle)
+        })
+        authModal.addEventListener('hide.bs.modal', (event) => {
+            authModal.querySelector('form').reset()
+        })
+    }
 
-    // 컨설팅 상세 화면 -- 인증 성공 시 수정 모달창 처리
+    // 상담 상세 화면 -- 상담 수정폼 모달 표시할 때 오류 바로잡기
     let updateConsultingFormModal = document.querySelector('#updateConsultingFormModal')
-    let updateConsultingFormModalInstance = new Modal(updateConsultingFormModal)
-    updateConsultingFormModal.addEventListener('shown.bs.modal', (event) => {
-        $('body').addClass('modal-open')
-    })
-    updateConsultingFormModal.addEventListener('hide.bs.modal', (event) => {
-        $('.modal-backdrop').hide()
-    })
+    if (updateConsultingFormModal) {
+        updateConsultingFormModal.addEventListener('shown.bs.modal', (event) => {
+            $('body').addClass('modal-open')
+        })
+        updateConsultingFormModal.addEventListener('hide.bs.modal', (event) => {
+            $('.modal-backdrop').hide()
+        })
+    }
 
-    // 컨설팅 상세 화면 -- 수정 모달창에서 실제 수정 처리
+    // 상담 상세 화면 -- 인증 성공 시 상담 수정폼에 아이템 데이터 채우기
     let authModalSubmit = $('#auth-modal-submit')
-    if(authModalSubmit) {
+    if (authModal && authModalSubmit) {
+        let authModalInstance = new Modal(authModal)
+        let updateConsultingFormModalInstance = new Modal(updateConsultingFormModal)
         authModalSubmit.on('click', function (event) {
             let params = {
                 "string": $('#passwd').val(),
                 "collection": $('#collection').val(),
-                "id": $('#item_id').val(),
+                "item_id": $('#item_id').val(),
                 "type": $('#action').val(),
             };
             var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
             $('#spinner-screen').show()
             postData('http://localhost:8080/eplabor/custom/auth', params)
                 .then(res => {
-                    // console.log(res)
+                    console.log(res)
                     $('#spinner-screen').hide()
                     if (res.hasOwnProperty('data') && res.data.valid) {
-                        // alert('이제 수정할 수 있습니다.')
+                        alert('이제 수정할 수 있습니다.')
                         authModalInstance.hide()
                         updateConsultingFormModalInstance.show()
                         fillForm($('form', updateConsultingFormModal), res.data)
@@ -56,11 +59,55 @@ $(() => {
                     }
                     if (res.hasOwnProperty('error') && res.error.message) alert(errorMessage);
                 })
-                .catch(function (error) {
+                .catch(error => {
                     console.log(error)
                     alert(errorMessage)
                 });
         });
+    }
+
+    // 상담 상세 화면 -- 상담 수정 처리
+    let updateConsultingFormButton = $('#updateConsultingFormButton');
+    if (updateConsultingFormButton) {
+        updateConsultingFormButton.on('click', (event) => {
+            console.log('updateConsultingFormButton')
+            let updateConsultingForm = $('#updateConsultingForm');
+            var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
+            $('#spinner-screen').show()
+            let params = new FormData(updateConsultingForm)
+            for (var pair of params.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]); 
+            }
+            postData('http://localhost:8080/eplabor/custom/auth/process', params)
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+
+        })
+    }
+
+    // 상담 신규 추가 /consulting/request
+    let createConsultingFormButton = $('#createConsultingFormButton')
+    if(createConsultingFormButton) {
+        createConsultingFormButton.on('click', event => {
+            let createConsultingForm = $('#createConsultingFormButton')
+            var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
+            $('#spinner-screen').show()
+            let params = {}
+            for (var pair of new FormData(document.querySelector('#createConsultingForm')).entries()) {
+                params[pair[0]] = pair[1]
+            }
+            postData('http://localhost:8080/eplabor/custom/auth/process', params)
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        })
     }
 
     function postData(url = '', data = {}) {
@@ -94,7 +141,7 @@ $(() => {
                 }
                 if (elm.getAttribute('type') == 'radio') {
                     var item = form.querySelector('[name=' + key + '][value="' + data[key] + '"]')
-                    console.log(key, data[key])
+                    // console.log(key, data[key])
                     item.checked = true
                 }
             }
@@ -112,23 +159,7 @@ $(() => {
                     console.log('error')
                 } else {
                     event.preventDefault();
-                    let params = {};
-                    let formData = new FormData(form);
-                    formData.forEach((value, key) => {params[key] = value});
-                    // let params = JSON.stringify(object);
-                    
-                    if (params.action_type == 'create') {
-                        console.log('create')
-                        DirectusService.create(params)
-                            .then(res => { console.log(res) })
-                            .error(err => { console.log(error) })
-                    }
-                    if (params.action_type == 'update') {
-                        console.log('update')
-                        DirectusService.update(params)
-                            .then(res => { console.log(res) })
-                            .error(err => { console.log(error) })
-                    }
+                    console.log('good')
                 }
                 form.classList.add('was-validated');
             }, false);

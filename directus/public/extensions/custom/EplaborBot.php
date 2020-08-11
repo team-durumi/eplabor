@@ -34,11 +34,10 @@ class EplaborBot
         $field = $fields[$params['collection']] ?: null;
         $hash = $this->get($params['collection'], $params['item_id'], $field);
         $payload = ['hash' => $hash, 'string' => $params['string']];
-        $this->logger->debug(print_r($payload, true));
+        // $this->logger->debug(print_r($payload, true));
         try {
             $response = $this->client->post('/eplabor/utils/hash/match', ['form_params' => $payload]);
-            $result = json_decode( $response->getBody(), true);
-            $message = $result['data']['valid'] ?: false;
+            $message = json_decode( $response->getBody(), true);
         } catch (Exeption $e) {
             $this->logger->error($e->getMessage());
             $message = $e->getMessage();
