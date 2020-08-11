@@ -9,7 +9,8 @@
             </div>
             <div class="modal-body">
                 <form id="auth-modal-form">
-                    <input type="hidden" id="consulting-id" value="{{ .Page.Params.consulting_id }}">
+                    <input type="hidden" id="collection" value="{{ .Page.Params.collection }}">
+                    <input type="hidden" id="item_id" value="{{ .Page.Params.item_id }}">
                     <input type="hidden" id="action" value="update">
                     <label for="message-text" class="sr-only">비밀번호</label>
                     <input type="password" id="passwd" name="password" class="form-control"

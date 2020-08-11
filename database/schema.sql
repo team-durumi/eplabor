@@ -2,11 +2,11 @@
 -- 은평구노동자종합지원센터 상담 요청자 인적 정보 및 노동 환경, 문의 답변 정보
 
 CREATE OR REPLACE TABLE `eplabor_consultings` (
-  `id` int(15) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '상담 아이디',
+  `id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '상담 아이디',
   `status` varchar(20) NOT NULL DEFAULT 'published' COMMENT '상태 (draft, published, deleted)',
-  `owner` int(10) unsigned DEFAULT NULL COMMENT '작성자',
+  `owner` int(10) UNSIGNED DEFAULT NULL COMMENT '작성자',
   `created_on` datetime DEFAULT NULL COMMENT '작성시간',
-  `modified_by` int(10) unsigned DEFAULT NULL COMMENT '수정자',
+  `modified_by` int(10) UNSIGNED DEFAULT NULL COMMENT '수정자',
   `modified_on` datetime DEFAULT NULL COMMENT '수정시간',
   `consultee_gender` varchar(6) NOT NULL COMMENT '상담요청자 성별 (남성, 여성)',
   `consultee_age` varchar(15) NOT NULL COMMENT '상담요청자 연령대 (10대부터 각각 70대 이상)',
@@ -25,8 +25,8 @@ CREATE OR REPLACE TABLE `eplabor_consultings` (
   `labor_sector` varchar(50) COMMENT '업종',
   `labor_occupation` varchar(255) COMMENT '직종',
   `labor_longevity` varchar(20) COMMENT '근속기간 (년 개월)',
-  `labor_working_days_per_week` tinyint(1) UNSIGNED COMMENT '근로일 (주 일)',
-  `labor_working_hours_per_week` tinyint(1) UNSIGNED COMMENT '근로시간 (주 시간)',
+  `labor_working_days_per_week` TINYINT(1) UNSIGNED COMMENT '근로일 (주 일)',
+  `labor_working_hours_per_week` TINYINT(1) UNSIGNED COMMENT '근로시간 (주 시간)',
   `labor_average_monthly_wage` int(11) UNSIGNED COMMENT '월 평균임금 ( 만원)',
   `labor_contracts` varchar(15) COMMENT '근로계약서 작성여부',
   `labor_rules` varchar(15) COMMENT '취업규칙 작성여부',
@@ -45,11 +45,11 @@ ALTER TABLE `eplabor_consultings` AUTO_INCREMENT = 1;
 -- 은평구노동자종합지원센터 교육 참여자 인적 정보
 
 CREATE OR REPLACE TABLE `eplabor_workshop_participants` (
-  `id` int(15) unsigned PRIMARY KEY AUTO_INCREMENT COMMENT '교육 참여자 아이디',
+  `id` int(15) UNSIGNED PRIMARY KEY AUTO_INCREMENT COMMENT '교육 참여자 아이디',
   `status` varchar(20) NOT NULL DEFAULT "public" COMMENT '상태 (draft, published, deleted)',
-  `owner` int(10) unsigned NOT NULL COMMENT '작성자',
+  `owner` int(10) UNSIGNED NOT NULL COMMENT '작성자',
   `created_on` datetime NOT NULL COMMENT '작성시간',
-  `modified_by` int(10) unsigned COMMENT '수정자',
+  `modified_by` int(10) UNSIGNED COMMENT '수정자',
   `modified_on` datetime COMMENT '수정시간',
   `participant_name` varchar(100) NOT NULL COMMENT '교육 참여자 성명 (최대 길이 30자)',
   `participant_gender` varchar(6) NOT NULL COMMENT '교육 참여자 성별 (남성, 여성)',
@@ -58,9 +58,9 @@ CREATE OR REPLACE TABLE `eplabor_workshop_participants` (
   `participant_email` varchar(255) NOT NULL COMMENT '교육 참여자 이메일 (id@domain.com)',
   `participant_phone` varchar(14) NOT NULL COMMENT '교육 참여자 휴대폰 혹은 전화번호 (0100-0000-0000)',
   `participant_password` varchar(60) NOT NULL COMMENT '교육 참여자 비밀번호 (수정/삭제 시 필요)',
-  `participant_comment` text COMMENT '교육 참여자 하고 싶은 말'
-  `participant_privacy_agreement` tinyint(1) unsigned COMMENT '개인정보수집 및 이용 동의'
-  `participant_portrait_agreement` tinyint(1) unsigned COMMENT '초상권 활용 동의' 
+  `participant_comment` text COMMENT '교육 참여자 하고 싶은 말',
+  `participant_privacy_agreement` TINYINT(1) UNSIGNED NOT NULL COMMENT '개인정보수집 및 이용 동의',
+  `participant_portrait_agreement` TINYINT(1) UNSIGNED NOT NULL COMMENT '초상권 활용 동의',
   `workshop_name` varchar(255) COMMENT '참여 교육 프로그램'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

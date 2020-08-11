@@ -1,11 +1,15 @@
 const path = require('path');
+const glob = require('glob');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: [path.resolve('src', 'js', 'app.js')],
+    entry: glob.sync('./src/js/**.js').reduce(function (obj, el) {
+        obj[path.parse(el).name] = el;
+        return obj
+    }, {}),
     output: {
-        filename: '[name].bundle.min.js',
+        filename: devMode ? '[name].js' : '[name].[hash].min.js',
         chunkFilename: '[name].bundle.min.js',
         path: path.resolve('static', 'assets')
     },
@@ -30,7 +34,7 @@ module.exports = {
         }),
     ],
     devServer: {
-        proxy: { 
+        proxy: {
             '/': 'http://localhost:1313'
         },
         publicPath: '/assets/',
