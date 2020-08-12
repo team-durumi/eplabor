@@ -47,7 +47,7 @@ $(() => {
             $('#spinner-screen').show()
             postData('http://localhost:8080/eplabor/custom/auth', params)
                 .then(res => {
-                    console.log(res)
+                    console.log(res.data)
                     $('#spinner-screen').hide()
                     if (res.hasOwnProperty('data') && res.data.valid) {
                         alert('이제 수정할 수 있습니다.')
@@ -68,16 +68,23 @@ $(() => {
 
     // 상담 상세 화면 -- 상담 수정 처리
     let updateConsultingFormButton = $('#updateConsultingFormButton');
-    if (updateConsultingFormButton) {
+    if (updateConsultingFormButton && updateConsultingFormModal) {
         updateConsultingFormButton.on('click', (event) => {
             console.log('updateConsultingFormButton')
             let updateConsultingForm = $('#updateConsultingForm');
+            if(updateConsultingForm.hasClass('has-errors')) {
+                console.log(updateConsultingForm); return false;
+            } 
             var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
             $('#spinner-screen').show()
-            let params = new FormData(updateConsultingForm)
-            for (var pair of params.entries()) {
-                console.log(pair[0]+ ', ' + pair[1]); 
+            let params = {}
+            let formData = new FormData(updateConsultingForm.get(0))
+            for (var pair of formData.entries()) {
+                params[pair[0]] = pair[1]
             }
+            if(!params['consultee_password']) delete params['consultee_password'];
+            let updateConsultingFormModalInstance = new Modal(updateConsultingFormModal)
+            updateConsultingFormModalInstance.hide()
             postData('http://localhost:8080/eplabor/custom/auth/process', params)
                 .then(res => {
                     console.log(res)
@@ -94,6 +101,9 @@ $(() => {
     if(createConsultingFormButton) {
         createConsultingFormButton.on('click', event => {
             let createConsultingForm = $('#createConsultingFormButton')
+            if(createConsultingForm.hasClass('has-errors')) {
+                console.log(createConsultingForm); return false;
+            } 
             var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
             $('#spinner-screen').show()
             let params = {}
@@ -132,16 +142,13 @@ $(() => {
         if (!form) throw Error('폼이 없습니다.')
         form = form[0]
         Object.keys(data).forEach(function (key) {
-            var elm = form.querySelector('[name=' + key + ']')
-            if (elm && data[key]) {
-                if (elm.getAttribute('type') == 'text'
-                    || elm.getAttribute('type') == 'email'
-                    || elm.tagName == 'TEXTAREA') {
+            let elm = form.querySelector('[name=' + key + ']')
+            if (elm && data[key] && elm.getAttribute('type') != 'password') {
+                console.log(elm.getAttribute('type'))
+                if (elm.getAttribute('type') != 'radio') {
                     elm.value = data[key]
-                }
-                if (elm.getAttribute('type') == 'radio') {
-                    var item = form.querySelector('[name=' + key + '][value="' + data[key] + '"]')
-                    // console.log(key, data[key])
+                } else {
+                    let item = form.querySelector('[name=' + key + '][value="' + data[key] + '"]')
                     item.checked = true
                 }
             }
@@ -157,6 +164,7 @@ $(() => {
                 if (form.checkValidity() === false) {
                     event.preventDefault(); event.stopPropagation();
                     console.log('error')
+                    form.classList.add = 'has-errors'
                 } else {
                     event.preventDefault();
                     console.log('good')

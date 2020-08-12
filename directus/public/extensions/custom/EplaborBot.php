@@ -33,6 +33,7 @@ class EplaborBot
         ];
         $field = $fields[$params['collection']] ?: null;
         $hash = $this->get($params['collection'], $params['item_id'], $field);
+        // $this->logger->debug(print_r($hash, true));
         $payload = ['hash' => $hash, 'string' => $params['string']];
         // $this->logger->debug(print_r($payload, true));
         try {

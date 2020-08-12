@@ -13,7 +13,7 @@ if (!function_exists('eplaborHandleAuth')) {
         $bot = new EplaborBot();
         $params = $request->getParsedBody();
         $logger->debug('eplaborHandleAuth');
-        $logger->debug(print_r($params, true));
+        // $logger->debug(print_r($params, true));
 
         // auth
         $authenticated = $bot->check($params);
@@ -44,7 +44,7 @@ if (!function_exists('eplaborProcessItem')) {
         $bot = new EplaborBot();
         $params = $request->getParsedBody();
         $logger->debug('eplaborProcessItem');
-        $logger->debug(print_r($request->getParsedBody(), true));
+        $logger->debug(print_r($params, true));
 
         // 모델 외 파라미터 정리 후 제거
         if (!empty($params['collection'])) {
@@ -54,6 +54,10 @@ if (!function_exists('eplaborProcessItem')) {
         if (!empty($params['action_type'])) {
             $action_type = $params['action_type'];
             unset($params['action_type']);
+        }
+        if (!empty($params['id'])) {
+            $id = $params['id'];
+            unset($params['id']);
         }
 
         switch ($action_type) {
