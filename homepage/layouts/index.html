@@ -1,38 +1,41 @@
 {{ define "main" }}
 {{ $front := .Site.Data.front }}
 <main aria-role="main">
-  {{ partial "carousel.html" $front.slides }}
+    {{ partial "carousel.html" $front.slides }}
 
-  {{ .Content }}
+    {{ .Content }}
 
-  {{ $basic := dict "title" .Site.Title "description" .Site.Data.eplabor.tagLine }}
-  {{ $cols := dict "cols" $front.center_info }}
-  {{ $three := merge $basic $cols }}
-  {{ partial "block-three-cols.html" $three }}
+    {{ $basic := dict "title" .Site.Title "description" .Site.Data.eplabor.tagLine }}
+    {{ $cols := dict "cols" $front.center_info }}
+    {{ $three := merge $basic $cols }}
+    {{ partial "block-three-cols.html" $three }}
 
-  <div class="recent-blocks py-5 my-5 bg-light">
-    <div class="container">
-      <div class="row">
-        {{ range first 2 $front.recents }}
-        <div class="col-lg-6">
-          {{ partial "recent_block.html" . }}
+    <div class="recent-blocks py-5 my-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {{ range first 2 $front.recents }}
+                <div class="col-lg-6">
+                    {{ partial "recent_block.html" . }}
+                </div>
+                {{ end }}
+            </div>
         </div>
-        {{ end }}
-      </div>
     </div>
-  </div>
 
-  <div class="recent-blocks-workshops container">
-    {{ partial "recent_workshops.html" $three }}
-  </div>
-  
+    <div class="recent-blocks-workshops container">
+        {{ partial "recent_workshops.html" $three }}
+    </div>
 
-  {{ $district := .Site.Data.partners.district }}
-  {{ $public := .Site.Data.partners.public }}
-  {{ $seoul := .Site.Data.partners.seoul }}
-  {{ $partners := dict "district" $district "public" $public "seoul" $seoul }}
 
-  {{ partial "footer-partners.html" $partners }}
+    {{ $district := .Site.Data.partners.district }}
+    {{ $public := .Site.Data.partners.public }}
+    {{ $seoul := .Site.Data.partners.seoul }}
+    {{ $partners := dict "district" $district "public" $public "seoul" $seoul }}
 
+    {{ partial "footer-partners.html" $partners }}
 </main>
 {{ end }}
+
+{{ define "addscripts" }}
+<script src="/assets/front.js"></script>
+{{end}}

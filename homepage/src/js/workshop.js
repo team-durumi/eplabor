@@ -1,6 +1,6 @@
-import $ from "cash-dom"
-import DirectusService from "./modules/DirectusService"
-import { Modal } from "bootstrap"
+import $ from "jquery/dist/jquery.slim.js"
+import "popper.js"
+import "bootstrap"
 
 $(() => {
     // 교육 프로그램 참여 신청

@@ -1,42 +1,46 @@
-import $ from "cash-dom"
-import { Modal } from "bootstrap"
+import $ from "jquery/dist/jquery.slim.js"
 
 $(() => {
+    console.log(bootstrap);
+    $('.btn--update').on('click', (event) => {
+        console.log(event)
+    })
     // 상담 상세 화면 -- 인증 모달창 표시 시 데이터 전달
-    let authModal = document.querySelector('#authModal')
-    if (authModal) {
-        authModal.addEventListener('show.bs.modal', (event) => {
-            let button = event.relatedTarget
-            let type = button.getAttribute('data-type')
-            let typeString = (type == 'update') ? '수정' : '삭제'
-            let modalTitle = authModal.querySelector('.modal-title')
-            let modalAction = authModal.querySelector('#action')
-            modalTitle.textContent = '상담 ' + typeString + ' - 비밀번호 확인'
-            modalAction.value = type
-            // console.log(type, typeString, modalTitle)
+    let authModal = $('#authModal')
+    let test = authModal.modal();
+    console.log(test)
+    if (authModal.length > 0) {
+        console.log('consulting.js')
+        $(document).on('shown.bs.modal', authModal, function(event) {
+            console.log(authModal)
+            let modalAction = $('#action', authModal)
+            console.log(modalAction)
+            modalAction.val(event.relatedTarget.data('type'))
+            let modalTitle = $('.modal-title', authModal)
+            modalTitle.text('상담 ' + (modalAction.value == 'update') ? '수정' : '삭제' + ' - 비밀번호 확인')
+            console.log(modalAction, modalTitle)
         })
-        authModal.addEventListener('hide.bs.modal', (event) => {
-            authModal.querySelector('form').reset()
+        authModal.on('hide.bs.modal', function(event) {
+            $('form'.authModal).reset()
         })
     }
 
     // 상담 상세 화면 -- 상담 수정폼 모달 표시할 때 오류 바로잡기
-    let updateConsultingFormModal = document.querySelector('#updateConsultingFormModal')
-    if (updateConsultingFormModal) {
-        updateConsultingFormModal.addEventListener('shown.bs.modal', (event) => {
-            $('body').addClass('modal-open')
-        })
-        updateConsultingFormModal.addEventListener('hide.bs.modal', (event) => {
-            $('.modal-backdrop').hide()
-        })
-    }
+    let updateConsultingFormModal = $('#updateConsultingFormModal')
+    // if (updateConsultingFormModal) {
+    //     updateConsultingFormModal.on('shown.bs.modal', (event) => {
+    //         $('body').addClass('modal-open')
+    //     })
+    //     updateConsultingFormModal.on('hide.bs.modal', (event) => {
+    //         $('.modal-backdrop').hide()
+    //     })
+    // }
 
     // 상담 상세 화면 -- 인증 성공 시 상담 수정폼에 아이템 데이터 채우기
     let authModalSubmit = $('#auth-modal-submit')
-    if (authModal && authModalSubmit) {
-        let authModalInstance = new Modal(authModal)
-        let updateConsultingFormModalInstance = new Modal(updateConsultingFormModal)
+    if (authModal.length > 0 && authModalSubmit.length > 0) {
         authModalSubmit.on('click', function (event) {
+            console.log('auth modal submitted!')
             let params = {
                 "string": $('#passwd').val(),
                 "collection": $('#collection').val(),
@@ -47,17 +51,19 @@ $(() => {
             $('#spinner-screen').show()
             postData('http://localhost:8080/eplabor/custom/auth', params)
                 .then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     $('#spinner-screen').hide()
-                    if (res.hasOwnProperty('data') && res.data.valid) {
+                    if (res.data && res.hasOwnProperty('data') && res.data.valid) {
                         alert('이제 수정할 수 있습니다.')
-                        authModalInstance.hide()
-                        updateConsultingFormModalInstance.show()
+                        authModal.hide()
+                        updateConsultingFormModal.show()
                         fillForm($('form', updateConsultingFormModal), res.data)
                     } else {
                         alert('비밀번호가 일치하지 않습니다.')
                     }
-                    if (res.hasOwnProperty('error') && res.error.message) alert(errorMessage);
+                    if (res.hasOwnProperty('error') && res.error.message) {
+                        alert(errorMessage);
+                    }
                 })
                 .catch(error => {
                     console.log(error)
@@ -72,19 +78,18 @@ $(() => {
         updateConsultingFormButton.on('click', (event) => {
             console.log('updateConsultingFormButton')
             let updateConsultingForm = $('#updateConsultingForm');
-            if(updateConsultingForm.hasClass('has-errors')) {
+            console.log(updateConsultingForm)
+            if (updateConsultingForm.hasClass('has-errors')) {
                 console.log(updateConsultingForm); return false;
-            } 
+            }
             var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
             $('#spinner-screen').show()
-            let params = {}
-            let formData = new FormData(updateConsultingForm.get(0))
-            for (var pair of formData.entries()) {
-                params[pair[0]] = pair[1]
-            }
-            if(!params['consultee_password']) delete params['consultee_password'];
-            let updateConsultingFormModalInstance = new Modal(updateConsultingFormModal)
-            updateConsultingFormModalInstance.hide()
+            let params = updateConsultingForm.serializeArray().reduce(function (obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+            if (!params['consultee_password']) delete params['consultee_password'];
+            updateConsultingFormModal.hide()
             postData('http://localhost:8080/eplabor/custom/auth/process', params)
                 .then(res => {
                     console.log(res)
@@ -98,16 +103,16 @@ $(() => {
 
     // 상담 신규 추가 /consulting/request
     let createConsultingFormButton = $('#createConsultingFormButton')
-    if(createConsultingFormButton) {
+    if (createConsultingFormButton) {
         createConsultingFormButton.on('click', event => {
             let createConsultingForm = $('#createConsultingFormButton')
-            if(createConsultingForm.hasClass('has-errors')) {
+            if (createConsultingForm.hasClass('has-errors')) {
                 console.log(createConsultingForm); return false;
-            } 
+            }
             var errorMessage = '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.'
             $('#spinner-screen').show()
             let params = {}
-            for (var pair of new FormData(document.querySelector('#createConsultingForm')).entries()) {
+            for (var pair of new FormData($('#createConsultingForm')).entries()) {
                 params[pair[0]] = pair[1]
             }
             postData('http://localhost:8080/eplabor/custom/auth/process', params)
@@ -144,7 +149,7 @@ $(() => {
         Object.keys(data).forEach(function (key) {
             let elm = form.querySelector('[name=' + key + ']')
             if (elm && data[key] && elm.getAttribute('type') != 'password') {
-                console.log(elm.getAttribute('type'))
+                // console.log(elm.getAttribute('type'))
                 if (elm.getAttribute('type') != 'radio') {
                     elm.value = data[key]
                 } else {
@@ -159,8 +164,8 @@ $(() => {
     var forms = $('.needs-validation')
     if (forms) {
         var validation = Array.prototype.filter.call(forms, function (form) {
-            var button = form.querySelector('button[type=button]');
-            button.addEventListener('click', function (event) {
+            var button = $('button[type=button]', form);
+            button.on('click', function (event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault(); event.stopPropagation();
                     console.log('error')

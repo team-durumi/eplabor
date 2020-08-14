@@ -1,7 +1,9 @@
 
 import "../scss/style.scss"
+import $ from "jquery/dist/jquery.slim.js"
+import "popper.js"
 import * as bootstrap from "bootstrap"
-import $ from "cash-dom"
+import "./consulting.js"
 
 $(() => {
     window.bootstrap = bootstrap
