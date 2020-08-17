@@ -50,11 +50,10 @@ class ProcessConsulting implements HookInterface {
      */
     public function handle($data = null) {
         // 요청 형식에 따라 실행
-        // $this->logger->debug('handle!!');
+        $this->logger->debug('[HOOK] --- handle! --- ' . $this->type);
         if(!empty($this->type) && in_array($this->type, ['create', 'update'])) {
             $this->{$this->type}($data);
         }
-        
         if($this->config->get('env') != 'development') {
             $this->gitPush();
         }
@@ -66,23 +65,23 @@ class ProcessConsulting implements HookInterface {
         $result = file_put_contents('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md', $markdown_string);
         if($result === FALSE) {
             $error = error_get_last();
-            $this->logger->debug(print_r($error, true)); 
+            $this->logger->error(print_r($error, true)); 
         } elseif(is_int($result) && $result > 0) {
-            $this->logger->debug('Written to /vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
+            $this->logger->debug('[HOOK] Written to /vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
         }
         // $this->logger->debug('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
     }
 
     private function update($data = null) {
-        $this->logger->debug('update()--------');
-        $this->logger->debug(print_r($data, true));
+        $this->logger->debug('[HOOK] --- update() --- ' . $data['id']);
+        // $this->logger->debug(print_r($data, true));
         // 삭제
         if(!empty($data['status']) && $data['status'] == 'deleted') {
             $output = shell_exec('rm -f /vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
-            $this->logger->debug($output . ' deleted?');
+            $this->logger->debug($output . ' deleted');
         } else {
             $item = $this->tableGateway->getOneData($data['id']);
-            $this->logger->debug(print_r($item, true));
+            // $this->logger->debug(print_r($item, true));
             $this->create($item);
         }
     }
@@ -93,8 +92,12 @@ class ProcessConsulting implements HookInterface {
         // UTC => Asia/Seoul
         $l10nDate = new \DateTime($data['created_on'], new \DateTimeZone('UTC'));
         $l10nDate->setTimeZone(new \DateTimeZone('Asia/Seoul'));
-        $data['created_on'] = $l10nDate->format('Y-m-d H:i:s');
+        // TO ISO8601
+        $data['created_on'] = $l10nDate->format(\DateTime::ISO8601);
         $data['consulting_status'] = !empty($data['consulting_answer']) ? 'answered' : 'waiting';
+
+        $lines = explode(PHP_EOL, $data['consulting_answer']);
+        $data['consulting_answer'] = implode("\n    ", $lines );
 
         return $this->view->fetch('markdown.twig', $data);
     }

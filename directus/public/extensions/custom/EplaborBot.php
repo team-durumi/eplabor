@@ -11,7 +11,7 @@ class EplaborBot
     {
         $http_params = [
             'base_uri' => 'http://localhost/',
-            // 'debug' => true,
+            // 'debug' => true
             'headers' => [
                 'Authorization' => 'Bearer ' . getenv('BOT_TOKEN'),
                 'Content-Type' => 'application/json',
@@ -32,17 +32,26 @@ class EplaborBot
             'eplabor_workshop_paricipants' => 'participant_password'
         ];
         $field = $fields[$params['collection']] ?: null;
-        $hash = $this->get($params['collection'], $params['item_id'], $field);
+        try {
+            $hash = $this->get($params['collection'], $params['item_id'], $field);
+        } catch(Exception $e) {
+            $this->logger->error($e->getMessage());
+            return [ 'error' => $e->getMessage() ];
+        }
+        
         // $this->logger->debug(print_r($hash, true));
         $payload = ['hash' => $hash, 'string' => $params['string']];
         // $this->logger->debug(print_r($payload, true));
         try {
             $response = $this->client->post('/eplabor/utils/hash/match', ['form_params' => $payload]);
-            $message = json_decode( $response->getBody(), true);
+            $this->logger->debug('[bot->check($params) => $response->getBody() ' . $response->getBody());
+            $message = json_decode( $response->getBody(), true );
+            $this->logger->debug('[bot->check($params) => messase = ' . print_r($message, true));
         } catch (Exeption $e) {
             $this->logger->error($e->getMessage());
-            $message = $e->getMessage();
+            return [ 'error' => $e->getMessage() ];
         }
+        // $this->logger->debug(print_r($message, true));
 
         return $message;
     }
@@ -74,7 +83,7 @@ class EplaborBot
 
     public function delete($collection, $id) // soft-delete
     {
-        return $this->client->update('/eplabor/items/' . $collection . '/' . $id, ['form_params' => ['status' => 'deleted']]);
+        return $this->client->patch('/eplabor/items/' . $collection . '/' . $id, ['form_params' => ['status' => 'deleted']]);
     }
 
     public function ping()

@@ -8,7 +8,7 @@
     <fieldset id="consultee" class="border p-3 my-3">
         <input type="hidden" name="collection" value="eplabor_consultings">
         <input type="hidden" name="action_type" value="create">
-        <legend class="border-bottom pb-3 mb-3">상담신청자 정보</legend>
+        <legend class="d-inline-block px-3">상담신청자 정보</legend>
         <div class="row mb-3">
             <div class="col-lg-6 required">
                 <label for="consultee_name" class="form-label">성명</label>
@@ -68,7 +68,7 @@
     </fieldset>
 
     <fieldset id="labor" class="border p-3 my-3">
-        <legend class="border-bottom pb-3 mb-3">노동 환경</legend>
+        <legend class="d-inline-block px-3">노동 환경</legend>
         <div class="row mb-3">
             <div class="col-lg-6 required">
                 <label for="labor_company_name" class="form-label">사업장명</label>
@@ -204,7 +204,7 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts3" value="교부">
                     <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts3">교부</label>
-                </duv>
+                </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts4" value="미교부">
                     <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts4">미교부</label>
@@ -254,7 +254,7 @@
     </fieldset>
 
     <fieldset id="consulting" class="border p-3 my-3">
-        <legend class="border-bottom pb-3 mb-3">상담 요청 정보</legend>
+        <legend class="d-inline-block px-3">상담 요청 정보</legend>
         <div class="row mb-3 required">
             <label for="consulting_category" class="col-md-2 form-label">상담유형</label>
             <div class="col-md-10">
@@ -278,3 +278,10 @@
     
     <button type="button" id="createConsultingFormButton" class="btn btn-primary text-white">신청하기</button>
 </form>
+<div id="spinner-screen">
+    <div class="spinner position-absolute">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>

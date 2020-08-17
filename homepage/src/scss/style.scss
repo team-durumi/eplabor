@@ -4,6 +4,10 @@ dd {
     margin-bottom: .2rem;
 }
 
+legend {
+    width: auto;
+}
+
 .body {
     h3 {
         margin-top: 3rem;
@@ -31,8 +35,8 @@ ul {
     line-height: 2;
 }
 
-.about,
-.consulting {
+.container.about,
+.container.consulting {
     h3, h4, h5 {
         color: $green;
     }

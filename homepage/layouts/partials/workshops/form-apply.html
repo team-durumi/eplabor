@@ -1,7 +1,9 @@
-
 <h3 class="border-bottom pb-3 my-3" id="apply-workshop">참여 신청</h3>
-<h4>개인정보수집 및 이용 동의</h4>
-<p>은평구노동자종합지원센터는 개인정보보호법 등 관련법령상의 개인정보보호 규정을 준수하며, 개인정보 취급에 대한 사항은 다음과 같습니다.</p>
+
+<div class="card bg-info text-white p-3">    
+    <h4>개인정보수집 및 이용 동의</h4>
+    <p>은평구노동자종합지원센터는 개인정보보호법 등 관련법령상의 개인정보보호 규정을 준수하며, 개인정보 취급에 대한 사항은 다음과 같습니다.</p>
+</div>
 
 <form id="participate-workshop" class="needs-validation card card-default mt-3 p-3" novalidate>
     <div class="table-responsive">
@@ -117,7 +119,7 @@
             </div>
         </div>
         <div class="row mb-3">
-            <div class="ccol-lg-6 required">
+            <div class="col-lg-4 required">
                 <label for="participant_gender" class="form-label">* 성별</label>
                 <select name="participant_gender" id="participant_gender" class="form-control">
                     <option value="">- 성별 선택 -</option>
@@ -125,10 +127,10 @@
                     <option value="여성">여성</option>
                 </select>
             </div>
-            <div class="col-lg-6 required">
+            <div class="col-lg-4 required">
                 <label for="participant_age" id="participant_age" class="form-label">연령대</label>
                 <select name="participant_age" class="form-control">
-                    <option selected>- 연령대 선택 -</option>
+                    <option value="">- 연령대 선택 -</option>
                     <option value="10대" required>10대</option>
                     <option value="20대">20대</option>
                     <option value="30대">30대</option>
@@ -138,10 +140,10 @@
                     <option value="70대 이상">70대 이상</option>
                 </select>
             </div>
-            <div class="col-lg-6 required">
+            <div class="col-lg-4 required">
                 <label for="participant_residence" id="participant_residence" class="form-label">거주지역</label>
                 <select name="participant_residence" class="form-control">
-                    <option selected>- 거주지역 선택 -</option>
+                    <option value="">- 거주지역 선택 -</option>
                     <option value="은평구" required>은평구</option>
                     <option value="은평구 외">은평구 외</option>
                     <option value="서울 외">서울 외</option>
@@ -167,7 +169,7 @@
     </fieldset>
     <div class="text-right my-3">
         <!-- <div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Lf4EeIUAAAAALMy5s_E02BmLf7gOhbRSo_ia5UU&amp;co=aHR0cHM6Ly93d3cubWFwb2xhYm9yLm9yZzo0NDM.&amp;hl=ko&amp;v=BT5UwN2jyUJCo7TdbwTYi_58&amp;size=invisible&amp;cb=47kh3icbwpl1" width="256" height="60" role="presentation" name="a-bzqwx3bhmoxq" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div> -->
-        <button id="parcitipate-workshop-submit" type="button" class="btn btn-primary text-white col-md-1 col-sm-5 col-xs-12">등록</button>
-        <button id="canceled" type="button" class="btn btn-default col-md-1 col-sm-5 col-xs-12">취소</button>
+        <button id="parcitipate-workshop-submit" type="button" class="btn btn-primary text-white col-md-1 col-sm-5 col-xs-12" data-action="create">등록</button>
+        <button id="canceled" type="button" class="btn btn-default col-md-1 col-sm-5 col-xs-12" data-action="reset">취소</button>
     </div>
 </form>

@@ -12,23 +12,31 @@ if (!function_exists('eplaborHandleAuth')) {
         $logger = $container->get('logger');
         $bot = new EplaborBot();
         $params = $request->getParsedBody();
-        $logger->debug('eplaborHandleAuth');
+        // $logger->debug('[/custom/auth] eplaborHandleAuth -- params');
         // $logger->debug(print_r($params, true));
 
+        $item = [];
+
         // auth
-        $authenticated = $bot->check($params);
-        if ($authenticated === false) {
-            return $authenticated;
+        $auth = $bot->check($params);
+        $logger->debug('[/custom/auth] -- $bot->check($param) : ' . print_r($auth, true));
+        // 비밀번호 불일치
+        if(!$auth['data']['valid']) {
+            return $auth['data'];
         }
-        switch ($params['type']) {
+        $logger->debug($params['action_type']);
+        switch ($params['action_type']) {
             case 'update': // return item
                 $item = $bot->get($params['collection'], $params['item_id']);
                 break;
             case 'delete':
-                $item = $bot->delete($params['collection'], $params['item_id']);
+                $response = $bot->delete($params['collection'], $params['item_id']);
+                if($response->getStatusCode() == 204) {
+                    return ['status' => 'deleted', 'id' => $params['item_id'], 'valid' => true];
+                }
                 break;
         }
-        $item['valid'] = $authenticated['data']['valid'];
+        $item['valid'] = true;
         return $item;
     
     }
@@ -43,32 +51,30 @@ if (!function_exists('eplaborProcessItem')) {
         $logger = $container->get('logger');
         $bot = new EplaborBot();
         $params = $request->getParsedBody();
-        $logger->debug('eplaborProcessItem');
-        $logger->debug(print_r($params, true));
+        $logger->debug('[/custom/auth/process] eplaborProcessItem');
+        // $logger->debug(print_r($params, true));
 
         // 모델 외 파라미터 정리 후 제거
-        if (!empty($params['collection'])) {
-            $collection = $params['collection'];
-            unset($params['collection']);
-        }
-        if (!empty($params['action_type'])) {
-            $action_type = $params['action_type'];
-            unset($params['action_type']);
-        }
-        if (!empty($params['id'])) {
-            $id = $params['id'];
-            unset($params['id']);
+        $payloads = [];
+        $targets = ['collection', 'action_type', 'item_id'];
+        foreach ($targets as $key) {
+            // $logger->debug($key . '--' . $params[$key]);
+            if (!empty($params[$key])) {
+                $payloads[$key] = $params[$key]; unset($params[$key]);
+            }
         }
 
-        switch ($action_type) {
+        switch ($payloads['action_type']) {
             case 'create': 
-                return $bot->create($collection, $params);
+                return $bot->create($payloads['collection'], $params);
                 break;
             case 'update':
-                return $bot->update($collection, $id, $params);
+                $res = $bot->update($payloads['collection'], $payloads['id'], $params);
+                $logger->debug(print_r($res, true));
+                return $res;
                 break;
             case 'delete':
-                return $bot->delete($collection, $id);
+                return $bot->delete($payloads['collection'], $payloads['id']);
                 break;
         }
     }

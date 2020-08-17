@@ -3,6 +3,7 @@ languageCode: ko-kr
 defaultContentLanguage: ko
 hasCJKLanguage: true
 
-taxonomies:
-  category: categories
-  tag: tags
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

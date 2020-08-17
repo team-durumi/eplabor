@@ -6,8 +6,10 @@
     "private": true,
     "browserslist": "> 1%",
     "dependencies": {
-        "jquery": "^3.5.1",
+        "@babel/polyfill": "^7.10.4",
+        "@directus/sdk-js": "^6.2.1",
         "bootstrap": "^4.5",
+        "jquery": "^3.5.1",
         "popper.js": "^1.16.1"
     },
     "devDependencies": {
@@ -27,9 +29,9 @@
     "scripts": {
         "start": "run-p start:*",
         "start:hugo": "hugo server -D --bind 0.0.0.0",
-        "start:webpack": "webpack-dev-server --port 3000 --hot --host 0.0.0.0",
+        "start:webpack": "webpack-dev-server -d",
         "build": "run-s build:webpack build:hugo",
-        "build:hugo": "hugo",
+        "build:hugo": "hugo -D --minify --gc",
         "build:webpack": "webpack --mode=production"
     }
 }

@@ -21,7 +21,7 @@
                     <span class="name float-right mr-5">{{ .Params.consultee_name }}</span>
                     <div class="title">
                         <span class="text-muted">#{{ .Params.item_id }}</span>
-                        <span class="badge p-2 bg-{{ if eq .Params.consulting_status "waiting" }}secondary{{ else }}info{{ end }} mx-2">#
+                        <span class="badge p-2 bg-{{ if eq .Params.consulting_status "waiting" }}secondary{{ else }}info{{ end }} text-white mx-2">#
                             {{ if eq .Params.consulting_status "waiting" }}답변대기{{ else }}답변완료{{ end }}
                         </span>
                         <a href="{{.Permalink}}">{{.Title}}</a>

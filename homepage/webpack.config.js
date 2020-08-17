@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const glob = require('glob');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -32,12 +33,21 @@ module.exports = {
             filename: devMode ? '[name].css' : '[name].[hash].min.css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].min.css',
         }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            Popper: ['popper.js', 'default']
+        }),
     ],
     devServer: {
         proxy: {
-            '/': 'http://localhost:1313'
+            '**': 'http://localhost:1313'
         },
+        port: '3000',
+        host: '0.0.0.0',
         publicPath: '/assets/',
-        stats: 'minimal',
+        watchContentBase: true,
+        compress: true,
+        stats: 'minimal'
     }
 };

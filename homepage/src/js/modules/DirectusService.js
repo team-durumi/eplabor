@@ -7,38 +7,37 @@ const DirectusService = (() => {
         project: "eplabor"
     })
 
-    const serverPing = () => {
-        client.ping()
-            .then(res => { console.log(res); return res })
-            .catch(err => { console.log(err); return err });
+    const messages = {
+        'pong': 'api 서버가 요청을 처리할 수 있습니다.',
+        'error': '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.',
+        'password-not-match': '비밀번호가 일치하지 않습니다.',
+        'cancel-consulting': '무료 상담 요청을 취소했습니다.',
+        'create-consulting': '무료 상담 요청을 작성하셨습니다.'
+    }
+
+    const ping = () => {
+        return client.ping()
     }
 
     const auth = (params) => {
-        client.api.post('/custom/auth', params)
-            .then(res => { console.log(res); return res })
-            .catch(err => { console.log(err); return err });
+        return client.api.post('/custom/auth', params)
     }
 
     const create = (params) => {
-        client.api.post('/custom/auth/process', params)
-            .then(res => { console.log(res); return res })
-            .catch(err => { console.log(err); return err });
+        return client.api.post('/custom/auth/process', params)
     }
 
     const update = (params) => {
-        client.api.post('/custom/auth/process', params)
-            .then(res => { console.log(res); return res })
-            .catch(err => { console.log(err); return err });
+        return client.api.post('/custom/auth/process', params)
     }
 
     const remove = (params) => {
-        client.api.post('/custom/auth/process', params)
-            .then(res => { console.log(res); return res })
-            .catch(err => { console.log(err); return err });
+        return client.api.post('/custom/auth/process', params)
     }
 
     return {
-        serverPing,
+        messages,
+        ping,
         auth,
         create,
         update,

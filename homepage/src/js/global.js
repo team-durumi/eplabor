@@ -1,12 +1,8 @@
 
 import "../scss/style.scss"
-import $ from "jquery/dist/jquery.slim.js"
-import "popper.js"
-import * as bootstrap from "bootstrap"
-import "./consulting.js"
+import "bootstrap"
 
 $(() => {
-    window.bootstrap = bootstrap
     // 스크롤 시 상단 헤더 고정 # Fixed Header on Scroll
     window.onscroll = () => {
         if (window.pageYOffset > header.offsetHeight) {

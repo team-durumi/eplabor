@@ -4,13 +4,13 @@
     <div class="row">
         <div class="col-md-9">
             <h1 class="border-bottom py-3 mb-3">{{ .Title }}<small
-                    class="text-muted">#{{ .Params.consulting_id }}</small></h1>
+                    class="text-muted">#{{ .Params.item_id }}</small></h1>
             <div class="d-block mb-5">
                 <date>{{ .Date.Local.Format "2006-01-02" }}</date>
                 <span class="consultee-name">{{ .Params.consultee_name }}</span>
             </div>
             <div class="body mb-3">
-                {{ .Content }}
+                {{ replace .Content "\n" "<br/>" | safeHTML }}
             </div>
             {{ if eq .Params.consulting_status "answered" }}
             <div class="consulting-answer-header mt-5 mb-2">
@@ -18,19 +18,24 @@
                 {{ .Params.consultee_name }} 님 문의에 답변드립니다.
             </div>
             <div class="card bg-light p-3">
-                {{ .Params.consulting_answer }}
+                {{ replace .Params.consulting_answer "\n" "<br/>" | safeHTML }}
             </div>
             {{ end }}
             {{ if eq .Params.consulting_status "waiting" }}
             <div class="owner my-5 border-top pt-4">
-                <a href="#" class="btn btn-info text-white mr-3" data-toggle="modal" data-target="#authModal"
-                    data-type="update">수정</a>
-                <a href="#" class="btn btn-danger text-white" data-toggle="modal" data-target="#authModal"
+                <a href="#" class="btn btn-info text-white" data-toggle="modal" data-target="#authModal" data-type="update">수정</a>
+                <a href="#" class="btn btn-danger text-white mx-1" data-toggle="modal" data-target="#authModal"
                     data-type="delete">삭제</a>
+                <a href="/consulting/online" class="btn btn-secondary text-white">목록</a>
             </div>
             {{ partial "modal/auth.html" . }}
             {{ $fields := .Site.Data.fields }}
             {{ partial "modal/update-consulting-form.html" (dict "context" . "fields" $fields) }}
+            {{ else }}
+            <div class="owner my-5 border-top pt-4">
+
+                <a href="/consulting/online" class="btn btn-secondary text-white">목록</a>
+            </div>
             {{ end }}
         </div>
         <div class="col-md-3">
