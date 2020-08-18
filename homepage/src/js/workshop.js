@@ -25,7 +25,7 @@ $(() => {
         let button = $(event.target)
         let action = button.data('action')
         let payloads = util.getPayloads(workshopForm)
-        console.log(action, params)
+        console.log(action, payloads)
         // api.create(params).then()
     })
     
