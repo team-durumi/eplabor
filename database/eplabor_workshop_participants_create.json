@@ -1,0 +1,15 @@
+{
+    "participant_privacy_agreement": "1",
+    "participant_portrait_agreement": "1",
+    "workshop_name": "퍼포먼스 댄스 난타",
+    "collection": "eplabor_workshop_participants",
+    "action_type": "create",
+    "participant_name": "홍길동",
+    "participant_password": "1234",
+    "participant_gender": "남성",
+    "participant_age": "10대",
+    "participant_residence": "은평구",
+    "participant_email": "mozodev@users.noreply.github.com",
+    "participant_phone": "010-0000-0000",
+    "participant_comment": "1111"
+}

@@ -66,3 +66,4 @@ CREATE OR REPLACE TABLE `eplabor_workshop_participants` (
 
 ALTER TABLE `eplabor_workshop_participants` COMMENT = "은평구노동자종합지원센터 교육 참여자 인적 정보";
 ALTER TABLE `eplabor_workshop_participants` AUTO_INCREMENT = 1;
+ALTER TABLE `eplabor_workshop_participants` ADD UNIQUE `unique_index`(`workshop_name`, `participant_email`);
