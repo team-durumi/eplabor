@@ -1,10 +1,23 @@
 {{ define "main" }}
 {{ partial "breadcrumb.html" . }}
-<div class="container">
+<div class="container container--workshop">
     <div class="row">
         <div class="col-md-9">
-            <h1 class="border-bottom pb-3 my-3">{{ .Title }}</h1>
-            <date class="d-block mb-5">{{ .Date.Local.Format "2006-01-02" }}</date>
+            <h1 class="border-bottom pb-3 my-3" id="workshop-title">{{ .Title }}</h1>
+            <header>
+                <ul class="actions list-inline text-righ float-right">
+                    <li class="list-inline-item">
+                        <a href="#" data-toggle="modal" data-target="#authModal" data-action="check" class="btn btn-sm btn-primary text-white mx-1">신청확인</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" data-toggle="modal" data-target="#authModal" data-action="update" class="btn btn-sm btn-info mx-1">수정</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" data-toggle="modal" data-target="#authModal" data-action="delete" class="btn btn-sm btn-danger mx-1">취소</a>
+                    </li>
+                </ul>
+                <date class="d-block mb-5">{{ .Date.Local.Format "2006-01-02" }}</date>
+            </header>
             {{ $workshop := .Page.Params.workshop }}
             <div class="row">
                 <div class="col-md-4 py-3 border-top">
@@ -41,7 +54,7 @@
                 {{ .Content }}
                 {{ if .Params.status }}
                 <div class="form mt-5">
-                    {{ partial "workshops/form-apply.html" . }}
+                    {{ partial "workshops/form-apply.html" (dict "context" . "action_type" "create") }}
                 </div>
                 {{ end }}
                 <footer class="mt-5 pt-3 border-top">
@@ -49,10 +62,12 @@
                 </footer>
             </div>
         </div>
-        <div class="col-md-3">
-            {{ partial "section_menu.html" . }}
+        <div class="col-md-3 text-right">
+            {{ partial "section_menu.html" }}
         </div>
     </div>
+
+    {{ partial "modal/auth.html"  (dict "collection" "eplabor_workshop_participants" "item_id" .Title ) }}
     
 </div>
 {{ end }}

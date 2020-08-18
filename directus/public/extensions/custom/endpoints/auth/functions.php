@@ -26,6 +26,8 @@ if (!function_exists('eplaborHandleAuth')) {
         }
         $logger->debug($params['action_type']);
         switch ($params['action_type']) {
+            case 'check':
+                return $auth['data'];
             case 'update': // return item
                 $item = $bot->get($params['collection'], $params['item_id']);
                 break;
@@ -66,7 +68,7 @@ if (!function_exists('eplaborProcessItem')) {
 
         switch ($payloads['action_type']) {
             case 'create': 
-                return $bot->create($payloads['collection'], $params);
+                return  $bot->create($payloads['collection'], $params);
                 break;
             case 'update':
                 $res = $bot->update($payloads['collection'], $payloads['id'], $params);

@@ -12,7 +12,10 @@ const DirectusService = (() => {
         'error': '문제가 생겨 확인할 수 없습니다. 센터로 전화주시면 감사하겠습니다.',
         'password-not-match': '비밀번호가 일치하지 않습니다.',
         'cancel-consulting': '무료 상담 요청을 취소했습니다.',
-        'create-consulting': '무료 상담 요청을 작성하셨습니다.'
+        'create-consulting': '무료 상담 요청을 작성하셨습니다.',
+        'participate-workshop': '교육 프로그램에 참여 신청하셨습니다.',
+        'updated': '수정했습니다.',
+        'canceled': '취소했습니다.'
     }
 
     const ping = () => {

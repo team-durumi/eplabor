@@ -3,19 +3,26 @@
         <div class="modal-content">
             <form id="auth-modal-form" class="needs-validation">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="authModalLabel">모달 제목</h5>
+                    <h5 class="modal-title" id="authModalLabel">비밀번호 확인</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="collection" value="{{ .Page.Params.collection }}">
-                    <input type="hidden" name="item_id" value="{{ .Page.Params.item_id }}">
+                    <input type="hidden" name="collection" value="{{ .collection }}">
+                    <input type="hidden" name="item_id" value="{{ .item_id }}">
                     <input type="hidden" name="action_type" value="update">
+                    {{ if eq .collection "eplabor_workshop_participants" }}
                     <div class="form-group required">
-                        <label for="message-text" class="sr-only">비밀번호</label>
-                        <input type="password" id="passwd" name="string" class="form-control"
-                            placeholder="상담시 입력한 비밀번호를 입력해 주세요." value="" required>
+                        <label for="participant_email" class="sr-only">이메일 주소</label>
+                        <input type="email" id="participant_email" name="participant_email" class="form-control"
+                            placeholder="신청할 때 입력한 이메일주소를 입력해 주세요." value="" required>
+                    </div>
+                    {{ end }}
+                    <div class="form-group required">
+                        <label for="string" class="sr-only">비밀번호</label>
+                        <input type="password" id="string" name="string" class="form-control"
+                            placeholder="신청할 때 입력한 비밀번호를 입력해 주세요." value="" required>
                     </div>
                 </div>
                 <div class="modal-footer">

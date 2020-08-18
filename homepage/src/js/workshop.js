@@ -4,29 +4,101 @@ import validation from "./modules/ValidationService"
 import api from "./modules/DirectusService"
 
 $(() => {
-    // form: #parcitipate-workshop
-    // button: #parcitipate-workshop-submit
-    let workshopForm = $('#participate-workshop')
-    let buttons = $('button[type=button]', workshopForm)
-
+    // check api status
     api.ping().then(result => {
         console.log(api.messages[result]);
     })
 
-    // 폼 검증 시작
+    // 폼 검증, 메뉴 드롭다운, 모달 초기화
     validation.init()
     $('.dropdown-toggle').dropdown()
+    let authModal = $('#authModal')
 
+    // 체크 시 정수로 값 할당
+    $('input[type="checkbox"]').on('change', function(){
+        this.value ^= 1;
+    });
+
+    // 교육 프로그램 참여 신청
+    let workshopForm = $('#participate-workshop')
+    let buttons = $('button[type=button]', workshopForm)
     buttons.on('click', event => {
-        // 교육 프로그램 참여 신청
-        // 교육 프로그램 참여 변경
-        // 교육 프로그램 참여 신청 확인 -- 인증 모달창 처리
-        // 교육 프로그램 참여 취소 -- 이건 어디서?
-        let button = $(event.target)
-        let action = button.data('action')
+        event.preventDefault(); event.stopPropagation();
         let payloads = util.getPayloads(workshopForm)
-        console.log(action, payloads)
-        // api.create(params).then()
+        if (workshopForm.hasClass('has-errors')) return false
+        $('#spinner-screen').show()
+        api.create(payloads)
+            .then(res => {
+                $('#spinner-screen').hide()
+                alert(api.messages['participate-workshop'])
+            })
+            .error(err => {
+                $('#spinner-screen').hide()
+                console.log(err)
+                alert(api.messages['error'])
+            })
     })
+
+    // 교육 프로그램 참여신청 -- 인증 모달창 표시 시 데이터 전달
+    if (authModal.length > 0) {
+        authModal.on('show.bs.modal', event => {
+            let actions = {
+                'check': '확인',
+                'update': '수정',
+                'delete': '삭제'
+            }
+            let actionType = $(event.relatedTarget).data('action')
+            let message = (actionType) ? actions[actionType] : ''
+            let workshopTitle = $('#workshop-title').text()
+            $('[name=action_type]', authModal).val($(event.relatedTarget).data('action'))
+            $('[name=item_id]', authModal).val(workshopTitle)
+            $('.modal-title', authModal).text('교육 신청 ' + message + ' - 비밀번호 확인')
+        })
+        authModal.on('hidden.bs.modal', function (event) {
+            $('form', authModal).trigger("reset")
+        })
+    }
+
+    // 교육 프로그램 참여신청 확인 -- 인증 모달창 처리
+    // 교육 프로그램 참여신청 수정
+    // 교육 프로그램 참여신청 취소
+     // 상담 상세 화면 -- 인증 성공 시 상담 수정폼에 아이템 데이터 채우기
+     if ($('#authModalFormButton').length > 0) {
+        $('#authModalFormButton').on('click', function (event) {
+            event.preventDefault(); event.stopPropagation();
+            let payloads = util.getPayloads($('form', '#authModal'))
+            let actionType = payloads['action_type']
+
+            if ($('form', '#authModal').hasClass('has-errors')) return false
+            $('#spinner-screen').show()
+            // console.log(payloads)
+            api.auth(payloads)
+                .then(res => {
+                    console.log(res)
+                    if (res.data && res.data.valid) {
+                        if(actionType == 'check') {
+                            alert(api.messages['participate-workshop'])
+                        }
+                        if(actionType == 'update') {
+                            $('#updateParticipationFormModal').modal('show')
+                            util.fillForm($('form', '#updateParticipationFormModal'), res.data)
+                        }
+                        if(actionType == 'delete' && res.data.status == 'deleted') {
+                            alert(api.messages['canceled'])
+                        }
+                    } else {
+                        alert(api.messages['password-not-match'])
+                    }
+                })
+                .catch(error => { 
+                    // alert(api.messages['error'])
+                    console.log(error)
+                });
+            $('#spinner-screen').hide()
+            util.hideModal(authModal)
+            return false;
+            
+        });
+    }
     
 })

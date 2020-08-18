@@ -30,14 +30,15 @@ $(() => {
     }
 
     // 상담 상세 화면 -- 인증 성공 시 상담 수정폼에 아이템 데이터 채우기
-    if (authModal.length > 0 && $('#authModalFormButton').length > 0) {
+    if ($('#authModalFormButton').length > 0) {
         $('#authModalFormButton').on('click', function (event) {
+            event.preventDefault(); event.stopPropagation();
             let payloads = util.getPayloads($('form', '#authModal'))
             let type = payloads['action_type']
 
-            if ($('form', '#authModal').hasClass('has-errors')) return false;
+            if ($('form', '#authModal').hasClass('has-errors')) return false
             $('#spinner-screen').show()
-            // console.log(payloads);
+            // console.log(payloads)
             api.auth(payloads)
                 .then(res => {
                     console.log(res)

@@ -28,7 +28,7 @@
                     data-type="delete">삭제</a>
                 <a href="/consulting/online" class="btn btn-secondary text-white">목록</a>
             </div>
-            {{ partial "modal/auth.html" . }}
+            {{ partial "modal/auth.html"  (dict "collection" "eplabor_consultings" "item_id" .Page.Params.item_id ) }}
             {{ $fields := .Site.Data.fields }}
             {{ partial "modal/update-consulting-form.html" (dict "context" . "fields" $fields) }}
             {{ else }}

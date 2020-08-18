@@ -32,11 +32,9 @@
                 </tr>
             </tbody>
         </table>
-        <div class="text-right required">
-            <label class="checkbox">
-                <input id="participant_privacy_agreement" name="participant_privacy_agreement" type="checkbox" class="form-control" required>
-                개인정보 수집 및 이용에 동의합니다.
-            </label>
+        <div class="form-group form-check text-right required">
+            <input type="checkbox" class="form-check-input" id="participant_privacy_agreement" name="participant_privacy_agreement" required>
+            <label class="form-check-label" for="participant_privacy_agreement">개인정보 수집 및 이용에 동의합니다.</label>
         </div>
     </div>
 
@@ -76,10 +74,11 @@
                 </tr>
             </tbody>
         </table>
-        <div class="form-check text-right required">
-            <input id="participant_portrait_agreement" name="participant_portrait_agreement" type="checkbox" required>
+        <div class="form-group form-check text-right required">
+            <input type="checkbox" class="form-check-input" id="participant_portrait_agreement" name="participant_portrait_agreement" required>
             <label class="form-check-label" for="participant_portrait_agreement">초상권 활용에 동의합니다.</label>
         </div>
+        
     </div>
 
     <div class="card bg-info text-white p-3 my-3 mb-3">
@@ -105,7 +104,9 @@
         </table>
     </div>
 
-    <input type="hidden" name="workshop_name" value="{{ .Title }}">
+    <input type="hidden" name="workshop_name" value="{{ .context.Title }}">
+    <input type="hidden" name="collection" value="eplabor_workshop_participants">
+    <input type="hidden" name="action_type" value="{{ .action_type }}">
     <fieldset class="mt-5">
         <div class="row mb-3">
             <div class="col-lg-6 required">
@@ -172,3 +173,11 @@
         <button id="canceled" type="button" class="btn btn-default col-md-1 col-sm-5 col-xs-12" data-action="reset">취소</button>
     </div>
 </form>
+
+<div id="spinner-screen">
+    <div class="spinner position-absolute">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>

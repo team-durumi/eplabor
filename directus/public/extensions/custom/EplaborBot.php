@@ -29,16 +29,29 @@ class EplaborBot
         $message = null;
         $fields = [
             'eplabor_consultings' => 'consultee_password',
-            'eplabor_workshop_paricipants' => 'participant_password'
+            'eplabor_workshop_participants' => 'participant_password'
         ];
         $field = $fields[$params['collection']] ?: null;
-        try {
-            $hash = $this->get($params['collection'], $params['item_id'], $field);
-        } catch(Exception $e) {
-            $this->logger->error($e->getMessage());
-            return [ 'error' => $e->getMessage() ];
+        if($params['collection'] == 'eplabor_consultings') {
+            try {
+                $hash = $this->get($params['collection'], $params['item_id'], $field);
+            } catch(Exception $e) {
+                $this->logger->error($e->getMessage());
+                return [ 'error' => $e->getMessage() ];
+            }
         }
-        
+        if($params['collection'] == 'eplabor_workshop_participants') {
+            $response = $this->client->get('/items/eplabor_workshop_participants', [
+                'single' => true,
+                'filter' => [
+                    'item_id' => $params['workshop_name'],
+                    'participant_email' => $params['participant_email']
+                ]
+            ]);
+            $item = json_decode($response->getBody()->getContents(), true);
+            $this->logger->debug('---- ' . gettype($item));
+        }
+
         // $this->logger->debug(print_r($hash, true));
         $payload = ['hash' => $hash, 'string' => $params['string']];
         // $this->logger->debug(print_r($payload, true));
@@ -58,7 +71,15 @@ class EplaborBot
 
     public function create($collection, $params = [])
     {
-        return $this->client->post('/eplabor/items/' . $collection, ['form_params' => $params]);
+        try {
+            $res = $this->client->post('/eplabor/items/' . $collection, ['form_params' => $params]);
+            $item = json_decode($res->getBody()->getContents(), true);
+            return $item['data'];
+        } catch (Exception $e) {
+            $this->logger->debug($e->getMessage());
+            return ['error' => $e->getCode()];
+        }
+        
     }
 
     public function get($collection, $id, $field = null)
