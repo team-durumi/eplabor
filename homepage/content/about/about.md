@@ -34,6 +34,3 @@ menu:
 
 ### 조직구성
 
-{{< about/org >}}
-
-![조직도](/images/org-chart.png)
