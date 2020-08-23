@@ -71,12 +71,12 @@ if (!function_exists('eplaborProcessItem')) {
                 return  $bot->create($payloads['collection'], $params);
                 break;
             case 'update':
-                $res = $bot->update($payloads['collection'], $payloads['id'], $params);
+                $res = $bot->update($payloads['collection'], $params['id'], $params);
                 $logger->debug(print_r($res, true));
                 return $res;
                 break;
             case 'delete':
-                return $bot->delete($payloads['collection'], $payloads['id']);
+                return $bot->delete($payloads['collection'], $params['id']);
                 break;
         }
     }
