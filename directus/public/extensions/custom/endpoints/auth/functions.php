@@ -12,8 +12,8 @@ if (!function_exists('eplaborHandleAuth')) {
         $logger = $container->get('logger');
         $bot = new EplaborBot();
         $params = $request->getParsedBody();
-        // $logger->debug('[/custom/auth] eplaborHandleAuth -- params');
-        // $logger->debug(print_r($params, true));
+        $logger->debug('[/custom/auth] eplaborHandleAuth -- params');
+        $logger->debug(print_r($params, true));
 
         $item = [];
 
@@ -21,20 +21,22 @@ if (!function_exists('eplaborHandleAuth')) {
         $auth = $bot->check($params);
         $logger->debug('[/custom/auth] -- $bot->check($param) : ' . print_r($auth, true));
         // 비밀번호 불일치
-        if(!$auth['data']['valid']) {
-            return $auth['data'];
+        if(!isset($auth['data']) || !$auth['data']['valid']) {
+            return ['valid' => false];
         }
         $logger->debug($params['action_type']);
         switch ($params['action_type']) {
             case 'check':
                 return $auth['data'];
             case 'update': // return item
-                $item = $bot->get($params['collection'], $params['item_id']);
+                $id = ($params['collection'] == 'eplabor_workshop_participants') ? $auth['data']['id'] : $params['item_id'];
+                $item = $bot->get($params['collection'], $id);
                 break;
             case 'delete':
-                $response = $bot->delete($params['collection'], $params['item_id']);
+                $id = ($params['collection'] == 'eplabor_workshop_participants') ? $auth['data']['id'] : $params['item_id'];
+                $response = $bot->delete($params['collection'], $id);
                 if($response->getStatusCode() == 204) {
-                    return ['status' => 'deleted', 'id' => $params['item_id'], 'valid' => true];
+                    return ['status' => 'deleted', 'id' => $id, 'valid' => true];
                 }
                 break;
         }
@@ -54,7 +56,7 @@ if (!function_exists('eplaborProcessItem')) {
         $bot = new EplaborBot();
         $params = $request->getParsedBody();
         $logger->debug('[/custom/auth/process] eplaborProcessItem');
-        // $logger->debug(print_r($params, true));
+        $logger->debug(print_r($params, true));
 
         // 모델 외 파라미터 정리 후 제거
         $payloads = [];
@@ -72,8 +74,8 @@ if (!function_exists('eplaborProcessItem')) {
                 break;
             case 'update':
                 $res = $bot->update($payloads['collection'], $params['id'], $params);
-                $logger->debug(print_r($res, true));
-                return $res;
+                $item = json_decode($res->getBody()->getContents(), true);
+                return $item['data'];
                 break;
             case 'delete':
                 return $bot->delete($payloads['collection'], $params['id']);

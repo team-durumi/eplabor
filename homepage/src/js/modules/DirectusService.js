@@ -14,8 +14,10 @@ const DirectusService = (() => {
         'cancel-consulting': '무료 상담 요청을 취소했습니다.',
         'create-consulting': '무료 상담 요청을 작성하셨습니다.',
         'participate-workshop': '교육 프로그램에 참여 신청하셨습니다.',
+        'participation-not-found': '교육 프로그램에 참여 신청하신 적이 없습니다.',
         'updated': '수정했습니다.',
-        'canceled': '취소했습니다.'
+        'canceled': '취소했습니다.',
+        '409': '이전에 동일한 이메일로 신청하셨습니다.'
     }
 
     const ping = () => {

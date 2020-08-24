@@ -26,6 +26,8 @@ class EplaborBot
     // 커스텀 인증 처리
     public function check($params)
     {
+        $this->logger->debug('[EplaborBot] check -------');
+        // $this->logger->debug(print_r($params, true));
         $message = null;
         $fields = [
             'eplabor_consultings' => 'consultee_password',
@@ -41,15 +43,24 @@ class EplaborBot
             }
         }
         if($params['collection'] == 'eplabor_workshop_participants') {
-            $response = $this->client->get('/items/eplabor_workshop_participants', [
+            // $this->logger->debug('[EplaborBot] check ------- collection ---- eplabor_workshop_participants');
+            $query = [
                 'single' => true,
                 'filter' => [
-                    'item_id' => $params['workshop_name'],
+                    'workshop_name' => $params['item_id'],
                     'participant_email' => $params['participant_email']
                 ]
-            ]);
-            $item = json_decode($response->getBody()->getContents(), true);
-            $this->logger->debug('---- ' . gettype($item));
+            ];
+            try {
+                $response = $this->client->get('/eplabor/items/eplabor_workshop_participants?' . http_build_query($query));
+                // $this->logger->debug(print_r($response->getBody()->getContents(), true));
+                $data = json_decode($response->getBody()->getContents(), true);
+                $hash = $data['data']['participant_password'];
+            } catch (GuzzleHttp\Exception\ClientException $e) {
+                $this->logger->error($e->getMessage());
+                return [ 'error' => $e->getMessage() ];
+            }
+            
         }
 
         // $this->logger->debug(print_r($hash, true));
@@ -57,9 +68,12 @@ class EplaborBot
         // $this->logger->debug(print_r($payload, true));
         try {
             $response = $this->client->post('/eplabor/utils/hash/match', ['form_params' => $payload]);
-            $this->logger->debug('[bot->check($params) => $response->getBody() ' . $response->getBody());
+            // $this->logger->debug('[bot->check($params) => $response->getBody() ' . $response->getBody());
             $message = json_decode( $response->getBody(), true );
-            $this->logger->debug('[bot->check($params) => messase = ' . print_r($message, true));
+            // $this->logger->debug('[bot->check($params) => messase = ' . print_r($message, true));
+            if($params['collection'] == 'eplabor_workshop_participants') {
+                $message['data']['id'] = $data['data']['id'];
+            }
         } catch (Exeption $e) {
             $this->logger->error($e->getMessage());
             return [ 'error' => $e->getMessage() ];

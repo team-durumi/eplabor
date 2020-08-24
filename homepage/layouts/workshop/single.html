@@ -68,6 +68,7 @@
     </div>
 
     {{ partial "modal/auth.html"  (dict "collection" "eplabor_workshop_participants" "item_id" .Title ) }}
+    {{ partial "modal/update-participation-form.html" . }}
     
 </div>
 {{ end }}
