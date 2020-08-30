@@ -41,14 +41,14 @@ $(() => {
             // console.log(payloads)
             api.auth(payloads)
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                     if (res.data && res.data.valid) {
                         if(type == 'update') {
                             $('#updateConsultingFormModal').modal('show')
                             util.fillForm($('form', '#updateConsultingFormModal'), res.data)
                         }
                         if(type == 'delete' && res.data.status == 'deleted') {
-                            alert(api.messages['cancel-consulting'])
+                            alert(api.messages['consulting-cancelled'])
                             window.location.href='/consulting/online/'
                         }
                     } else {
@@ -56,8 +56,8 @@ $(() => {
                     }
                 })
                 .catch(error => { 
-                    // alert(api.messages['error'])
-                    console.log(error)
+                    alert(api.messages['error'])
+                    // console.log(error)
                 });
             $('#spinner-screen').hide()
             util.hideModal(authModal)
@@ -76,8 +76,16 @@ $(() => {
             if (!payloads['consultee_password']) delete payloads['consultee_password'];
             let action = $(event.target).data('action')
             api[action](payloads)
-                .then(res => { console.log(res) })
-                .catch(error => { console.log(error) })
+                .then(res => { 
+                    if(res.data.id) {
+                        alert(api.messages['updated']);
+                        window.location.href='/consulting/online/'
+                    }
+                })
+                .catch(error => { 
+                    alert(api.messages['error']);
+                    // console.log(error);
+                })
             $('#spinner-screen').hide()
             util.hideModal(updateConsultingFormModal)
         })
@@ -95,7 +103,7 @@ $(() => {
             api.create(payloads)
                 .then(res => { 
                     if(res.data.id) {
-                        alert(api.messages['create-consulting'])
+                        alert(api.messages['consulting-created'])
                         window.location.href='/consulting/online/'
                     }
                 })

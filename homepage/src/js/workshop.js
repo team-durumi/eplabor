@@ -25,7 +25,7 @@ $(() => {
         $('#spinner-screen').show()
         api.create(payloads)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 $('#spinner-screen').hide()
                 let message = api.messages['participate-workshop']
                 if (res.data.error) message = api.messages[res.data.error]
@@ -33,7 +33,7 @@ $(() => {
             })
             .catch(error => {
                 $('#spinner-screen').hide()
-                console.log(err)
+                // console.log(err)
                 alert(api.messages['error'])
             })
     })
@@ -67,7 +67,7 @@ $(() => {
                     if (result.data && result.data.valid) {
                         // 교육 프로그램 참여신청 여부 확인
                         if (actionType == 'check') {
-                            alert(api.messages['participate-workshop'])
+                            alert(api.messages['workshop-participated'])
                         }
                         // 교육 프로그램 참여신청 수정폼에 아이템 데이터 채우기
                         if (actionType == 'update') {
@@ -107,7 +107,7 @@ $(() => {
             $.each(payloads, (key, value) => { if (value) data[key.replace('update_', '')] = value })
             api.update(data)
                 .then(result => {
-                    console.log(result)
+                    // console.log(result)
                     if (result.data.status == 'published') {
                         alert(api.messages['updated'])
                     }
