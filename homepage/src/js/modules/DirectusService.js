@@ -2,9 +2,10 @@ import DirectusSDK from "@directus/sdk-js"
 
 const DirectusService = (() => {
     'use strict';
+    
     const client = new DirectusSDK({
-        url: "http://localhost:8080",
-        project: "eplabor"
+        url: env.API_URL,
+        project: env.PROJECT
     })
 
     const messages = {

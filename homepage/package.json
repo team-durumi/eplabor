@@ -9,6 +9,7 @@
         "@babel/polyfill": "^7.10.4",
         "@directus/sdk-js": "^6.2.1",
         "bootstrap": "^4.5",
+        "dotenv": "^8.2.0",
         "jquery": "^3.5.1",
         "popper.js": "^1.16.1"
     },
