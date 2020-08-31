@@ -11,3 +11,10 @@ chmod +x /vagrant/provision/hugo.sh && /vagrant/provision/hugo.sh
 
 echo "install rclone"
 curl https://rclone.org/install.sh | sudo bash
+
+echo "install git-sync"
+curl -L https://raw.githubusercontent.com/simonthum/git-sync/master/git-sync -o /usr/local/bin/git-sync
+chmod +x /usr/local/bin/git-sync
+
+su - vagrant -c "git config --bool branch.master.sync true"
+su - vagrant -c "git config --bool branch.master.syncNewFiles true"

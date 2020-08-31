@@ -50,7 +50,7 @@ class ProcessConsulting implements HookInterface {
      */
     public function handle($data = null) {
         // 요청 형식에 따라 실행
-        $this->logger->debug('[HOOK] --- handle! --- ' . $this->type);
+        // $this->logger->debug('[HOOK] --- handle! --- ' . $this->type);
         if(!empty($this->type) && in_array($this->type, ['create', 'update'])) {
             $this->{$this->type}($data);
         }
@@ -114,12 +114,10 @@ class ProcessConsulting implements HookInterface {
     }
 
     private function gitPush() {
-        // git commit and push
-        chdir('/vagrant/');
-        // // https://github.com/simonthum/git-sync
-        // $output = shell_exec('git-sync');
-        $this->logger->debug('git pushed!');
-        // $this->logger->debug($output);
+        $this->logger->debug('gitPush');
+        // https://github.com/simonthum/git-sync
+        $output = shell_exec('cd /vagrant/ && git-sync');
+        $this->logger->debug($output);
     }
 
 }
