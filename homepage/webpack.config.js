@@ -7,7 +7,6 @@ const dotenv = require('dotenv');
 
 module.exports = () => {
     const env = dotenv.config().parsed;
-    env = JSON.stringify(env);
     return {
         entry: glob.sync('./src/js/**.js').reduce(function (obj, el) {
             obj[path.parse(el).name] = el;
@@ -34,7 +33,7 @@ module.exports = () => {
         },
         plugins: [
             new webpack.DefinePlugin({
-                env: env
+                env: JSON.stringify(env)
             }),
             new MiniCssExtractPlugin({
                 filename: devMode ? '[name].css' : '[name].[hash].min.css',
