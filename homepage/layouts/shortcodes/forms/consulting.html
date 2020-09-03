@@ -91,6 +91,8 @@
                     {{ range $index, $location := $.Page.Params.labor_location }}
                     <option value="{{ $location }}">{{ $location }}</option>
                     {{ end }}
+                    <option disabled>===========</option>
+                    <option value="서울 외">서울 외</option>
                 </select>
             </div>
         </div>
@@ -121,34 +123,22 @@
             </div>
         </div>
 
-        <div class="row mb-3 required">
-            <label for="labor_number_of_workers" class="col-md-2 form-label">근로자수</label>
-            <div class="col-md-10">
-                {{ range $index, $number_of_workers := $.Page.Params.labor_number_of_workers }}
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input mt-2" type="radio" name="labor_number_of_workers" id="labor_number_of_workers{{$index}}" value="{{$number_of_workers}}"{{ if (eq $index 0) }} required{{ end }}>
-                    <label class="form-check-label ml-1 mr-4 my-1" for="labor_number_of_workers{{$index}}">{{$number_of_workers}}</label>
-                </div>
-                {{ end }}
-            </div>
-        </div>
-
-        <div class="row mb-3 required">
-            <label for="labor_sector" class="col-md-2 form-label">업종</label>
-            <div class="col-md-10">
-                {{ range $index, $sector := $.Page.Params.labor_sector }}
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input mt-2" type="radio" name="labor_sector" id="labor_sector{{$index}}" value="{{$sector}}"{{ if (eq $index 0) }} required{{ end }}>
-                    <label class="form-check-label ml-1 mr-4 my-1" for="labor_sector{{$index}}">{{$sector}}</label>
-                </div>
-                {{ end }}
-            </div>
-        </div>
-
         <div class="row mb-3">
-            <label for="labor_occupation" class="col-md-2 form-label">직종</label>
-            <div class="col-md-10">
-                <input type="text" class="form-control" id="labor_occupation" name="labor_occupation" placeholder="직종">
+            <div class="col-lg-6 required">
+                <label for="labor_number_of_workers" class="col-md-2 form-label">근로자수</label>
+                <select id="labor_number_of_workers" name="labor_number_of_workers" class="form-control w-100">
+                    {{ range $index, $number_of_workers := $.Page.Params.labor_number_of_workers }}
+                    <option value="{{ $number_of_workers }}"{{% if eq $index 0 %}} selected{{% end %}}>{{ $number_of_workers }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <div class="col-lg-6 required">
+                <label for="labor_sector" class="col-md-2 form-label">업종</label>
+                <select id="labor_sector" name="labor_sector" class="form-control w-100">
+                    {{ range $index, $labor_sector := $.Page.Params.labor_sector }}
+                    <option value="{{ $labor_sector }}"{{% if eq $index 0 %}} selected{{% end %}}>{{ $labor_sector }}</option>
+                    {{ end }}
+                </select>
             </div>
         </div>
 
@@ -202,12 +192,12 @@
                     <p>상호 날인 후 각 1부씩 나눠 갖으셨습니까?</p>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts3" value="교부">
-                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts3">교부</label>
+                    <input class="form-check-input" type="radio" name="labor_contracts_shared" id="labor_contracts_shared1" value="교부">
+                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts_shared1">교부</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="labor_contracts" id="labor_contracts4" value="미교부">
-                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts4">미교부</label>
+                    <input class="form-check-input" type="radio" name="labor_contracts_shared" id="labor_contracts_shared2" value="미교부">
+                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_contracts_shared2">미교부</label>
                 </div>
             </div>
         </div>
@@ -231,12 +221,12 @@
                     <p>취업규칙이 사업장에 게시되어 있습니까?</p>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="labor_rules" id="labor_rules3" value="게시">
-                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules3">게시</label>
+                    <input class="form-check-input" type="radio" name="labor_rules_published" id="labor_rules_published1" value="게시">
+                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules_published1">게시</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="labor_rules" id="labor_rules4" value="미게시">
-                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules4">미게시</label>
+                    <input class="form-check-input" type="radio" name="labor_rules_published" id="labor_rules_published2" value="미게시">
+                    <label class="form-check-label ml-1 mr-3 my-1" for="labor_rules_published2">미게시</label>
                 </div>
             </div>
         </div>

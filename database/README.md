@@ -18,16 +18,26 @@
 - *사용주체 (직접고용/파견/용역/기타) | labor_employment_subject
 - *근로자수 (5인 미만/5~10인/10~30인/30~100인/100인 이상) | labor_number_of_workers
 - 사업장소재지 (서울시 자치구~/서울 외) | labor_location
+
+- 고용형태 | labor_employment_type
+- 사용주체 | labor_employment_subject
+- 근로자수 | labor_number_of_workers
 - 업종 | labor_sector
-- 직종 | labor_occupation
+
 - 근속기간 ( 년 개월) | labor_longevity
 - 근로일 (주 일) | labor_working_days_per_week
 - 근로시간 (주 시간) | labor_working_hours_per_week
 - 월 평균임금 ( 만원) | labor_average_monthly_wage
 
+- 근로계약서 작성여부 | labor_contracts
+- 근로계약서 교부여부 | labor_contracts_shared
+- 취업규칙 작성여부 | labor_rules
+- 취업규칙 교부여부 | labor_rules_published
+
 ### 상담 정보 consulting
 
-- *분류 (임금체불/징계·해고 등/퇴직금/실업급여/근로시간,휴일,휴가/근로계약/최저임금/산업재해/성희 롱, 폭언, 폭행/노조/기타) | consulting_category
+- *상담유형 (임금체불/징계·해고 등/퇴직금/실업급여/근로시간,휴일,휴가/근로계약/최저임금/산업재해/성희 롱, 폭언, 폭행/노조/기타) | consulting_category
+- *제목 | consulting_title
 - *문의 | consulting_inquiry
 - 답변 | consulting_answer
 
@@ -160,7 +170,6 @@ labor_location:
 동작구
 마포구
 서대문구
-서울 외
 서초구
 성동구
 성북구
@@ -169,6 +178,8 @@ labor_location:
 영등포구
 은평구
 중랑구
+=====
+서울 외
 
 labor_sector:
 제조업
@@ -191,6 +202,7 @@ labor_contracts:
 작성
 미작성
 일부작성
+labor_contracts_shared:
 교부
 미교부
 
@@ -198,8 +210,9 @@ labor_rules:
 작성
 미작성
 일부작성
-교부
-미교부
+labor_rules_published:
+게시
+미게시
 
 labor_insurances:
 가입
