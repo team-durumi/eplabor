@@ -36,7 +36,7 @@ class ProcessConsulting implements HookInterface {
             'connection' => $this->container->get('database'),
             'acl' => false
         ]);
-        $app = \Directus\create_app_with_project_name('/vagrant/directus', 'eplabor');
+        $app = \Directus\create_app_with_project_name($this->base_path, 'eplabor');
         $this->config = $app->getConfig();
 
         $this->handle($data);
@@ -50,7 +50,7 @@ class ProcessConsulting implements HookInterface {
      */
     public function handle($data = null) {
         // 요청 형식에 따라 실행
-        // $this->logger->debug('[HOOK] --- handle! --- ' . $this->type);
+        $this->logger->debug('[HOOK] --- handle! --- ' . $this->type);
         if(!empty($this->type) && in_array($this->type, ['create', 'update'])) {
             $this->{$this->type}($data);
         }
@@ -62,23 +62,23 @@ class ProcessConsulting implements HookInterface {
     private function create($data = null) {
         $markdown_string = $this->slack_payload['text'] = $this->buildMarkdown($data);
         // 디스크에 마크다운 파일로 저장
-        $result = file_put_contents('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md', $markdown_string);
+        $result = file_put_contents($this->base_path . '/../homepage/content/consulting/online/' . $data['id'] . '.md', $markdown_string);
         if($result === FALSE) {
             $error = error_get_last();
             $this->logger->error(print_r($error, true)); 
         } elseif(is_int($result) && $result > 0) {
-            $this->logger->debug('[HOOK] Written to /vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
+            $this->logger->debug('[HOOK] Written to homepage/content/consulting/online/' . $data['id'] . '.md');
         }
         // $this->logger->debug('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
     }
 
     private function update($data = null) {
-        $this->logger->debug('[HOOK] --- update() --- ' . $data['id']);
-        // $this->logger->debug(print_r($data, true));
+        $this->logger->debug('[HOOK] --- update() --- ' . $data['id'] . ' -- ' . $data['status']);
+        $this->logger->debug(print_r($data, true));
         // 삭제
         if(!empty($data['status']) && $data['status'] == 'deleted') {
-            $output = shell_exec('rm -f /vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
-            $this->logger->debug($output . ' deleted');
+            $output = system('rm -f ' . $this->base_path  . '/../homepage/content/consulting/online/' . $data['id'] . '.md 2>&1', $retval);
+            $this->logger->debug($data['id'] . ' deleted --- ' . 'rm -f ' . $this->base_path  . '/../homepage/content/consulting/online/' . $data['id'] . '.md 2>&1 ----' . $retval);
         } else {
             $item = $this->tableGateway->getOneData($data['id']);
             // $this->logger->debug(print_r($item, true));
@@ -116,8 +116,10 @@ class ProcessConsulting implements HookInterface {
     private function gitPush() {
         $this->logger->debug('gitPush');
         // https://github.com/simonthum/git-sync
-        $output = shell_exec('cd /vagrant/ && git-sync');
-        $this->logger->debug($output);
+        // $output = shell_exec('cd ' . $this->base_path . '../homepage/ && git add . && git commit -m "무료 상담 변경 사항을 동기화합니다." && git push');
+        $line = system('cd /home/ubuntu/eplabor/ && git add -A 2>&1', $retval);
+        $commit = system('git commit -m "test" 2>&1', $retval);
+        $push = system('git push 2>&1', $retval);
     }
 
 }
