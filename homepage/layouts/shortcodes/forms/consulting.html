@@ -125,18 +125,18 @@
 
         <div class="row mb-3">
             <div class="col-lg-6 required">
-                <label for="labor_number_of_workers" class="col-md-2 form-label">근로자수</label>
+                <label for="labor_number_of_workers" class="form-label">근로자수</label>
                 <select id="labor_number_of_workers" name="labor_number_of_workers" class="form-control w-100">
                     {{ range $index, $number_of_workers := $.Page.Params.labor_number_of_workers }}
-                    <option value="{{ $number_of_workers }}"{{% if eq $index 0 %}} selected{{% end %}}>{{ $number_of_workers }}</option>
+                    <option value="{{ $number_of_workers }}"{{ if eq $index 0 }} selected{{ end }}>{{ $number_of_workers }}</option>
                     {{ end }}
                 </select>
             </div>
             <div class="col-lg-6 required">
-                <label for="labor_sector" class="col-md-2 form-label">업종</label>
+                <label for="labor_sector" class="form-label">업종</label>
                 <select id="labor_sector" name="labor_sector" class="form-control w-100">
                     {{ range $index, $labor_sector := $.Page.Params.labor_sector }}
-                    <option value="{{ $labor_sector }}"{{% if eq $index 0 %}} selected{{% end %}}>{{ $labor_sector }}</option>
+                    <option value="{{ $labor_sector }}"{{ if eq $index 0 }} selected{{ end }}>{{ $labor_sector }}</option>
                     {{ end }}
                 </select>
             </div>
