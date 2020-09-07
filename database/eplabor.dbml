@@ -37,7 +37,9 @@ Table eplabor_consultings {
   labor_working_hours_per_week "tinyint(1) unsigned" [ note: '근로시간 (주 시간)' ]
   labor_average_monthly_wage "tinyint(1) unsigned" [ note: '월 평균임금 ( 만원)' ]
   labor_contracts varchar(15) [ note: '근로계약서 작성여부' ]
+  labor_contracts_shared varchar(15) [ note: '근로계약서 공유여부' ]
   labor_rules varchar(15) [ note: '취업규칙 작성여부' ]
+  labor_rules_published varchar(15) [ note: '취업규칙 게시여부' ]
   labor_insurances varchar(15) [ note: '4대보험 가입여부' ]
   
   // 상담 정보
