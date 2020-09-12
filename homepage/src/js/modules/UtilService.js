@@ -25,7 +25,7 @@ const UtilService = (($) => {
 
     const getPayloads = (elm) => {
         return $(elm).serializeArray().reduce(function (obj, item) {
-            obj[item.name] = item.value; return obj;
+            obj[item.name] = (item.value != 'on') ? item.value : 1; return obj;
         }, {});
     }
 

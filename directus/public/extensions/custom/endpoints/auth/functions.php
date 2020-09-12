@@ -12,14 +12,12 @@ if (!function_exists('eplaborHandleAuth')) {
         $logger = $container->get('logger');
         $bot = new EplaborBot();
         $params = $request->getParsedBody();
-        $logger->debug('[/custom/auth] eplaborHandleAuth -- params');
-        $logger->debug(print_r($params, true));
-
+        $logger->debug('eplaborHandleAuth -- params', $params);
         $item = [];
 
         // auth
         $auth = $bot->check($params);
-        $logger->debug('[/custom/auth] -- $bot->check($param) : ' . print_r($auth, true));
+        $logger->debug('$bot->check($param) : ' . print_r($auth, true));
         // 비밀번호 불일치
         if(!isset($auth['data']) || !$auth['data']['valid']) {
             return ['valid' => false];
@@ -42,7 +40,6 @@ if (!function_exists('eplaborHandleAuth')) {
         }
         $item['valid'] = true;
         return $item;
-    
     }
 
 }
@@ -68,7 +65,7 @@ if (!function_exists('eplaborProcessItem')) {
                 unset($params[$key]);
             }
         }
-
+        // $logger->debug($payloads['action_type'], $params);
         switch ($payloads['action_type']) {
             case 'create': 
                 return  $bot->create($payloads['collection'], $params);
@@ -76,6 +73,7 @@ if (!function_exists('eplaborProcessItem')) {
             case 'update':
                 $res = $bot->update($payloads['collection'], $params['id'], $params);
                 $item = json_decode($res->getBody()->getContents(), true);
+                // $logger->debug(print_r($item, true));
                 return $item['data'];
                 break;
             case 'delete':

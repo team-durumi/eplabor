@@ -43,7 +43,7 @@ class EplaborBot
             }
         }
         if($params['collection'] == 'eplabor_workshop_participants') {
-            // $this->logger->debug('[EplaborBot] check ------- collection ---- eplabor_workshop_participants');
+            $this->logger->debug('[EplaborBot] check --- eplabor_workshop_participants');
             $query = [
                 'single' => true,
                 'filter' => [
@@ -51,16 +51,16 @@ class EplaborBot
                     'participant_email' => $params['participant_email']
                 ]
             ];
+            // $this->logger->debug(print_r($query, true));
             try {
                 $response = $this->client->get('/eplabor/items/eplabor_workshop_participants?' . http_build_query($query));
-                // $this->logger->debug(print_r($response->getBody()->getContents(), true));
                 $data = json_decode($response->getBody()->getContents(), true);
                 $hash = $data['data']['participant_password'];
+                // $this->logger->debug(print_r($data, true));
             } catch (GuzzleHttp\Exception\ClientException $e) {
-                $this->logger->error($e->getMessage());
+                $this->logger->debug(print_r($e));
                 return [ 'error' => $e->getMessage() ];
             }
-            
         }
 
         // $this->logger->debug(print_r($hash, true));
@@ -78,7 +78,7 @@ class EplaborBot
             $this->logger->error($e->getMessage());
             return [ 'error' => $e->getMessage() ];
         }
-        // $this->logger->debug(print_r($message, true));
+        // $this->logger->debug('final', [print_r($message, true)]);
 
         return $message;
     }
