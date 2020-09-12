@@ -63,8 +63,10 @@ if (!function_exists('eplaborProcessItem')) {
         $targets = ['collection', 'action_type', 'item_id'];
         foreach ($targets as $key) {
             // $logger->debug($key . '--' . $params[$key]);
-            $payloads[$key] = $params[$key];
-            unset($params[$key]);
+            if(!empty($params[$key])) {
+                $payloads[$key] = $params[$key];
+                unset($params[$key]);
+            }
         }
 
         switch ($payloads['action_type']) {
