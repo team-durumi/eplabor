@@ -3,7 +3,7 @@
     비공개 상담을 원하시면 전화상담을 이용하시기 바랍니다.<br>
     상담전화: {{ .Site.Data.eplabor.tel }}
 </div>
-
+{{ $fields := .Site.Data.fields }}
 <form id="createConsultingForm" class="needs-validation" novalidate>
     <fieldset id="consultee" class="border p-3 my-3">
         <input type="hidden" name="collection" value="eplabor_consultings">
@@ -35,7 +35,7 @@
         <div class="row mb-3 mt-3 required">
             <label for="rule" class="col-md-2 form-label">성별</label>
             <div class="col-md-10">
-                {{ range $index, $gender := $.Page.Params.consultee_gender }}
+                {{ range $index, $gender := $fields.consultee_gender }}
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="consultee_gender" id="consultee_gender{{$index}}" value="{{$gender}}"{{ if (eq $index 0) }} required{{ end }}>
                     <label class="form-check-label" for="consultee_gender{{$index}}">{{$gender}}</label>
@@ -46,7 +46,7 @@
         <div class="row mb-3 required">
             <label for="rule" class="col-md-2 form-label">연령대</label>
             <div class="col-md-10">
-                {{ range $index, $age := $.Page.Params.consultee_age }}
+                {{ range $index, $age := $fields.consultee_age }}
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="consultee_age" id="consultee_age{{$index}}" value="{{$age}}"{{ if (eq $index 0) }} required{{ end }}>
                     <label class="form-check-label" for="consultee_age{{$index}}">{{$age}}</label>
@@ -57,7 +57,7 @@
         <div class="row mb-3">
             <label for="rule" class="col-md-2 form-label">거주지</label>
             <div class="col-md-10">
-                {{ range $index, $residence := $.Page.Params.consultee_residence }}
+                {{ range $index, $residence := $fields.consultee_residence }}
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="consultee_residence" id="consultee_residence{{$index}}" value="{{$residence}}">
                     <label class="form-check-label" for="consultee_residence{{$index}}">{{$residence}}</label>
@@ -88,7 +88,7 @@
                 <label for="labor_location" class="form-label">소재지</label>
                 <select id="labor_location" name="labor_location" class="form-control w-100">
                     <option value="" disabled selected>- 사업장소재지 선택 -</option>
-                    {{ range $index, $location := $.Page.Params.labor_location }}
+                    {{ range $index, $location := $fields.labor_location }}
                     <option value="{{ $location }}">{{ $location }}</option>
                     {{ end }}
                     <option disabled>===========</option>
@@ -102,7 +102,7 @@
         <div class="row my-3 required">
             <label for="labor_employment_type" class="col-md-2 form-label">고용형태</label>
             <div class="col-md-10">
-                {{ range $index, $employment_type := $.Page.Params.labor_employment_type }}
+                {{ range $index, $employment_type := $fields.labor_employment_type }}
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="labor_employment_type" id="labor_employment_type{{$index}}" value="{{$employment_type}}"{{ if (eq $index 0) }} required{{ end }}>
                     <label class="form-check-label" for="labor_employment_type{{$index}}">{{$employment_type}}</label>
@@ -114,7 +114,7 @@
         <div class="row mb-3 required">
             <label for="labor_employment_subject" class="col-md-2 form-label">사용주체</label>
             <div class="col-md-10">
-                {{ range $index, $employment_subject := $.Page.Params.labor_employment_subject }}
+                {{ range $index, $employment_subject := $fields.labor_employment_subject }}
                 <div class="form-check form-check-inline">
                     <input class="form-check-input mt-2" type="radio" name="labor_employment_subject" id="labor_employment_subject{{$index}}" value="{{$employment_subject}}"{{ if (eq $index 0) }} required{{ end }}>
                     <label class="form-check-label ml-1 mr-4 my-1" for="labor_employment_subject{{$index}}">{{$employment_subject}}</label>
@@ -127,7 +127,7 @@
             <div class="col-lg-6 required">
                 <label for="labor_number_of_workers" class="form-label">근로자수</label>
                 <select id="labor_number_of_workers" name="labor_number_of_workers" class="form-control w-100">
-                    {{ range $index, $number_of_workers := $.Page.Params.labor_number_of_workers }}
+                    {{ range $index, $number_of_workers := $fields.labor_number_of_workers }}
                     <option value="{{ $number_of_workers }}"{{ if eq $index 0 }} selected{{ end }}>{{ $number_of_workers }}</option>
                     {{ end }}
                 </select>
@@ -135,7 +135,7 @@
             <div class="col-lg-6 required">
                 <label for="labor_sector" class="form-label">업종</label>
                 <select id="labor_sector" name="labor_sector" class="form-control w-100">
-                    {{ range $index, $labor_sector := $.Page.Params.labor_sector }}
+                    {{ range $index, $labor_sector := $fields.labor_sector }}
                     <option value="{{ $labor_sector }}"{{ if eq $index 0 }} selected{{ end }}>{{ $labor_sector }}</option>
                     {{ end }}
                 </select>
@@ -233,7 +233,7 @@
         <div class="row mb-3">
             <label for="rule" class="col-md-2 form-label">4대보험<br>가입여부</label>
             <div class="col-md-10">
-                {{ range $index, $insurance := $.Page.Params.labor_insurances }}
+                {{ range $index, $insurance := $fields.labor_insurances }}
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="labor_insurances" id="labor_insurances{{$index}}" value="{{$insurance}}"{{ if (eq $index 0) }} checked{{ end }}>
                     <label class="form-check-label ml-1 mr-3 my-1" for="labor_insurances{{$index}}">{{$insurance}}</label>
@@ -248,7 +248,7 @@
         <div class="row mb-3 required">
             <label for="consulting_category" class="col-md-2 form-label">상담유형</label>
             <div class="col-md-10">
-                {{ range $index, $category := $.Page.Params.consulting_category }}
+                {{ range $index, $category := $fields.consulting_category }}
                 <div class="form-check form-check-inline">
                     <input class="form-check-input mt-2" type="radio" name="consulting_category" id="consulting_category{{$index}}" value="{{$category}}"{{ if (eq $index 0) }} required{{ end }}>
                     <label class="form-check-label ml-1 mr-4 my-1" for="consulting_category{{$index}}">{{$category}}</label>
