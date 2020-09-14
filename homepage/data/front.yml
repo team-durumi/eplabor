@@ -1,24 +1,19 @@
 slides:
   - title: 우리 지역의 든든한 이웃
     description: " 은평구노동자종합지원센터"
+    bg: /uploads/main_slide.jpg
+    btn_text: " "
+    btn_url: http://eplabor.org/
+  - title: " "
+    description: " "
     bg: /uploads/main_slide1.jpg
     btn_text: " "
     btn_url: http://eplabor.org/allim/news/1-%EC%84%BC%ED%84%B0%EC%86%8C%EC%8B%9D/
   - title: " "
     description: " "
-    bg: /uploads/main_slide2.jpg
-    btn_text: " "
-    btn_url: http://eplabor.org/workshops/%EC%8B%9C%EB%AF%BC%EB%85%B8%EB%8F%99%EB%B2%95%EB%A5%A0%ED%95%99%EA%B5%90/
-  - title: " "
-    description: " "
     bg: /uploads/main_slide3.jpg
     btn_text: 무급휴직 고용유지지원금 지원
     btn_url: http://eplabor.org/allim/notices/2/
-  - title: "  "
-    description: "  "
-    bg: /uploads/main_slide5.jpg
-    btn_text: " "
-    btn_url: http://eplabor.org/workshops/%EC%9B%90%EC%98%88%EC%99%80-%EC%9D%B4%EC%95%BC%EA%B8%B0%EB%A1%9C-%ED%92%80%EC%96%B4%EB%B3%B4%EB%8A%94-%EC%89%BC/
 center_info:
   - title: 노동상담
     icon: mic
