@@ -2,7 +2,7 @@
 base = "homepage"
 publish = "public"
 command = "hugo --gc --minify --buildDrafts"
-functions = "homepage/lambda"
+functions = "lambda"
 
 [context.production.environment]
 HUGO_VERSION = "0.76.5"
