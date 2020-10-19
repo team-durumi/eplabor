@@ -2,6 +2,7 @@ backend:
   name: git-gateway
   branch: master
   # name: test-repo
+local_backend: true
 
 media_folder: "homepage/static/uploads" 
 public_folder: "/uploads" 
@@ -50,24 +51,7 @@ collections:
               - {label: "아이콘", name: "icon", widget: "string"}
               - {label: "제목", name: "title", widget: "string"}
               - {label: "게시판 유형", name: "type", widget: "string"}
-          - label: "홍보용 4개 패널"
-            name: "four_panes"
-            description: "4개 넘어도 4개만 출력합니다."
-            widget: "list"
-            fields:
-              - {label: "제목1", name: "text1", widget: "string"}
-              - {label: "제목2", name: "text2", widget: "string"}
-              - {label: "배경 이미지", name: "bg", widget: "image"}
-              - {label: "링크", name: "url", widget: "string"}
-          - label: "사진 절반 글 절반"
-            name: "halfhalfs"
-            widget: "list"
-            fields:
-              - {label: "사진", name: "photo_url", widget: "image"}
-              - {label: "사진 위치", name: "photo_left", widget: "boolean", hint: "선택하면 왼쪽, 아니면 오른쪽"}
-              - {label: "링크", name: "message_url", widget: "string"}
-              - {label: "제목", name: "message_title", widget: "text"}
-              - {label: "설명", name: "message_description", widget: "text"}
+
   - label: "센터소개"
     name: "about"
     folder: "homepage/content/about/"
@@ -76,6 +60,7 @@ collections:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
       - {label: "본문", name: "body", widget: "markdown"}
+
   - label: "공지사항"
     name: "notices"
     folder: "homepage/content/allim/notices"
@@ -88,6 +73,7 @@ collections:
       - {label: "본문", name: "body", widget: "markdown"}
       - {label: "유형", name: "type", widget: "string", default: "notice"}
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
+
   - label: "센터소식"
     name: "news"
     folder: "homepage/content/allim/news"
@@ -97,9 +83,14 @@ collections:
     fields:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
-      - {label: "본문", name: "body", widget: "markdown"}
+      - label: "본문"
+        name: "body"
+        widget: ncw-tiny-mce
+        tiny_config:
+          apiKey: engl1s97gj9hrxpoa7eh7z5f05ozxfm1box3nxkh4j7a43ei
       - {label: "유형", name: "type", widget: "string", default: "news"}
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
+
   - label: "자료실"
     name: "downloads"
     folder: "homepage/content/allim/downloads"
@@ -112,6 +103,7 @@ collections:
       - {label: "본문", name: "body", widget: "markdown"}
       - {label: "유형", name: "type", widget: "string", default: "download"}
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
+
   - label: "발간자료"
     name: "publications"
     folder: "homepage/content/allim/publications"
@@ -124,6 +116,7 @@ collections:
       - {label: "본문", name: "body", widget: "markdown"}
       - {label: "유형", name: "type", widget: "string", default: "publication"}
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
+
   - label: "교육신청"
     name: "workshops"
     folder: "homepage/content/workshops"
@@ -135,6 +128,7 @@ collections:
       - {label: "작성일", name: "date", widget: "datetime"}
       - {label: "본문", name: "body", widget: "markdown"}
       - {label: "상태", name: "status", widget: "boolean", hint: "ON 신청 중, OFF 신청 마감"}
+      - {label: "유형", name: "type", widget: "string", default: "workshop"}
       - label: "교육 정보"
         name: "workshop"
         widget: "object"
@@ -145,8 +139,7 @@ collections:
           - {label: "장소", name: "장소", widget: "string"}
           - {label: "신청기간", name: "신청기간", widget: "string"}
           - {label: "문의", name: "문의", widget: "string"}
-          
-      - {label: "유형", name: "type", widget: "string", default: "workshop"}
+      
   - label: "노동상담"
     name: "consulting"
     files:
@@ -158,17 +151,3 @@ collections:
           - {label: "작성일", name: "date", widget: "datetime"}
           - {label: "본문", name: "body", widget: "markdown"}
           - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
-  - label: "주요사례"
-    name: "consulting-references"
-    folder: "homepage/data/faqs/"
-    create: true
-    extension: "yml"
-    fields:
-      - {label: "제목", name: "title", widget: "string"}
-      - label: "주요사례 모음"
-        name: "consulting-references-list"
-        widget: "list"
-        fields:
-          - {label: "제목", name: "title", widget: "string"}
-          - {label: "분류", name: "category", widget: "string"}
-          - {label: "본문", name: "body", widget: "markdown"}
