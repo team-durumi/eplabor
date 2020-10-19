@@ -12,7 +12,6 @@ Vagrant.configure("2") do |config|
     vb.name = "eplabor"
     vb.cpus = "2"
     vb.memory = "2048"
-    vb.linked_clone = true
   end
 
   config.vm.provision "shell", path: "provision/bootstrap.sh"
@@ -20,12 +19,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "provision/nvm.sh", privileged: false
   config.vm.provision "shell", path: "provision/directus.sh", privileged: false
   config.vm.provision "shell", path: "provision/check.sh", privileged: false
-
-  config.notify_forwarder.enable = false if Vagrant.has_plugin?("vagrant-fsnotify")
-
-  # config.trigger.after :up do |t|
-  #   t.info = "vagrant fsnotify"
-  #   t.run = {inline: "vagrant fsnotify"}
-  # end
 
 end
