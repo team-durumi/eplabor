@@ -1,5 +1,6 @@
 <div class="block--recent{{ with .type }} {{ (printf "block--recent--%s" .) }}{{ end }} bg-white p-4">
     {{ $icon := .icon }}
+    <small class="d-block mt-3 float-right"><a href="/allim/{{ .type }}{{ if eq .type "notice" }}s{{ end }}">더 보기</a></small>
     {{ with .title }}
         <h3 class="py-3">
             {{ with $icon }}<span class="icon mr-2">{{ readFile (printf "/static/icons/%s.svg" .) | safeHTML }}</span>{{ end }}
