@@ -8,14 +8,14 @@
     "dependencies": {
         "@babel/polyfill": "^7.10.4",
         "@directus/sdk-js": "^6.2.1",
+        "body-parser": "^1.19.0",
         "bootstrap": "^4.5",
         "dotenv": "^8.2.0",
-        "jquery": "^3.5.1",
-        "popper.js": "^1.16.1",
-        "body-parser": "^1.19.0",
         "express": "^4.17.1",
+        "jquery": "^3.5.1",
         "jsonwebtoken": "^8.5.1",
         "netlify-lambda": "^2.0.1",
+        "popper.js": "^1.16.1",
         "serverless-http": "^2.6.0"
     },
     "devDependencies": {
