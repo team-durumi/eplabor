@@ -8,12 +8,12 @@ slides:
     description: " "
     bg: /uploads/main_slide1.jpg
     btn_text: " "
-    btn_url: http://eplabor.org/allim/news/1-%EC%84%BC%ED%84%B0%EC%86%8C%EC%8B%9D/
+    btn_url: https://eplabor.org/allim/news/1-%EC%84%BC%ED%84%B0%EC%86%8C%EC%8B%9D/
   - title: " "
     description: " "
-    bg: /uploads/main_slide3.jpg
-    btn_text: 무급휴직 고용유지지원금 지원
-    btn_url: http://eplabor.org/allim/notices/2/
+    bg: /uploads/main_slide_201028.jpg
+    btn_text: 감정노동자 마음돌봄 힐링 프로그램
+    btn_url: https://eplabor.org/workshops/%EB%82%B4-%EB%A7%88%EC%9D%8C%EC%97%90-%EC%9B%83%EC%9D%8C%EA%BC%BF%EC%9D%B4-%ED%94%BC%EC%97%88%EC%8A%B5%EB%8B%88%EB%8B%A4/
 center_info:
   - title: 노동상담
     icon: mic
