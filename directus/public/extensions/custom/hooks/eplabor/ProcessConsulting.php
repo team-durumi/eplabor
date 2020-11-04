@@ -61,6 +61,7 @@ class ProcessConsulting implements HookInterface {
 
     private function create($data = null) {
         $markdown_string = $this->slack_payload['text'] = $this->buildMarkdown($data);
+        $pull = system('cd /home/ubuntu/eplabor/ && git pull');
         // 디스크에 마크다운 파일로 저장
         $result = file_put_contents($this->base_path . '/../homepage/content/consulting/online/' . $data['id'] . '.md', $markdown_string);
         if($result === FALSE) {
@@ -75,6 +76,7 @@ class ProcessConsulting implements HookInterface {
     private function update($data = null) {
         // $this->logger->debug('[HOOK] --- update() --- ' . $data['id'] . ' -- ' . $data['status']);
         $this->logger->debug(print_r($data, true));
+        $pull = system('cd /home/ubuntu/eplabor/ && git pull');
         // 삭제
         if(!empty($data['status']) && $data['status'] == 'deleted') {
             $output = system('rm -f ' . $this->base_path  . '/../homepage/content/consulting/online/' . $data['id'] . '.md 2>&1', $retval);
@@ -116,7 +118,7 @@ class ProcessConsulting implements HookInterface {
     private function gitPush() {
         $this->logger->debug('gitPush');
         $line = system('cd /home/ubuntu/eplabor/ && git add -A >/dev/null');
-        $commit = system('git commit -m "test" >/dev/null');
+        $commit = system('git commit -m "노동 상담 문의글을 작성했습니다." >/dev/null');
         $push = system('git push >/dev/null');
     }
 
