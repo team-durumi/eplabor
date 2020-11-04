@@ -4,14 +4,15 @@
         교육 프로그램
     </h3>
     <div class="row row-cols-1 row-cols-md-4 g-4">
-        {{ range ( where site.RegularPages.ByDate.Reverse "Type" "workshop" ) }}
+        {{ range first 4 ( where site.RegularPages.ByDate.Reverse "Type" "workshop" ) }}
         <div class="col">
             <div class="card h-100 p-2 workshop{{ if .Params.status }} open{{ else }} closed{{ end }}">
                 <a href="{{ .Permalink }}">
                     <img src="{{ .Params.workshop.이미지 }}" class="card-img-top" alt="{{ .Title }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ .Title }}</h5>
-                        <p class="card-text">{{ .Summary }}</p>
+                        <span class="text-primary">{{ .Params.workshop.일시 }}</span>
+                        <p class="card-text mt-3">{{ .Summary }}</p>
                     </div>
                 </a>
             </div>
