@@ -25,15 +25,17 @@ $(() => {
         $('#spinner-screen').show()
         api.create(payloads)
             .then(res => {
-                // console.log(res)
                 $('#spinner-screen').hide()
-                let message = api.messages['participate-workshop']
-                if (res.data.error) message = api.messages[res.data.error]
+                let message = api.messages['workshop-participated']
+                if (res.data && res.data.error) {
+                    message = api.messages[res.data.error]
+                }
                 alert(message)
+                window.location.href = '/workshops'
             })
             .catch(error => {
+                // console.log('network error!')
                 $('#spinner-screen').hide()
-                // console.log(err)
                 alert(api.messages['error'])
             })
     })
