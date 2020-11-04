@@ -5,6 +5,7 @@
         <div class="col-md-9">
             <h1 class="border-bottom pb-3 my-3" id="workshop-title">{{ .Title }}</h1>
             <header>
+                {{ if .Params.status }}
                 <ul class="actions list-inline text-righ float-right">
                     <li class="list-inline-item">
                         <a href="#" data-toggle="modal" data-target="#authModal" data-action="check" class="btn btn-sm btn-primary text-white mx-1">신청확인</a>
@@ -16,6 +17,7 @@
                         <a href="#" data-toggle="modal" data-target="#authModal" data-action="delete" class="btn btn-sm btn-danger mx-1">취소</a>
                     </li>
                 </ul>
+                {{ end }}
                 <date class="d-block mb-5">{{ .Date.Local.Format "2006-01-02" }}</date>
             </header>
             {{ $workshop := .Page.Params.workshop }}
