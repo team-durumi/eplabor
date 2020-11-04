@@ -6,7 +6,7 @@
     <div class="row row-cols-1 row-cols-md-4 g-4">
         {{ range first 4 ( where site.RegularPages.ByDate.Reverse "Type" "workshop" ) }}
         <div class="col">
-            <div class="card h-100 p-2 workshop{{ if .Params.status }} open{{ else }} closed{{ end }}">
+            <div class="card p-2 workshop{{ if .Params.status }} open{{ else }} closed{{ end }}">
                 <a href="{{ .Permalink }}">
                     <img src="{{ .Params.workshop.이미지 }}" class="card-img-top" alt="{{ .Title }}">
                     <div class="card-body">
