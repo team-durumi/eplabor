@@ -70,7 +70,11 @@ collections:
     fields:
       - {label: "제목", name: "title", widget: "string"}
       - {label: "작성일", name: "date", widget: "datetime"}
-      - {label: "본문", name: "body", widget: "markdown"}
+      - label: "본문"
+        name: "body"
+        widget: ncw-tiny-mce
+        tiny_config:
+          apiKey: engl1s97gj9hrxpoa7eh7z5f05ozxfm1box3nxkh4j7a43ei
       - {label: "유형", name: "type", widget: "string", default: "notice"}
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
 
