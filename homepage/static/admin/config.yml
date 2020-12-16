@@ -108,14 +108,11 @@ collections:
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
       - label: "첨부파일"
         name: "files"
-        widget: "list"
-        fields:
-          - label: "파일"
-            name: "file"
-            widget: "file"
-            media_library:
-              config:
-                multiple: true
+        widget: "file"
+        allow_multiple: true
+        media_library:
+          config:
+            multiple: true
 
   - label: "발간자료"
     name: "publications"
@@ -131,14 +128,11 @@ collections:
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
       - label: "첨부파일"
         name: "files"
-        widget: "list"
-        fields:
-          - label: "파일"
-            name: "file"
-            widget: "file"
-            media_library:
-              config:
-                multiple: true
+        widget: "file"
+        allow_multiple: true
+        media_library:
+          config:
+            multiple: true
 
   - label: "교육신청"
     name: "workshops"
