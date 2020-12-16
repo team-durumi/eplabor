@@ -4,8 +4,8 @@ backend:
   # name: test-repo
 local_backend: true
 
-media_folder: "homepage/static/uploads" 
-public_folder: "/uploads" 
+media_folder: "homepage/static/uploads"
+public_folder: "/uploads"
 
 collections:
   - label: "설정"
@@ -102,6 +102,12 @@ collections:
       - {label: "본문", name: "body", widget: "markdown"}
       - {label: "유형", name: "type", widget: "string", default: "download"}
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
+      - label: "첨부파일"
+        name: "files"
+        widget: "file"
+        media_library:
+          config:
+            multiple: true
 
   - label: "발간자료"
     name: "publications"
@@ -115,6 +121,12 @@ collections:
       - {label: "본문", name: "body", widget: "markdown"}
       - {label: "유형", name: "type", widget: "string", default: "publication"}
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
+      - label: "첨부파일"
+        name: "files"
+        widget: "file"
+        media_library:
+          config:
+            multiple: true
 
   - label: "교육신청"
     name: "workshops"
@@ -138,7 +150,7 @@ collections:
           - {label: "장소", name: "장소", widget: "string"}
           - {label: "신청기간", name: "신청기간", widget: "string"}
           - {label: "문의", name: "문의", widget: "string"}
-      
+
   - label: "노동상담"
     name: "consulting"
     files:
