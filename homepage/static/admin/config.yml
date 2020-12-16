@@ -77,6 +77,13 @@ collections:
           apiKey: engl1s97gj9hrxpoa7eh7z5f05ozxfm1box3nxkh4j7a43ei
       - {label: "유형", name: "type", widget: "string", default: "notice"}
       - {label: "레이아웃", name: "layout", widget: "string", default: "section_single"}
+      - label: "첨부파일"
+        name: "files"
+        widget: "file"
+        allow_multiple: true
+        media_library:
+          config:
+            multiple: true
 
   - label: "센터소식"
     name: "news"
