@@ -109,6 +109,7 @@ collections:
       - label: "첨부파일"
         name: "files"
         widget: "file"
+        allow_multiple: true
         media_library:
           config:
             multiple: true
@@ -128,6 +129,7 @@ collections:
       - label: "첨부파일"
         name: "files"
         widget: "file"
+        allow_multiple: true
         media_library:
           config:
             multiple: true
