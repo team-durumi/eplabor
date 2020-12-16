@@ -6,16 +6,15 @@
             <h1 class="border-bottom py-3 mb-3">{{ .Title }}</h1>
             <date class="d-block mb-5">{{ .Date.Local.Format "2006-01-02" }}</date>
             <div class="body">
-                <div class="alert alert-info" role="alert">
                 {{ with .Params.files }}
+                  <div class="alert alert-info" role="alert">
                     <ul class="list-unstyled mt-3">
                     {{ range $file := . }}
                         <li><span class="mr-2 text-info">{{ readFile "/static/icons/download.svg" | safeHTML }}</span><a class="text-info" download href="{{ . }}">{{ replace . "/uploads/" "" }}</a></li>
                     {{ end }}
                     </ul>
+                  </div>
                 {{ end }}
-                </div>
-                
                 {{ .Content }}
             </div>
         </div>
