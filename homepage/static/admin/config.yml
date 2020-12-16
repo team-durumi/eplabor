@@ -113,6 +113,9 @@ collections:
           - label: "파일"
             name: "file"
             widget: "file"
+            media_library:
+              config:
+                multiple: true
 
   - label: "발간자료"
     name: "publications"
@@ -133,6 +136,9 @@ collections:
           - label: "파일"
             name: "file"
             widget: "file"
+            media_library:
+              config:
+                multiple: true
 
   - label: "교육신청"
     name: "workshops"
