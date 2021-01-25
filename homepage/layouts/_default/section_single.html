@@ -8,6 +8,13 @@
             <date class="d-block mb-5">{{ .Date.Local.Format "2006-01-02" }}</date>
             {{ end }}
             <div class="body">
+              {{ with .Params.files }}
+                <div class="alert alert-info" role="alert">
+                    <ul class="list-unstyled mt-3">
+                        <li><span class="mr-2 text-info">{{ readFile "/static/icons/download.svg" | safeHTML }}</span><a class="text-info" download href="{{ . }}">{{ replace . "/uploads/" "" }}</a></li>
+                    </ul>
+                </div>
+              {{ end }}
                 {{ .Content }}
             </div>
         </div>
