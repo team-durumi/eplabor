@@ -55,6 +55,7 @@ class ProcessConsulting implements HookInterface {
             $this->{$this->type}($data);
         }
         if($this->config->get('env') != 'development') {
+            $this->logger->debug('[HOOK] --- handle! --- gitpush');
             $this->gitPush();
         }
     }
@@ -117,9 +118,12 @@ class ProcessConsulting implements HookInterface {
 
     private function gitPush() {
         $this->logger->debug('gitPush');
-        $line = system('cd /home/ubuntu/eplabor/ && git add -A >/dev/null');
-        $commit = system('git commit -m "노동 상담 문의글을 작성했습니다." >/dev/null');
-        $push = system('git push >/dev/null');
+        $line = system('cd /home/ubuntu/eplabor/ && git add -A 2>&1', $output);
+        $this->logger->debug('gitPush -- ' . $output);
+        $commit = system('git commit -m "노동 상담 문의글을 작성했습니다." 2>&1', $output);
+        $this->logger->debug('gitPush -- ' . $output);
+        $push = system('git push 2>&1', $output);
+        $this->logger->debug('gitPush -- ' . $output);
     }
 
 }
