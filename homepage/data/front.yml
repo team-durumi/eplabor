@@ -29,6 +29,11 @@ slides:
     btn_text: 플랫폼노동자 건강돌봄사업
     bg: /uploads/main_slide_210723.jpg
     btn_url: https://eplabor.org/allim/downloads/%ED%94%8C%EB%9E%AB%ED%8F%BC-%EB%85%B8%EB%8F%99%EC%9E%90-%EA%B1%B4%EA%B0%95%EB%8F%8C%EB%B4%84%EC%82%AC%EC%97%85-%EC%95%88%EB%82%B4/
+  - bg: /uploads/이동노동자.png
+    title: 서울지역 얼음물
+    description: 서울지역 얼음물
+    btn_text: 서울지역 얼음물
+    btn_url: https://www.eplabor.org/allim/notices/%EC%9D%B4%EB%8F%99%EB%85%B8%EB%8F%99%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%83%9D%EC%88%98-%EB%B0%B0%ED%8F%AC-%EC%95%88%EB%82%B4/
 center_info:
   - title: 노동상담
     icon: mic
