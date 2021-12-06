@@ -1,5 +1,5 @@
 ---
-title: (종강)「컬러풀 새활용 에코니팅_양말목공예 B팀」
+title: (종강)「컬러풀 새활용 에코니팅_양말목공예 B팀 (26일)」
 date: 2021-11-30T06:25:56.212Z
 type: news
 layout: section_single
