@@ -19,11 +19,11 @@ slides:
     bg: /uploads/main_slide_210607.jpg
     btn_text: 필수노동자 「직종별 건강진단」 사업 안내
     btn_url: https://eplabor.org/allim/downloads/%ED%95%84%EC%88%98%EB%85%B8%EB%8F%99%EC%9E%90-%EC%A7%81%EC%A2%85%EB%B3%84-%EA%B1%B4%EA%B0%95%EC%A7%84%EB%8B%A8-%EC%82%AC%EC%97%85-%EC%95%88%EB%82%B4/
-  - title: 플랫폼노동자 건강돌봄사업
-    description: 플랫폼노동자 건강돌봄사업
-    btn_text: 플랫폼노동자 건강돌봄사업
-    bg: /uploads/main_slide_210723.jpg
-    btn_url: https://eplabor.org/allim/downloads/%ED%94%8C%EB%9E%AB%ED%8F%BC-%EB%85%B8%EB%8F%99%EC%9E%90-%EA%B1%B4%EA%B0%95%EB%8F%8C%EB%B4%84%EC%82%AC%EC%97%85-%EC%95%88%EB%82%B4/
+  - title: 코로나 19 감염 차단을 위한 대면업무 중단 안내
+    description: 대면업무 중단 안내
+    btn_text: 대면업무 중단 안내
+    bg: /uploads/main_slide_220210.jpg
+    btn_url: https://eplabor.org/allim/notices/%EC%BD%94%EB%A1%9C%EB%82%9819%EB%A1%9C-%EC%9D%B8%ED%95%9C-%EB%B0%A9%EB%AC%B8%EC%83%81%EB%8B%B4-%EC%A4%91%EB%8B%A8-%EC%95%88%EB%82%B4/
 center_info:
   - title: 노동상담
     icon: mic
