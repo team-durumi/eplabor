@@ -1,4 +1,9 @@
 slides:
+  - btn_url: https://eplabor.org/allim/downloads/%EC%A0%9C20%EB%8C%80-%EB%8C%80%ED%86%B5%EB%A0%B9%EC%84%A0%EA%B1%B0-%EA%B7%BC%EB%A1%9C%EC%9E%90-%EA%B3%B5%EB%AF%BC%EA%B6%8C-%ED%96%89%EC%82%AC-%EB%B3%B4%EC%9E%A5-%EC%95%88%EB%82%B4/
+    bg: /uploads/main_slide_220302.jpg
+    title: 대통령선거 공민권 보장 안내
+    description: 공민권 보장 안내
+    btn_text: 공민권 보장
   - title: 우리 지역의 든든한 이웃
     description: " 은평구노동자종합지원센터"
     bg: /uploads/main_slide.jpg
@@ -14,16 +19,16 @@ slides:
     btn_text: 무료노동상담
     title: " 무료노동상담"
     description: 무료노동상담
-  - title: 필수노동자 「직종별 건강진단」 사업 안내
-    description: 필수노동자 「직종별 건강진단」 사업 안내
-    bg: /uploads/main_slide_210607.jpg
-    btn_text: 필수노동자 「직종별 건강진단」 사업 안내
-    btn_url: https://eplabor.org/allim/downloads/%ED%95%84%EC%88%98%EB%85%B8%EB%8F%99%EC%9E%90-%EC%A7%81%EC%A2%85%EB%B3%84-%EA%B1%B4%EA%B0%95%EC%A7%84%EB%8B%A8-%EC%82%AC%EC%97%85-%EC%95%88%EB%82%B4/
   - title: 코로나 19 감염 차단을 위한 대면업무 중단 안내
     description: 대면업무 중단 안내
     btn_text: 대면업무 중단 안내
     bg: /uploads/main_slide_220210.jpg
     btn_url: https://eplabor.org/allim/notices/%EC%BD%94%EB%A1%9C%EB%82%9819%EB%A1%9C-%EC%9D%B8%ED%95%9C-%EB%B0%A9%EB%AC%B8%EC%83%81%EB%8B%B4-%EC%A4%91%EB%8B%A8-%EC%95%88%EB%82%B4/
+  - title: 필수노동자 「직종별 건강진단」 사업 안내
+    description: 필수노동자 「직종별 건강진단」 사업 안내
+    bg: /uploads/main_slide_210607.jpg
+    btn_text: 필수노동자 「직종별 건강진단」 사업 안내
+    btn_url: https://eplabor.org/allim/downloads/%ED%95%84%EC%88%98%EB%85%B8%EB%8F%99%EC%9E%90-%EC%A7%81%EC%A2%85%EB%B3%84-%EA%B1%B4%EA%B0%95%EC%A7%84%EB%8B%A8-%EC%82%AC%EC%97%85-%EC%95%88%EB%82%B4/
 center_info:
   - title: 노동상담
     icon: mic
