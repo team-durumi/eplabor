@@ -24,6 +24,11 @@ slides:
     bg: /uploads/main_slide_220110.jpg
     btn_text: 공휴일 민간 적용
     btn_url: https://eplabor.org/allim/downloads/%EA%B4%80%EA%B3%B5%EC%84%9C-%EA%B3%B5%ED%9C%B4%EC%9D%BC-%EC%98%AC%ED%95%B4%EB%B6%80%ED%84%B0-5%EC%9D%B8-%EC%9D%B4%EC%83%81-%EB%AF%BC%EA%B0%84%EC%97%90%EB%8F%84-%EC%A0%81%EC%9A%A9/
+  - title: 청소년노동인권
+    bg: /uploads/111.jpg
+    btn_url: https://www.eplabor.org/allim/news/22%EB%85%84-%EC%B2%AD%EC%86%8C%EB%85%84%EB%85%B8%EB%8F%99%EC%9D%B8%EA%B6%8C-%EA%B5%90%EC%9C%A1%EC%95%88%EB%82%B4/
+    description: 청소년노동인권
+    btn_text: 청소년노동인권
 center_info:
   - title: 노동상담
     icon: mic
