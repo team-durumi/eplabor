@@ -11,7 +11,7 @@ orgs:
   - title: 구로구근로자복지센터
     url: http://www.laborguro.org/
   - title: 노원노동복지센터
-    url: https://www.nowonhope.org/
+    url: http://nowonlwc.org/
   - title: 마포구노동자종합지원센터
     url: https://www.mapolabor.org/
   - title: 서대문구근로자복지센터
@@ -21,13 +21,13 @@ orgs:
   - title: 성북구노동권익센터
     url: http://www.sblabor.or.kr/
   - title: 양천구노동복지센터
-    url: http://www.yclabor.org/
+    url: http://yclabor.or.kr/
   - title: 중랑구노동자종합지원센터
     url: http://www.jnlabor.org/
   - title: 도심권노동자종합지원센터
     url: https://www.facebook.com/100731188084958/
   - title: 동남권노동자종합지원센터
-    url: https://dslc.modoo.at/
+    url: https://www.4seoullabor.org/dongnam/
   - title: 강북구노동자종합지원센터
     url: https://www.gangbukhope.org/
   - title: 도봉구노동자종합지원센터
@@ -40,3 +40,5 @@ orgs:
     url: https://www.4seoullabor.org/dongbuk/
   - title: 서남권노동자종합지원센터
     url: https://www.4seoullabor.org/seonam/
+  - title: 서울노동포털
+    url: https://www.seoullabor.or.kr/
