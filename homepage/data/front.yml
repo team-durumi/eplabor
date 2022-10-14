@@ -1,4 +1,9 @@
 slides:
+  - title: 10-11월 센터 프로그램 안내
+    description: 10-11월 센터 프로그램 안내
+    bg: /uploads/main_slide_221014.jpg
+    btn_text: 10-11월 센터 프로그램 안내
+    btn_url: https://eplabor.org/workshops/
   - title: 대리운전기사 건강검진 및 상담 무상지원 안내
     description: 대리운전기사 건강검진 및 상담 무상지원 안내
     bg: /uploads/main_slide_220722.jpg
@@ -24,11 +29,6 @@ slides:
     bg: /uploads/main_slide.jpg
     btn_text: " "
     btn_url: http://eplabor.org/
-  - title: 10-11월 센터 프로그램 안내
-    description: 10-11월 센터 프로그램 안내
-    bg: /uploads/main_slide_221014.jpg
-    btn_text: 10-11월 센터 프로그램 안내
-    btn_url: https://eplabor.org/workshops/
 center_info:
   - title: 노동상담
     icon: mic
