@@ -1,14 +1,14 @@
 slides:
-  - title: 23년 센터 프로그램 안내
-    description: 23년 센터 프로그램 안내
-    bg: /uploads/main_slide_230526.jpg
-    btn_text: 23년 센터 프로그램 안내
-    btn_url: https://eplabor.org/workshops/
   - bg: /uploads/main_slide_2023.jpg
     btn_url: https://eplabor.org/consulting/info/
     btn_text: 무료노동상담
     title: " 무료노동상담"
     description: 무료노동상담
+  - title: 23년 센터 프로그램 안내
+    description: 23년 센터 프로그램 안내
+    bg: /uploads/main_slide_230526.jpg
+    btn_text: 23년 센터 프로그램 안내
+    btn_url: https://eplabor.org/workshops/
   - title: 이동노동자 생수나눔 캠페인
     description: 이동노동자 생수나눔 캠페인
     bg: /uploads/main_slide_230615.jpg
