@@ -1,9 +1,19 @@
 slides:
+  - title: " 무료노동상담"
+    description: " 무료노동상담"
+    bg: /uploads/main_slide_240311a.jpg
+    btn_text: " 무료노동상담"
+    btn_url: https://eplabor.org/
+  - title: 찾아가는노동상담
+    description: 찾아가는노동상담
+    bg: /uploads/main_slide_240311b.jpg
+    btn_text: 찾아가는노동상담
+    btn_url: https://eplabor.org/
   - bg: /uploads/main_slide_2024.jpg
     btn_url: https://eplabor.org/consulting/info/
-    btn_text: 무료노동상담
-    title: " 무료노동상담"
-    description: 무료노동상담
+    btn_text: " 무료노동상담번호안내"
+    title: " 무료노동상담번호안내"
+    description: " 무료노동상담번호안내"
   - title: 일자리경제과
     description: 사업 홍보
     bg: /uploads/main_slide_240315.jpg
