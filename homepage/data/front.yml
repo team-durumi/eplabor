@@ -4,19 +4,9 @@ slides:
     btn_text: 무료노동상담
     title: " 무료노동상담"
     description: 무료노동상담
-  - title: 23년 센터 프로그램 안내
-    description: 23년 센터 프로그램 안내
-    bg: /uploads/main_slide_230526.jpg
-    btn_text: 23년 센터 프로그램 안내
-    btn_url: https://eplabor.org/workshops/
-  - title: 이동노동자 생수나눔 캠페인
-    description: 이동노동자 생수나눔 캠페인
-    bg: /uploads/main_slide_230615.jpg
-    btn_text: 이동노동자 생수나눔
-    btn_url: https://eplabor.org/allim/notices/2023-%EC%9D%B4%EB%8F%99%EB%85%B8%EB%8F%99%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%96%BC%EC%9D%8C%EB%AC%BC%EC%A7%80%EB%8F%84/
   - title: 청소년노동인권
     bg: /uploads/청소년노동인권-교.png
-    btn_url: https://www.eplabor.org/allim/news/22%EB%85%84-%EC%B2%AD%EC%86%8C%EB%85%84%EB%85%B8%EB%8F%99%EC%9D%B8%EA%B6%8C-%EA%B5%90%EC%9C%A1%EC%95%88%EB%82%B4/
+    btn_url: https://www.eplabor.org/allim/notices/2024%EB%85%84-%EC%B2%AD%EC%86%8C%EB%85%84%EB%85%B8%EB%8F%99%EC%9D%B8%EA%B6%8C%EA%B5%90%EC%9C%A1-%EC%8B%A0%EC%B2%AD-%EC%95%88%EB%82%B4/
     description: 청소년노동인권
     btn_text: 청소년노동인권
   - title: 우리 지역의 든든한 이웃
