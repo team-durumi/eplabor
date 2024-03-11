@@ -14,6 +14,11 @@ slides:
     bg: /uploads/main_slide_a.jpg
     btn_text: " "
     btn_url: http://eplabor.org/
+  - title: 일자리경제과
+    description: 사업 홍보
+    bg: /uploads/main_slide_240315.jpg
+    btn_url: https://www.eplabor.org/allim/downloads/4050-%EC%83%88%EB%8F%84%EC%95%BD-%EC%9D%B8%ED%84%B4%EC%8B%AD-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8-%EC%B0%B8%EC%97%AC-%EA%B8%B0%EC%97%85-%EB%AA%A8%EC%A7%91-%EC%95%88%EB%82%B4/
+    btn_text: 4050 인턴십 프로그램
 center_info:
   - title: 노동상담
     icon: mic
