@@ -50,6 +50,7 @@ class ProcessConsulting implements HookInterface {
      */
     public function handle($data = null) {
         // 요청 형식에 따라 실행
+        ob_start();
         $this->logger->debug('[HOOK] --- handle! --- ' . $this->type);
         if(!empty($this->type) && in_array($this->type, ['create', 'update'])) {
             $result = $this->{$this->type}($data);
@@ -59,6 +60,7 @@ class ProcessConsulting implements HookInterface {
             $this->logger->debug('[HOOK] --- handle! --- gitpush');
             $this->gitPush();
         }
+        ob_clean();
     }
 
     private function create($data = null) {
