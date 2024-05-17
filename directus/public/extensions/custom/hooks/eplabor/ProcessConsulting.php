@@ -86,6 +86,7 @@ class ProcessConsulting implements HookInterface {
         ob_start();
         $pull = system('cd /home/ubuntu/eplabor/ && git pull 2>&1');
         var_dump('AAAA');
+        ob_clean();
         // 삭제
         if(!empty($data['status']) && $data['status'] == 'deleted') {
             $output = system('rm -f ' . $this->base_path  . '/../homepage/content/consulting/online/' . $data['id'] . '.md 2>&1', $retval);
