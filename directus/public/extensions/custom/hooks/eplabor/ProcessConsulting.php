@@ -80,10 +80,12 @@ class ProcessConsulting implements HookInterface {
     }
 
     private function update($data = null) {
-        ob_start();
+        
         // $this->logger->debug('[HOOK] --- update() --- ' . $data['id'] . ' -- ' . $data['status']);
         $this->logger->debug(print_r($data, true));
+        ob_start();
         $pull = system('cd /home/ubuntu/eplabor/ && git pull 2>&1');
+        var_dump('AAAA');
         // 삭제
         if(!empty($data['status']) && $data['status'] == 'deleted') {
             $output = system('rm -f ' . $this->base_path  . '/../homepage/content/consulting/online/' . $data['id'] . '.md 2>&1', $retval);
