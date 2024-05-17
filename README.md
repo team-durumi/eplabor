@@ -121,3 +121,9 @@ rclone mount --daemon team-durumi-drive:/eplabor /vagrant/data
 # 언마운트 에러 시 아래
 sudo umount -l /vagrant/data
 ```
+
+## git 
+
+```
+sudo git config --system --add safe.directory /home/ubuntu/eplabor
+```
