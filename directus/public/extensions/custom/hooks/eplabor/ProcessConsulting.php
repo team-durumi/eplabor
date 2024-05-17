@@ -64,9 +64,10 @@ class ProcessConsulting implements HookInterface {
     }
 
     private function create($data = null) {
-        ob_start();
         $markdown_string = $this->slack_payload['text'] = $this->buildMarkdown($data);
+        ob_start();
         $pull = system('cd /home/ubuntu/eplabor/ && git pull 2>&1');
+        ob_clean();
         // 디스크에 마크다운 파일로 저장
         $result = file_put_contents($this->base_path . '/../homepage/content/consulting/online/' . $data['id'] . '.md', $markdown_string);
         if($result === FALSE) {
@@ -76,7 +77,6 @@ class ProcessConsulting implements HookInterface {
             $this->logger->debug('[HOOK] Written to homepage/content/consulting/online/' . $data['id'] . '.md');
         }
         // $this->logger->debug('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
-        ob_clean();
     }
 
     private function update($data = null) {
@@ -85,11 +85,12 @@ class ProcessConsulting implements HookInterface {
         $this->logger->debug(print_r($data, true));
         ob_start();
         $pull = system('cd /home/ubuntu/eplabor/ && git pull 2>&1');
-        var_dump('AAAA');
         ob_clean();
         // 삭제
         if(!empty($data['status']) && $data['status'] == 'deleted') {
+            ob_start();
             $output = system('rm -f ' . $this->base_path  . '/../homepage/content/consulting/online/' . $data['id'] . '.md 2>&1', $retval);
+            ob_clean();
             $this->logger->debug($data['id'] . ' deleted --- ' . 'rm -f ' . $this->base_path  . '/../homepage/content/consulting/online/' . $data['id'] . '.md 2>&1 ----' . $retval);
         } else {
             $item = $this->tableGateway->getOneData($data['id']);
