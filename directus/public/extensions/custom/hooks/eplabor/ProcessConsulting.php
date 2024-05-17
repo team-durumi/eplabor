@@ -117,13 +117,12 @@ class ProcessConsulting implements HookInterface {
     }
 
     private function gitPush() {
-        $this->logger->debug('gitPush');
         $line = system('cd /home/ubuntu/eplabor/ && git add -A 2>&1', $output);
-        $this->logger->debug('gitPush -- ' . $output);
-        $commit = system('git commit -m "노동 상담 문의글을 작성했습니다." 2>&1', $output);
-        $this->logger->debug('gitPush -- ' . $output);
-        $push = system('git push 2>&1', $output);
-        $this->logger->debug('gitPush -- ' . $output);
+        $this->logger->debug('git add -- ' . $line);
+        $commit = system('cd /home/ubuntu/eplabor/ && git commit -m "노동 상담 문의글을 작성했습니다." 2>&1', $output);
+        $this->logger->debug('git commit -- ' . $commit);
+        $push = system('cd /home/ubuntu/eplabor/ && git push 2>&1', $output);
+        $this->logger->debug('git push -- ' . $push);
     }
 
 }
