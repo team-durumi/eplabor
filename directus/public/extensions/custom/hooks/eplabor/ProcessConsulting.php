@@ -53,7 +53,7 @@ class ProcessConsulting implements HookInterface {
         $this->logger->debug('[HOOK] --- handle! --- ' . $this->type);
         if(!empty($this->type) && in_array($this->type, ['create', 'update'])) {
             $result = $this->{$this->type}($data);
-            $this->logger->debug($this->type . ' --- ' . print_r($result));
+            $this->logger->debug($this->type . ' --- ' . print_r($result, true));
         }
         if($this->config->get('env') != 'development') {
             $this->logger->debug('[HOOK] --- handle! --- gitpush');
@@ -62,6 +62,7 @@ class ProcessConsulting implements HookInterface {
     }
 
     private function create($data = null) {
+        ob_start();
         $markdown_string = $this->slack_payload['text'] = $this->buildMarkdown($data);
         $pull = system('cd /home/ubuntu/eplabor/ && git pull');
         // 디스크에 마크다운 파일로 저장
@@ -73,9 +74,11 @@ class ProcessConsulting implements HookInterface {
             $this->logger->debug('[HOOK] Written to homepage/content/consulting/online/' . $data['id'] . '.md');
         }
         // $this->logger->debug('/vagrant/homepage/content/consulting/online/' . $data['id'] . '.md');
+        ob_clean();
     }
 
     private function update($data = null) {
+        ob_start();
         // $this->logger->debug('[HOOK] --- update() --- ' . $data['id'] . ' -- ' . $data['status']);
         $this->logger->debug(print_r($data, true));
         $pull = system('cd /home/ubuntu/eplabor/ && git pull');
@@ -88,6 +91,7 @@ class ProcessConsulting implements HookInterface {
             // $this->logger->debug(print_r($item, true));
             $this->create($item);
         }
+        ob_clean();
     }
 
     private function buildMarkdown($data) {
