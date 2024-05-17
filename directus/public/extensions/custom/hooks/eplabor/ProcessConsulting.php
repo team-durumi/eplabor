@@ -52,7 +52,8 @@ class ProcessConsulting implements HookInterface {
         // 요청 형식에 따라 실행
         $this->logger->debug('[HOOK] --- handle! --- ' . $this->type);
         if(!empty($this->type) && in_array($this->type, ['create', 'update'])) {
-            $this->{$this->type}($data);
+            $result = $this->{$this->type}($data);
+            $this->logger->debug($this->type . ' --- ' . print_r($result));
         }
         if($this->config->get('env') != 'development') {
             $this->logger->debug('[HOOK] --- handle! --- gitpush');
