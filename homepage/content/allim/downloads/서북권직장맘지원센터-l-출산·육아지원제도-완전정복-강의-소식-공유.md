@@ -4,8 +4,6 @@ date: 2024-11-15T09:55:45.902Z
 type: download
 layout: section_single
 ---
-
-
 서북권직장맘지원센터에서\~ 서울시 직장부모를 대상으로!
 25년부터 개정되는 출산·육아지원제도의 핵심 내용과 활용법을 안내하기 위한
 모성보호제도 강의참여자를 모집한다고 합니다\~!
@@ -15,7 +13,7 @@ layout: section_single
 1. 주     제 : 2025년 개정 출산육아지원제도 완전 정복 : 회사에서 알려주지 않는 제도 총정리
 2. 모집대상 : 서울에 거주하거나 서울 소재 직장에 다니는 직장부모 누구나
 3. 일시 및 방법 : 12월 7일(토) 오전 10시 30분 ~ 오후12시 / 온라인 zoom강의 
-4. 신청방법 : 구글 폼 제출 https://docs.google.com/forms/d/1_Lnf1d0WMNefYaDMr0BN2t9X9oJe4Czvibmn9V0nmgY/edit
+4. 신청방법 : 구글 폼 제출 [https://docs.google.com/forms/d/1_Lnf1d0WMNefYaDMr0BN2t9X9oJe4Czvibmn9V0nmgY/edit](<1. https://docs.google.com/forms/d/1_Lnf1d0WMNefYaDMr0BN2t9X9oJe4Czvibmn9V0nmgY/edit>)
 5. 모집기한 : 12월 4일(수) 오후 1시까지
 6. 참여혜택 : 커피쿠폰 지급 및 상시 상담 지원
 7. 문     의 : 법률지원팀 김경호(070-4233-5334)
