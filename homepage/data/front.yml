@@ -19,16 +19,16 @@ slides:
     btn_url: https://eplabor.org/allim/notices/2025%EB%85%84-%EC%B2%AD%EC%86%8C%EB%85%84%EB%85%B8%EB%8F%99%EC%9D%B8%EA%B6%8C%EA%B5%90%EC%9C%A1-%EC%8B%A0%EC%B2%AD-%EC%95%88%EB%82%B4-1/
     description: 청소년노동인권
     btn_text: 청소년노동인권
-  - title: 우리 지역의 든든한 이웃
-    description: 은평구노동자종합지원센터
-    bg: /uploads/main_slide_a.jpg
-    btn_text: " "
-    btn_url: http://eplabor.org/
   - title: 서울형 입원생활비 지원사업
     btn_text: 서울형 입원생활비 지원사업
     btn_url: http://sickleave.seoul.go.kr/main/home.do
     bg: /uploads/1920x500.png
     description: 서울형 입원생활비 지원사업
+  - title: 우리 지역의 든든한 이웃
+    description: 은평구노동자종합지원센터
+    bg: /uploads/main_slide_a.jpg
+    btn_text: " "
+    btn_url: http://eplabor.org/
 center_info:
   - title: 노동상담
     icon: mic
