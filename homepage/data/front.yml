@@ -26,7 +26,7 @@ slides:
     btn_url: http://eplabor.org/
   - title: 서울형 입원생활비 지원사업
     btn_text: 서울형 입원생활비 지원사업
-    btn_url: " http://sickleave.seoul.go.kr"
+    btn_url: http://sickleave.seoul.go.kr/main/home.do
     bg: /uploads/1920x500.png
     description: 서울형 입원생활비 지원사업
 center_info:
