@@ -1,34 +1,39 @@
 slides:
   - bg: /uploads/main_slide_2025.jpg
     btn_url: https://eplabor.org/consulting/info/
-    btn_text: " 무료노동상담번호안내"
-    title: " 무료노동상담번호안내"
-    description: " 무료노동상담번호안내"
-  - title: " 무료노동상담"
-    description: " 무료노동상담"
-    bg: /uploads/main_slide_240311a.jpg
-    btn_text: " 무료노동상담"
-    btn_url: https://eplabor.org/
-  - title: 찾아가는노동상담
-    description: 찾아가는노동상담
-    bg: /uploads/main_slide_240311b.jpg
-    btn_text: 찾아가는노동상담
-    btn_url: https://eplabor.org/allim/notices/2025%EB%85%84-%EC%B0%BE%EC%95%84%EA%B0%80%EB%8A%94-%EB%85%B8%EB%8F%99%EC%83%81%EB%8B%B4-%EC%95%88%EB%82%B4/
-  - title: 청소년노동인권
-    bg: /uploads/main_slide_240426.jpg
-    btn_url: https://eplabor.org/allim/notices/2025%EB%85%84-%EC%B2%AD%EC%86%8C%EB%85%84%EB%85%B8%EB%8F%99%EC%9D%B8%EA%B6%8C%EA%B5%90%EC%9C%A1-%EC%8B%A0%EC%B2%AD-%EC%95%88%EB%82%B4-1/
-    description: 청소년노동인권
-    btn_text: 청소년노동인권
+    btn_text: 최저임금안내
+    title: 최저임금안내
+    description: 최저임금안내
   - title: 서울형 입원생활비 지원사업
     btn_text: 서울형 입원생활비 지원사업
     btn_url: http://sickleave.seoul.go.kr/main/home.do
     bg: /uploads/1920x500.png
     description: 서울형 입원생활비 지원사업
+  - title: 찾아가는노동상담
+    description: 찾아가는노동상담
+    bg: /uploads/main_slide_240311b.jpg
+    btn_text: 찾아가는노동상담
+    btn_url: https://eplabor.org/allim/notices/2025%EB%85%84-%EC%B0%BE%EC%95%84%EA%B0%80%EB%8A%94-%EB%85%B8%EB%8F%99%EC%83%81%EB%8B%B4-%EC%95%88%EB%82%B4/
+  - title: " 무료노동상담"
+    description: " 무료노동상담"
+    bg: /uploads/main_slide_240311a.jpg
+    btn_text: " 무료노동상담"
+    btn_url: https://eplabor.org/
+  - title: 청소년노동인권
+    bg: /uploads/main_slide_240426.jpg
+    btn_url: https://eplabor.org/allim/notices/2025%EB%85%84-%EC%B2%AD%EC%86%8C%EB%85%84%EB%85%B8%EB%8F%99%EC%9D%B8%EA%B6%8C%EA%B5%90%EC%9C%A1-%EC%8B%A0%EC%B2%AD-%EC%95%88%EB%82%B4-1/
+    description: 청소년노동인권
+    btn_text: 청소년노동인권
   - title: 우리 지역의 든든한 이웃
     description: 은평구노동자종합지원센터
     bg: /uploads/main_slide_a.jpg
     btn_text: " "
     btn_url: http://eplabor.org/
+  - title: 2025 이동노동자 생수나눔 캠페인
+    description: 2025 이동노동자 생수나눔 캠페인
+    bg: /uploads/main_slide_250722.jpg
+    btn_text: 2025 이동노동자 생수나눔 캠페인
+    btn_url: https://eplabor.org/allim/notices/2025-%ED%98%B9%EC%84%9C%EA%B8%B0-%EC%9D%B4%EB%8F%99%EB%85%B8%EB%8F%99%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%83%9D%EC%88%98-%EB%82%98%EB%88%94-%EB%B0%B0%ED%8F%AC%EC%B2%98-%EC%96%BC%EC%9D%8C%EB%AC%BC%EC%A7%80%EB%8F%84-%EC%95%88%EB%82%B4/
 center_info:
   - title: 노동상담
     icon: mic
