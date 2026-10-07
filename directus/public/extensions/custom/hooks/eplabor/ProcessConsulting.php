@@ -66,7 +66,7 @@ class ProcessConsulting implements HookInterface {
     private function create($data = null) {
         $markdown_string = $this->slack_payload['text'] = $this->buildMarkdown($data);
         ob_start();
-        $pull = system('cd /home/ubuntu/eplabor/ && git pull 2>&1');
+        $pull = system('cd /srv/eplabor/ && git pull 2>&1');
         ob_clean();
         // 디스크에 마크다운 파일로 저장
         $result = file_put_contents($this->base_path . '/../homepage/content/consulting/online/' . $data['id'] . '.md', $markdown_string);
@@ -84,7 +84,7 @@ class ProcessConsulting implements HookInterface {
         // $this->logger->debug('[HOOK] --- update() --- ' . $data['id'] . ' -- ' . $data['status']);
         $this->logger->debug(print_r($data, true));
         ob_start();
-        $pull = system('cd /home/ubuntu/eplabor/ && git pull 2>&1');
+        $pull = system('cd /srv/eplabor/ && git pull 2>&1');
         ob_clean();
         // 삭제
         if(!empty($data['status']) && $data['status'] == 'deleted') {
@@ -129,11 +129,11 @@ class ProcessConsulting implements HookInterface {
 
     private function gitPush() {
         ob_start();
-        $line = system('cd /home/ubuntu/eplabor/ && git add -A 2>&1', $output);
+        $line = system('cd /srv/eplabor/ && git add -A 2>&1', $output);
         $this->logger->debug('git add -- ' . $line);
-        $commit = system('cd /home/ubuntu/eplabor/ && git commit -m "노동 상담 문의글을 작성했습니다." 2>&1', $output);
+        $commit = system('cd /srv/eplabor/ && git commit -m "노동 상담 문의글을 작성했습니다." 2>&1', $output);
         $this->logger->debug('git commit -- ' . $commit);
-        $push = system('cd /home/ubuntu/eplabor/ && git push 2>&1', $output);
+        $push = system('cd /srv/eplabor/ && git push 2>&1', $output);
         $this->logger->debug('git push -- ' . $push);
         ob_clean();
     }
